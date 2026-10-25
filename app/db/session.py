@@ -40,6 +40,12 @@ def init_db_extensions():
         try:
             with engine.connect() as conn:
                 conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector;"))
+                conn.commit()
+        except Exception as e:
+            print(f"Note on vector extension creation: {e}")
+
+        try:
+            with engine.connect() as conn:
                 conn.execute(text(f"ALTER TABLE lexicons ADD COLUMN IF NOT EXISTS embedding vector({settings.EMBEDDING_DIMENSION});"))
                 conn.commit()
         except Exception:

@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Optional
 
 from app.config import settings
-from app.db.session import engine, SessionLocal, Base
+from app.db.session import engine, SessionLocal, Base, init_db_extensions
 from app.db.models import Lexicon
 
 
@@ -42,6 +42,7 @@ def seed_database(csv_path: Optional[str] = None, truncate: bool = False) -> int
         raise FileNotFoundError(f"Lexicon CSV not found at: {target_path}")
 
     print(f"Connecting to database at {settings.DATABASE_URL}...")
+    init_db_extensions()
     Base.metadata.create_all(bind=engine)
 
     session = SessionLocal()

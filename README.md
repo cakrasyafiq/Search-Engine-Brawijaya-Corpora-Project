@@ -1,6 +1,6 @@
-# Lexicon Search Engine Backend (FastAPI + BM25 + PostgreSQL)
+# Lexicon Search Engine Backend (FastAPI + BM25 + BGE-M3 + Hybrid)
 
-A high-performance cultural lexicon search engine built with **FastAPI**, **PostgreSQL**, and an in-memory **BM25 (Best Matching 25)** inverted index engine with persistence and field-weighted relevance.
+A high-performance cultural lexicon search engine built with **FastAPI**, **PostgreSQL (pgvector)**, an in-memory **Okapi BM25** inverted index engine, **BAAI/bge-m3** dense semantic embeddings, and a **Hybrid Search Engine** with **Min-Max Normalization** and **Weighted Score Fusion**.
 
 ---
 
@@ -11,11 +11,11 @@ Local_Experiment/
 ├── app/
 │   ├── __init__.py
 │   ├── config.py             # Environment settings & hyperparameter configs
-│   ├── main.py               # FastAPI application with search & lexicon endpoints
+│   ├── main.py               # FastAPI application with sparse, dense & hybrid search endpoints
 │   ├── db/
 │   │   ├── __init__.py
 │   │   ├── session.py        # SQLAlchemy engine, session maker & DB dependency
-│   │   ├── models.py         # Lexicon PostgreSQL table schema (29 columns)
+│   │   ├── models.py         # Lexicon PostgreSQL table schema (29 columns + pgvector)
 │   │   └── seed.py           # Database seeder script for Lexicon.csv
 │   ├── schemas/
 │   │   ├── __init__.py
@@ -26,14 +26,17 @@ Local_Experiment/
 │   │   └── bm25_index.py     # Inverted index data structure & Okapi BM25 ranking engine
 │   └── services/
 │       ├── __init__.py
-│       └── search_service.py # BM25 lifecycle manager & cache synchronization
+│       ├── search_service.py   # BM25 lifecycle manager & cache synchronization
+│       ├── semantic_service.py # BAAI/bge-m3 vector search service
+│       └── hybrid_service.py   # Hybrid fusion with Min-Max normalization
 ├── Dataset/
 │   └── Lexicon/
 │       └── Lexicon.csv       # Source lexicon dataset
 ├── tests/
 │   ├── __init__.py
 │   ├── test_bm25.py          # Unit tests for BM25 ranking & tokenization
-│   └── test_api.py           # FastAPI endpoint tests
+│   ├── test_api.py           # FastAPI endpoint tests
+│   └── test_hybrid.py        # Hybrid normalization, fusion & endpoint tests
 ├── docker-compose.yml        # PostgreSQL container setup
 ├── .env.example              # Environment variables template
 ├── .env                      # Local development environment configuration
@@ -228,17 +231,71 @@ GET /search/semantic?query=protective%20ceremony%20for%20infant&top_k=5
 
 ---
 
-### 3. All Available Endpoints
+### 3. Hybrid Search Endpoint (`GET /search/hybrid`)
+
+Combines **Okapi BM25** (sparse lexical representation) and **BAAI/bge-m3** (dense semantic representation) using **Min-Max Score Normalization** and **Weighted Score Fusion**:
+
+$$S_{\text{norm}}(d) = \frac{S(d) - S_{\min}}{S_{\max} - S_{\min}}$$
+
+$$Score_{\text{hybrid}}(d) = w_{\text{dense}} \cdot S_{\text{dense, norm}}(d) + w_{\text{sparse}} \cdot S_{\text{bm25, norm}}(d)$$
+
+```http
+GET /search/hybrid?query=ritual%20offering%20bamboo&alpha=0.6&top_k=5
+```
+
+#### Query Parameters:
+- `query` / `q`: Search query string
+- `top_k`: Maximum candidate results to return (default: `10`, range: `1` to `100`)
+- `alpha`: Optional dense weight factor (`0.0` to `1.0`, where $w_{\text{dense}} = \alpha$ and $w_{\text{sparse}} = 1.0 - \alpha$). If set, overrides `dense_weight` and `sparse_weight`.
+- `dense_weight`: Custom weight for dense BGE-M3 representation (default: `0.5`)
+- `sparse_weight`: Custom weight for sparse BM25 representation (default: `0.5`)
+- `min_score`: Minimum fused hybrid score cutoff (`0.0` to `1.0`, default: `0.0`)
+- `culture`: Filter by culture name (e.g., `Tengger`)
+- `semantic_domain`: Filter by semantic domain (e.g., `Ritual`, `Material Culture`)
+- `word_class`: Filter by word class (e.g., `Noun`)
+
+#### Example Response:
+```json
+{
+  "query": "ritual offering bamboo",
+  "dense_weight": 0.6,
+  "sparse_weight": 0.4,
+  "total_candidates": 3,
+  "top_k": 5,
+  "execution_time_ms": 32.1,
+  "results": [
+    {
+      "id": 2,
+      "term": "Ancak",
+      "code": "T/TT/S/9",
+      "culture": "Tengger",
+      "semantic_domain": "Material Culture",
+      "definition": "A square-shaped offering container made of woven bamboo...",
+      "hybrid_score": 0.9421,
+      "bm25_score": 5.124,
+      "normalized_bm25_score": 1.0,
+      "similarity_score": 0.8124,
+      "normalized_similarity_score": 0.9035,
+      "matched_terms": ["offering", "bamboo"]
+    }
+  ]
+}
+```
+
+---
+
+### 4. All Available Endpoints
 
 | Method | Endpoint | Description |
 |---|---|---|
 | `GET` | `/search?query=...` | Keyword & phrase search using Okapi BM25 |
 | `GET` | `/search/semantic?query=...` | Dense vector semantic search using BAAI/bge-m3 & pgvector |
+| `GET` | `/search/hybrid?query=...` | Hybrid search combining BM25 & BGE-M3 with Min-Max normalization & weighted fusion |
 | `GET` | `/lexicons` | List all lexicons paginated (`skip`, `limit`) |
 | `GET` | `/lexicons/{id}` | Retrieve full details of a single lexicon entry |
 | `POST` | `/admin/reindex` | Force rebuild the BM25 inverted index from PostgreSQL |
 | `POST` | `/admin/generate-embeddings` | Generate BAAI/bge-m3 vector embeddings for PostgreSQL records |
-| `GET` | `/health` | Check database connection, BM25 index status, and vector counts |
+| `GET` | `/health` | Check database connection, BM25 index status, vector counts, and hybrid status |
 
 ---
 

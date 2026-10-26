@@ -120,3 +120,40 @@ class EmbeddingGenerationResponse(BaseModel):
     total_with_embeddings: int
     execution_time_ms: float
 
+
+class HybridLexiconCandidate(BaseModel):
+    id: int
+    term: str
+    code: Optional[str] = None
+    culture: Optional[str] = None
+    sub_culture: Optional[str] = None
+    word_class: Optional[str] = None
+    language: Optional[str] = None
+    dialect: Optional[str] = None
+    semantic_domain: Optional[str] = None
+    usage_context: Optional[str] = None
+    register: Optional[str] = None
+    phonetic: Optional[str] = None
+    definition: Optional[str] = None
+    variants: Optional[str] = None
+    examples: Optional[str] = None
+    categories: Optional[str] = None
+    hybrid_score: float = Field(..., description="Weighted fused hybrid score (0.0 to 1.0)")
+    bm25_score: float = Field(0.0, description="Raw BM25 score")
+    normalized_bm25_score: float = Field(0.0, description="Min-max normalized BM25 score (0.0 to 1.0)")
+    similarity_score: float = Field(0.0, description="Raw BGE-M3 cosine similarity score (-1.0 to 1.0)")
+    normalized_similarity_score: float = Field(0.0, description="Min-max normalized BGE-M3 similarity score (0.0 to 1.0)")
+    matched_terms: List[str] = Field(default_factory=list, description="Query terms matched by BM25")
+
+    model_config = ConfigDict(from_attributes=True, protected_namespaces=())
+
+
+class HybridSearchResponse(BaseModel):
+    query: str
+    dense_weight: float = Field(..., description="Weight applied to dense BGE-M3 normalized score")
+    sparse_weight: float = Field(..., description="Weight applied to sparse BM25 normalized score")
+    total_candidates: int
+    top_k: int
+    execution_time_ms: float
+    results: List[HybridLexiconCandidate]
+

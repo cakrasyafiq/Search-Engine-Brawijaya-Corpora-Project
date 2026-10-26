@@ -19,9 +19,12 @@ from app.schemas.lexicon import (
     SemanticLexiconCandidate,
     SemanticSearchResponse,
     EmbeddingGenerationResponse,
+    HybridLexiconCandidate,
+    HybridSearchResponse,
 )
 from app.services.search_service import search_service
 from app.services.semantic_service import semantic_service
+from app.services.hybrid_service import hybrid_service
 
 logging.basicConfig(
     level=logging.INFO,
@@ -84,12 +87,13 @@ app.add_middleware(
 def root():
     return {
         "service": settings.APP_NAME,
-        "version": "1.1.0",
+        "version": "1.2.0",
         "docs_url": "/docs",
         "bm25_index_ready": search_service.is_ready,
         "bm25_indexed_documents": search_service.index.total_docs,
         "semantic_search_model": settings.EMBEDDING_MODEL_NAME,
         "embedding_dimension": settings.EMBEDDING_DIMENSION,
+        "hybrid_search_ready": search_service.is_ready,
     }
 
 
@@ -123,6 +127,10 @@ def health_check(db: Session = Depends(get_db)):
             "model": settings.EMBEDDING_MODEL_NAME,
             "dimension": settings.EMBEDDING_DIMENSION,
             "embedded_records": records_with_embeddings,
+        },
+        "hybrid_search": {
+            "ready": search_service.is_ready,
+            "fusion_method": "min_max_normalized_weighted_score_fusion",
         },
     }
 
@@ -265,6 +273,72 @@ def search_semantic(
     return SemanticSearchResponse(
         query=search_query,
         model=settings.EMBEDDING_MODEL_NAME,
+        total_candidates=len(candidates),
+        top_k=top_k,
+        execution_time_ms=round(elapsed_ms, 3),
+        results=candidates,
+    )
+
+
+@app.get(
+    "/search/hybrid",
+    response_model=HybridSearchResponse,
+    summary="Hybrid Search combining BM25 and BGE-M3",
+    description="Receive a user query, compute both BM25 sparse score and BGE-M3 dense similarity score, apply min-max normalization, and fuse with weighted score fusion."
+)
+def search_hybrid(
+    q: Optional[str] = Query(None, description="Search query string (alternative to 'query')"),
+    query: Optional[str] = Query(None, description="Search query string"),
+    top_k: int = Query(10, ge=1, le=100, description="Maximum number of candidates to return"),
+    alpha: Optional[float] = Query(
+        None,
+        ge=0.0,
+        le=1.0,
+        description="Weight factor for dense representation (0.0 = BM25 only, 1.0 = BGE-M3 only). If specified, overrides dense_weight and sparse_weight."
+    ),
+    dense_weight: float = Query(0.5, ge=0.0, description="Weight for dense BGE-M3 representation"),
+    sparse_weight: float = Query(0.5, ge=0.0, description="Weight for sparse BM25 representation"),
+    min_score: float = Query(0.0, ge=0.0, le=1.0, description="Minimum fused hybrid score cutoff (0.0 to 1.0)"),
+    culture: Optional[str] = Query(None, description="Filter candidates by culture (e.g. Tengger)"),
+    semantic_domain: Optional[str] = Query(None, description="Filter candidates by semantic domain (e.g. Ritual)"),
+    word_class: Optional[str] = Query(None, description="Filter candidates by word class (e.g. Noun)"),
+    db: Session = Depends(get_db),
+):
+    search_query = (query or q or "").strip()
+    if not search_query:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Query parameter 'q' or 'query' must not be empty.",
+        )
+
+    start_time = time.perf_counter()
+
+    try:
+        candidates, eff_dense_w, eff_sparse_w = hybrid_service.search(
+            db=db,
+            query=search_query,
+            top_k=top_k,
+            alpha=alpha,
+            dense_weight=dense_weight,
+            sparse_weight=sparse_weight,
+            min_score=min_score,
+            culture=culture,
+            semantic_domain=semantic_domain,
+            word_class=word_class,
+        )
+    except Exception as e:
+        logger.error(f"Hybrid search error: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Hybrid search failed: {str(e)}",
+        )
+
+    elapsed_ms = (time.perf_counter() - start_time) * 1000.0
+
+    return HybridSearchResponse(
+        query=search_query,
+        dense_weight=eff_dense_w,
+        sparse_weight=eff_sparse_w,
         total_candidates=len(candidates),
         top_k=top_k,
         execution_time_ms=round(elapsed_ms, 3),

@@ -7,6 +7,8 @@ from app.schemas.lexicon import (
     SemanticLexiconCandidate,
     SemanticSearchResponse,
     EmbeddingGenerationResponse,
+    HybridLexiconCandidate,
+    HybridSearchResponse,
 )
 
 __all__ = [
@@ -18,4 +20,6 @@ __all__ = [
     "SemanticLexiconCandidate",
     "SemanticSearchResponse",
     "EmbeddingGenerationResponse",
+    "HybridLexiconCandidate",
+    "HybridSearchResponse",
 ]

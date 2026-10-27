@@ -311,3 +311,44 @@ To force recompute all embeddings:
 ```powershell
 python -m app.db.embed --force
 ```
+
+---
+
+## 📊 Evaluation & Benchmarking (IR Metrics & Computational Costs)
+
+A comprehensive evaluation framework is included to test, optimize, and benchmark the three search engines (**BM25**, **BGE-M3**, and **Hybrid Search**):
+
+### Information Retrieval Metrics ($k = 5$)
+1. **Precision@5** (P@5)
+2. **Recall@5** (R@5)
+3. **Mean Reciprocal Rank** (MRR)
+4. **Normalized Discounted Cumulative Gain** (NDCG@5)
+
+### Computational Cost Profiling
+1. **Latency per query**: Mean, Median, P95, Min, Max, and QPS
+2. **CPU usage**: Process CPU % (mean & peak) and System CPU %
+3. **GPU usage**: GPU utilization % (mean & peak) and VRAM consumption (MiB) via `nvidia-smi`
+4. **RAM usage**: Resident Set Size (RSS in MB), peak RAM, and memory delta
+5. **Storage footprint**: BM25 disk index cache, BGE-M3 model weights cache, and PostgreSQL vector column storage size
+
+### Running the Evaluation Pipeline
+
+Execute the automated evaluation workflow from PowerShell:
+
+```powershell
+# Run the complete evaluation pipeline (splitting + alpha tuning + test benchmarking):
+.\.venv\Scripts\python.exe run_evaluation.py
+
+# Optional parameters:
+.\.venv\Scripts\python.exe run_evaluation.py --k 5 --alpha-step 0.05 --seed 42
+```
+
+### Dataset Split & Results Artifacts
+- **Validation Set (20%, 10 queries)**: `Dataset/Evaluation/validation_set.csv` (5 Conceptual, 5 Exact term)
+- **Test Set (80%, 40 queries)**: `Dataset/Evaluation/test_set.csv` (20 Conceptual, 20 Exact term)
+- **Evaluation Reports & Outputs**: `Dataset/Evaluation/results/`
+  - `evaluation_report.md`: Complete markdown report with tables, graphs, and trade-off analysis
+  - `alpha_tuning_results.csv` / `.json`: Full grid search across $\alpha \in [0.0, 1.0]$
+  - `test_evaluation_results.csv` / `.json`: Summary metrics and resource costs
+  - `per_query_results.csv`: Itemized query-by-query ranking logs
+

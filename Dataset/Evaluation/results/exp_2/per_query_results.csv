@@ -1,0 +1,321 @@
+method,query_id,query_type,query_text,retrieved_terms,precision@5,recall@5,reciprocal_rank,ndcg@5,latency_ms
+BCP Lexical Search (Baseline),Q-002,Conceptual,peacekeeping ritual,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-003,Conceptual,Sacred site in the mountains,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-004,Conceptual,tengger harvest festival,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-005,Conceptual,the nation in reog lore,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-006,Conceptual,magical whip,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-007,Conceptual,requesting a favor,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-008,Conceptual,animal mask,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-010,Conceptual,leader of wayang topeng,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-011,Conceptual,magical items,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-013,Conceptual,wife,Sayut,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-014,Conceptual,spiritual studies,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-015,Conceptual,masked general in reog,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-016,Conceptual,flowers for rituals,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-018,Conceptual,woman vocalist in karawitan,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-019,Conceptual,village creator,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-020,Conceptual,master warok,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-021,Conceptual,heroic dance,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-022,Conceptual,alcoholic beverage from tengger,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-023,Conceptual,wedding ceremony,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-025,Conceptual,javanese orchestra,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-026,Exact term,Cangkriman,Cangkriman; Jawi; Kertijaya; Rambon; Sajeng,0.6,0.75,1.0,0.8521,
+BCP Lexical Search (Baseline),Q-027,Exact term,Kasada,Kasada; Ongkek; Poten,0.6,1.0,1.0,1.0,
+BCP Lexical Search (Baseline),Q-028,Exact term,Entas-entas,Entas-entas; Petra; Prapen,0.6,1.0,1.0,1.0,
+BCP Lexical Search (Baseline),Q-029,Exact term,Karo,Cangkriman; Jimat Klontongan; Karo; Kertijaya; Sodoran,0.8,1.0,1.0,0.7712,
+BCP Lexical Search (Baseline),Q-030,Exact term,Meduduk,Meduduk; Mekakat,0.4,1.0,1.0,1.0,
+BCP Lexical Search (Baseline),Q-032,Exact term,Tampah,Sayut; Tampah,0.4,1.0,1.0,0.7967,
+BCP Lexical Search (Baseline),Q-034,Exact term,Jathil,Eblek; Edrek; Gemblak; Jathil; Reog Bantarangin,0.8,1.0,1.0,0.7504,
+BCP Lexical Search (Baseline),Q-035,Exact term,Klanasewandana,Bantarangin; Klanasewandana; Pecut Samandiman; Topeng Klanasewandana,0.8,1.0,1.0,0.8045,
+BCP Lexical Search (Baseline),Q-037,Exact term,Reog Wengker,Reog Wengker,0.2,0.3333,1.0,0.7262,
+BCP Lexical Search (Baseline),Q-038,Exact term,Slametan,Among-among; Slametan,0.4,1.0,1.0,0.7967,
+BCP Lexical Search (Baseline),Q-040,Exact term,Lumpang,Alu; Lumpang,0.4,1.0,1.0,0.7967,
+BCP Lexical Search (Baseline),Q-041,Exact term,Molo,Karo; Molo; Ongkek; Unan-unan; Wong Tengger,0.2,0.5,0.5,0.5213,
+BCP Lexical Search (Baseline),Q-042,Exact term,Blandar Penirat,Blandar Penirat,0.2,0.25,1.0,0.6577,
+BCP Lexical Search (Baseline),Q-044,Exact term,Boso Walikan,Boso Walikan; Boso Walikan Malangan,0.4,1.0,1.0,1.0,
+BCP Lexical Search (Baseline),Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan,0.4,0.5,1.0,0.8402,
+BCP Lexical Search (Baseline),Q-046,Exact term,Cerita Panji,Cerita Panji,0.2,0.25,1.0,0.6577,
+BCP Lexical Search (Baseline),Q-047,Exact term,Ngalam,Kera Ngalam; Ngalam,0.4,1.0,1.0,1.0,
+BCP Lexical Search (Baseline),Q-048,Exact term,Saron,Demung; Gamelan; Peking; Saron; Slenthem,0.8,1.0,1.0,0.6969,
+BCP Lexical Search (Baseline),Q-049,Exact term,Karawitan,Gendhing; Gerong; Karawitan; Sindhen,0.8,1.0,1.0,0.7808,
+BCP Lexical Search (Baseline),Q-050,Exact term,Slendro,Pelog; Selompret; Slendro,0.6,1.0,1.0,0.7579,
+BM25,Q-002,Conceptual,peacekeeping ritual,Pujan; Kasada; Legèn; Tugur; Kasa,0.0,0.0,0.0,0.0,0.628
+BM25,Q-003,Conceptual,Sacred site in the mountains,Karo; Poten; Unan-unan; Padepokan; Ontokusumo,0.4,0.6667,1.0,0.7003,3.616
+BM25,Q-004,Conceptual,tengger harvest festival,Reog Festival; Sigiran; Reog Wengker; Jathil; Wong Tengger,0.0,0.0,0.0,0.0,1.616
+BM25,Q-005,Conceptual,the nation in reog lore,Jathil; Reog Wengker; Reog Festival; Reog Obyok; Reog Bantarangin,0.4,0.5,0.5,0.2231,1.494
+BM25,Q-006,Conceptual,magical whip,Pecut Samandiman; Klanasewandana,0.4,0.6667,1.0,0.879,0.063
+BM25,Q-007,Conceptual,requesting a favor,Dingkel; Padasan; Nglabur; Umpak; Gimbal,0.0,0.0,0.0,0.0,1.217
+BM25,Q-008,Conceptual,animal mask,Mekakat; Meduduk; Kowen; Topeng Klanasewandana; Dadak Merak,0.2,0.3333,0.2,0.2809,0.136
+BM25,Q-010,Conceptual,leader of wayang topeng,Wayang Topeng Malangan; Topeng Malangan; Dhalang topeng; Topeng Klanasewandana; Gamelan,0.4,0.6667,1.0,0.6052,1.053
+BM25,Q-011,Conceptual,magical items,,0.0,0.0,0.0,0.0,0.023
+BM25,Q-013,Conceptual,wife,,0.0,0.0,0.0,0.0,0.014
+BM25,Q-014,Conceptual,spiritual studies,Cantrik; Nyantrik; Warok; Borèh; Gemblak,0.4,0.5,1.0,0.8402,0.193
+BM25,Q-015,Conceptual,masked general in reog,Dhalang topeng; Reog Wengker; Reog Festival; Cerita Panji; Wayang Topeng Malangan,0.0,0.0,0.0,0.0,0.923
+BM25,Q-016,Conceptual,flowers for rituals,Takir; Petra; Tlotok; Nyadran; Borèh,0.6,0.75,1.0,0.719,0.534
+BM25,Q-018,Conceptual,woman vocalist in karawitan,Karawitan; Gerong; Sindhen; Gendhing; Panji Asmarabangun,0.6,0.75,1.0,0.6864,2.559
+BM25,Q-019,Conceptual,village creator,Mayu desa; Unan-unan; Reog Obyok; Cikal bakal; Pujan,0.2,0.25,0.25,0.2832,0.141
+BM25,Q-020,Conceptual,master warok,Warok; Warok Sepuh; Gemblak; Kolor; Nyantrik,0.4,0.6667,1.0,0.7003,0.092
+BM25,Q-021,Conceptual,heroic dance,Sodoran; Kertijaya; Jathil; Wirama; Wiraga,0.2,0.3333,0.3333,0.3631,0.158
+BM25,Q-022,Conceptual,alcoholic beverage from tengger,Walagara; Tlotok; Unan-unan; Sajeng; Bau reksa,0.2,0.3333,0.25,0.3128,0.587
+BM25,Q-023,Conceptual,wedding ceremony,Ancak; Mandi; Meduduk; Walagara; Bokor,0.6,0.75,0.5,0.5878,0.296
+BM25,Q-025,Conceptual,javanese orchestra,Pandalungan; Pladen; Gedhek; Setut; Emper,0.0,0.0,0.0,0.0,1.782
+BM25,Q-026,Exact term,Cangkriman,Cangkriman; Tugur; Sajeng; Kertijaya; Jawi,0.8,1.0,1.0,1.0,0.253
+BM25,Q-027,Exact term,Kasada,Kasada; Poten; Ongkek,0.6,1.0,1.0,1.0,0.128
+BM25,Q-028,Exact term,Entas-entas,Entas-entas; Prapèn; Petra,0.6,1.0,1.0,1.0,0.166
+BM25,Q-029,Exact term,Karo,Karo; Tugur; Sodoran; Kertijaya; Takir,0.4,0.5,1.0,0.7673,0.098
+BM25,Q-030,Exact term,Meduduk,Meduduk; Mekakat,0.4,1.0,1.0,1.0,0.05
+BM25,Q-032,Exact term,Tampah,Tampah; Sayut,0.4,1.0,1.0,1.0,0.04
+BM25,Q-034,Exact term,Jathil,Jathil; Reog Bantarangin; Gemblak; Edrek; Eblek,0.8,1.0,1.0,0.9465,0.067
+BM25,Q-035,Exact term,Klanasewandana,Klanasewandana; Topeng Klanasewandana; Bantarangin; Pecut Samandiman,0.8,1.0,1.0,1.0,0.067
+BM25,Q-037,Exact term,Reog Wengker,Reog Wengker; Reog Obyok; Jathil; Reog Festival; Reog Bantarangin,0.6,1.0,1.0,1.0,0.215
+BM25,Q-038,Exact term,Slametan,Slametan; Among-among,0.4,1.0,1.0,1.0,0.042
+BM25,Q-040,Exact term,Lumpang,Lumpang; Alu,0.4,1.0,1.0,1.0,0.049
+BM25,Q-041,Exact term,Molo,Molo; Wuwung,0.4,1.0,1.0,1.0,0.039
+BM25,Q-042,Exact term,Blandar Penirat,Blandar Penirat; Gimbal; Rumah Srotong; Sunduk,0.8,1.0,1.0,1.0,0.07
+BM25,Q-044,Exact term,Boso Walikan,Boso Walikan; Boso Walikan Malangan,0.4,1.0,1.0,1.0,0.052
+BM25,Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan; Dhalang topeng; Gamelan Malangan; Boso Walikan Malangan,0.8,1.0,1.0,1.0,0.094
+BM25,Q-046,Exact term,Cerita Panji,Cerita Panji; Panji Asmarabangun; Dewi Sekartaji; Ragil Kuning; Wayang Topeng Malangan,0.8,1.0,1.0,1.0,0.077
+BM25,Q-047,Exact term,Ngalam,Ngalam; Kera Ngalam; Boso Walikan,0.4,1.0,1.0,1.0,0.049
+BM25,Q-048,Exact term,Saron,Saron; Peking; Gamelan; Demung; Slenthem,0.8,1.0,1.0,0.9752,1.054
+BM25,Q-049,Exact term,Karawitan,Karawitan; Sindhen; Gerong; Gendhing,0.8,1.0,1.0,1.0,0.067
+BM25,Q-050,Exact term,Slendro,Slendro; Selompret; Pelog; Gamelan Jawa,0.6,1.0,1.0,1.0,0.669
+BGE-M3,Q-002,Conceptual,peacekeeping ritual,Slametan; Barikan; Mayu desa; Sayut; Prasen,0.6,1.0,1.0,0.8146,1110.758
+BGE-M3,Q-003,Conceptual,Sacred site in the mountains,Poten; Unan-unan; Ontokusumo; Bau reksa; Barikan,0.2,0.3333,1.0,0.7262,754.401
+BGE-M3,Q-004,Conceptual,tengger harvest festival,Karo; Ongkek; Mandi; Walagara; Sigiran,0.2,0.3333,1.0,0.7262,477.647
+BGE-M3,Q-005,Conceptual,the nation in reog lore,Bantarangin; Reog Wengker; Reog Bantarangin; Reog Ponorogo; Jathil,0.6,0.75,1.0,0.9056,518.177
+BGE-M3,Q-006,Conceptual,magical whip,Pecut Samandiman; Eblek; Klanasewandana; Warok; Reog Wengker,0.4,0.6667,1.0,0.8473,695.708
+BGE-M3,Q-007,Conceptual,requesting a favor,Nyambat; Slametan; Sam; Walagara; Cak,0.2,0.3333,1.0,0.5563,794.647
+BGE-M3,Q-008,Conceptual,animal mask,Dadak Merak; Topeng Klanasewandana; Topeng Malangan; Meduduk; Eblek,0.2,0.3333,1.0,0.7262,626.227
+BGE-M3,Q-010,Conceptual,leader of wayang topeng,Dhalang topeng; Pujangga Anom; Wayang Topeng Malangan; Topeng Malangan; Dadak Merak,0.4,0.6667,1.0,0.8473,1101.596
+BGE-M3,Q-011,Conceptual,magical items,Jimat klontongan; Pecut Samandiman; Gombyok; Borèh; Cangkriman,0.4,0.6667,1.0,0.6733,945.996
+BGE-M3,Q-013,Conceptual,wife,Ojob; Jawi; Barikan; Gender; Walagara,0.4,1.0,1.0,1.0,1492.302
+BGE-M3,Q-014,Conceptual,spiritual studies,Nyantrik; Cantrik; Borèh; Entas-entas; Slametan,0.4,0.5,1.0,0.8402,677.038
+BGE-M3,Q-015,Conceptual,masked general in reog,Reog Ponorogo; Pujangga Anom; Reog Wengker; Reog Bantarangin; Reog Obyok,0.2,0.3333,0.5,0.4582,1075.991
+BGE-M3,Q-016,Conceptual,flowers for rituals,Borèh; Petra; Tlotok; Walagara; Ongkek,0.4,0.5,1.0,0.6342,682.325
+BGE-M3,Q-018,Conceptual,woman vocalist in karawitan,Sindhen; Karawitan; Gerong; Pengrawit; Gendhing,0.6,0.75,1.0,0.9056,711.063
+BGE-M3,Q-019,Conceptual,village creator,Cikal bakal; Reog Obyok; Sambatan; Karo; Barikan,0.2,0.25,1.0,0.6577,620.611
+BGE-M3,Q-020,Conceptual,master warok,Warok Sepuh; Nyantrik; Warok; Cantrik; Gemblak,0.6,1.0,1.0,0.9515,459.019
+BGE-M3,Q-021,Conceptual,heroic dance,Jathil; Edrek; Sodoran; Gemblak; Wiraga,0.4,0.6667,1.0,0.8305,513.999
+BGE-M3,Q-022,Conceptual,alcoholic beverage from tengger,Sajeng; Walagara; Ancak; Meduduk; Reog Wengker,0.2,0.3333,1.0,0.7262,766.165
+BGE-M3,Q-023,Conceptual,wedding ceremony,Walagara; Meduduk; Mandi; Bokor; Borèh,0.8,1.0,1.0,0.9925,601.663
+BGE-M3,Q-025,Conceptual,javanese orchestra,Gamelan; Gamelan Jawa; Karawitan; Sambatan; Gambang,0.6,0.75,1.0,0.926,953.675
+BGE-M3,Q-026,Exact term,Cangkriman,Cangkriman; Sajeng; Tugur; Brangkangan; Nyadran,0.6,0.75,1.0,0.9056,541.945
+BGE-M3,Q-027,Exact term,Kasada,Kasada; Topeng Klanasewandana; Kasa; Ongkek; Meduduk,0.4,0.6667,1.0,0.8305,476.97
+BGE-M3,Q-028,Exact term,Entas-entas,Entas-entas; Ayas; Among-among; Prapèn; Kethuk,0.4,0.6667,1.0,0.8305,535.662
+BGE-M3,Q-029,Exact term,Karo,Karo; Sodoran; Jimat klontongan; Klono Sewandono; Kertijaya,0.6,0.75,1.0,0.9056,490.029
+BGE-M3,Q-030,Exact term,Meduduk,Siter; Lincak; Cak; Meduduk; Sunduk,0.2,0.5,0.25,0.3558,436.412
+BGE-M3,Q-032,Exact term,Tampah,Tampah; Tata Krama; Sayut; Genthong; Nyadran,0.4,1.0,1.0,0.9639,423.857
+BGE-M3,Q-034,Exact term,Jathil,Jathil; Gemblak; Reog Bantarangin; Eblek; Edrek,0.8,1.0,1.0,0.9752,493.898
+BGE-M3,Q-035,Exact term,Klanasewandana,Klanasewandana; Topeng Klanasewandana; Klono Sewandono; Pecut Samandiman; Bantarangin,0.8,1.0,1.0,0.9806,505.635
+BGE-M3,Q-037,Exact term,Reog Wengker,Reog Wengker; Reog Obyok; Reog Bantarangin; Reog Ponorogo; Selompret,0.4,0.6667,1.0,0.879,717.146
+BGE-M3,Q-038,Exact term,Slametan,Slametan; Jimat klontongan; Sambatan; Slenthem; Poten,0.2,0.5,1.0,0.8262,497.607
+BGE-M3,Q-040,Exact term,Lumpang,Lumpang; Alu; Gambang; Tanean Lanjhang; Tumang,0.4,1.0,1.0,1.0,507.52
+BGE-M3,Q-041,Exact term,Molo,Molo; Gender; Boso Walikan Malangan; Wuwung; Bonang,0.4,1.0,1.0,0.9448,554.834
+BGE-M3,Q-042,Exact term,Blandar Penirat,Blandar Penirat; Pengrawit; Gimbal; Bantarangin; Nyambat,0.4,0.5,1.0,0.7673,497.512
+BGE-M3,Q-044,Exact term,Boso Walikan,Boso Walikan Malangan; Boso Walikan; Barikan; Beskalan; Warok Sepuh,0.4,1.0,1.0,1.0,656.764
+BGE-M3,Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan; Dhalang topeng; Gamelan Malangan; Dadak Merak,0.8,1.0,1.0,1.0,584.833
+BGE-M3,Q-046,Exact term,Cerita Panji,Cerita Panji; Dewi Sekartaji; Panji Asmarabangun; Ragil Kuning; Wayang Topeng Malangan,0.8,1.0,1.0,1.0,559.331
+BGE-M3,Q-047,Exact term,Ngalam,Ngalam; Kera Ngalam; Pengrawit; Boso Walikan; Pujangga Anom,0.4,1.0,1.0,1.0,717.255
+BGE-M3,Q-048,Exact term,Saron,Saron; Peking; Demung; Slametan; Rumah Srotong,0.6,0.75,1.0,0.9056,526.151
+BGE-M3,Q-049,Exact term,Karawitan,Karawitan; Gendhing; Gerong; Brangkangan; Sindhen,0.8,1.0,1.0,0.9904,1041.622
+BGE-M3,Q-050,Exact term,Slendro,Slendro; Selompret; Pelog; Klono Sewandono; Slenthem,0.6,1.0,1.0,1.0,670.472
+Hybrid Search (alpha=1.0),Q-002,Conceptual,peacekeeping ritual,Slametan; Barikan; Mayu desa; Sayut; Prasen,0.6,1.0,1.0,0.8146,553.466
+Hybrid Search (alpha=1.0),Q-003,Conceptual,Sacred site in the mountains,Poten; Unan-unan; Ontokusumo; Bau reksa; Barikan,0.2,0.3333,1.0,0.7262,683.937
+Hybrid Search (alpha=1.0),Q-004,Conceptual,tengger harvest festival,Karo; Ongkek; Mandi; Walagara; Sigiran,0.2,0.3333,1.0,0.7262,1199.943
+Hybrid Search (alpha=1.0),Q-005,Conceptual,the nation in reog lore,Bantarangin; Reog Wengker; Reog Bantarangin; Reog Ponorogo; Jathil,0.6,0.75,1.0,0.9056,615.862
+Hybrid Search (alpha=1.0),Q-006,Conceptual,magical whip,Pecut Samandiman; Eblek; Klanasewandana; Warok; Reog Wengker,0.4,0.6667,1.0,0.8473,682.653
+Hybrid Search (alpha=1.0),Q-007,Conceptual,requesting a favor,Nyambat; Slametan; Sam; Walagara; Cak,0.2,0.3333,1.0,0.5563,602.797
+Hybrid Search (alpha=1.0),Q-008,Conceptual,animal mask,Dadak Merak; Topeng Klanasewandana; Topeng Malangan; Meduduk; Eblek,0.2,0.3333,1.0,0.7262,937.529
+Hybrid Search (alpha=1.0),Q-010,Conceptual,leader of wayang topeng,Dhalang topeng; Pujangga Anom; Wayang Topeng Malangan; Topeng Malangan; Dadak Merak,0.4,0.6667,1.0,0.8473,573.172
+Hybrid Search (alpha=1.0),Q-011,Conceptual,magical items,Jimat klontongan; Pecut Samandiman; Gombyok; Borèh; Cangkriman,0.4,0.6667,1.0,0.6733,700.626
+Hybrid Search (alpha=1.0),Q-013,Conceptual,wife,Ojob; Jawi; Barikan; Gender; Walagara,0.4,1.0,1.0,1.0,585.494
+Hybrid Search (alpha=1.0),Q-014,Conceptual,spiritual studies,Nyantrik; Cantrik; Borèh; Entas-entas; Slametan,0.4,0.5,1.0,0.8402,648.344
+Hybrid Search (alpha=1.0),Q-015,Conceptual,masked general in reog,Reog Ponorogo; Pujangga Anom; Reog Wengker; Reog Bantarangin; Reog Obyok,0.2,0.3333,0.5,0.4582,580.965
+Hybrid Search (alpha=1.0),Q-016,Conceptual,flowers for rituals,Borèh; Petra; Tlotok; Walagara; Ongkek,0.4,0.5,1.0,0.6342,636.843
+Hybrid Search (alpha=1.0),Q-018,Conceptual,woman vocalist in karawitan,Sindhen; Karawitan; Gerong; Pengrawit; Gendhing,0.6,0.75,1.0,0.9056,608.729
+Hybrid Search (alpha=1.0),Q-019,Conceptual,village creator,Cikal bakal; Reog Obyok; Sambatan; Karo; Barikan,0.2,0.25,1.0,0.6577,616.128
+Hybrid Search (alpha=1.0),Q-020,Conceptual,master warok,Warok Sepuh; Nyantrik; Warok; Cantrik; Gemblak,0.6,1.0,1.0,0.9515,558.795
+Hybrid Search (alpha=1.0),Q-021,Conceptual,heroic dance,Jathil; Edrek; Sodoran; Gemblak; Wiraga,0.4,0.6667,1.0,0.8305,595.538
+Hybrid Search (alpha=1.0),Q-022,Conceptual,alcoholic beverage from tengger,Sajeng; Walagara; Ancak; Meduduk; Reog Wengker,0.2,0.3333,1.0,0.7262,647.446
+Hybrid Search (alpha=1.0),Q-023,Conceptual,wedding ceremony,Walagara; Meduduk; Mandi; Bokor; Borèh,0.8,1.0,1.0,0.9925,646.827
+Hybrid Search (alpha=1.0),Q-025,Conceptual,javanese orchestra,Gamelan; Gamelan Jawa; Karawitan; Sambatan; Gambang,0.6,0.75,1.0,0.926,1118.423
+Hybrid Search (alpha=1.0),Q-026,Exact term,Cangkriman,Cangkriman; Sajeng; Tugur; Brangkangan; Nyadran,0.6,0.75,1.0,0.9056,664.313
+Hybrid Search (alpha=1.0),Q-027,Exact term,Kasada,Kasada; Topeng Klanasewandana; Kasa; Ongkek; Meduduk,0.4,0.6667,1.0,0.8305,624.658
+Hybrid Search (alpha=1.0),Q-028,Exact term,Entas-entas,Entas-entas; Ayas; Among-among; Prapèn; Kethuk,0.4,0.6667,1.0,0.8305,565.064
+Hybrid Search (alpha=1.0),Q-029,Exact term,Karo,Karo; Sodoran; Jimat klontongan; Klono Sewandono; Kertijaya,0.6,0.75,1.0,0.9056,742.365
+Hybrid Search (alpha=1.0),Q-030,Exact term,Meduduk,Siter; Lincak; Cak; Meduduk; Sunduk,0.2,0.5,0.25,0.3558,687.354
+Hybrid Search (alpha=1.0),Q-032,Exact term,Tampah,Tampah; Tata Krama; Sayut; Genthong; Nyadran,0.4,1.0,1.0,0.9639,817.52
+Hybrid Search (alpha=1.0),Q-034,Exact term,Jathil,Jathil; Gemblak; Reog Bantarangin; Eblek; Edrek,0.8,1.0,1.0,0.9752,692.567
+Hybrid Search (alpha=1.0),Q-035,Exact term,Klanasewandana,Klanasewandana; Topeng Klanasewandana; Klono Sewandono; Pecut Samandiman; Bantarangin,0.8,1.0,1.0,0.9806,610.293
+Hybrid Search (alpha=1.0),Q-037,Exact term,Reog Wengker,Reog Wengker; Reog Obyok; Reog Bantarangin; Reog Ponorogo; Selompret,0.4,0.6667,1.0,0.879,646.721
+Hybrid Search (alpha=1.0),Q-038,Exact term,Slametan,Slametan; Jimat klontongan; Sambatan; Slenthem; Poten,0.2,0.5,1.0,0.8262,565.627
+Hybrid Search (alpha=1.0),Q-040,Exact term,Lumpang,Lumpang; Alu; Gambang; Tanean Lanjhang; Tumang,0.4,1.0,1.0,1.0,524.668
+Hybrid Search (alpha=1.0),Q-041,Exact term,Molo,Molo; Gender; Boso Walikan Malangan; Wuwung; Bonang,0.4,1.0,1.0,0.9448,840.289
+Hybrid Search (alpha=1.0),Q-042,Exact term,Blandar Penirat,Blandar Penirat; Pengrawit; Gimbal; Bantarangin; Nyambat,0.4,0.5,1.0,0.7673,782.264
+Hybrid Search (alpha=1.0),Q-044,Exact term,Boso Walikan,Boso Walikan Malangan; Boso Walikan; Barikan; Beskalan; Warok Sepuh,0.4,1.0,1.0,1.0,754.833
+Hybrid Search (alpha=1.0),Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan; Dhalang topeng; Gamelan Malangan; Dadak Merak,0.8,1.0,1.0,1.0,756.884
+Hybrid Search (alpha=1.0),Q-046,Exact term,Cerita Panji,Cerita Panji; Dewi Sekartaji; Panji Asmarabangun; Ragil Kuning; Wayang Topeng Malangan,0.8,1.0,1.0,1.0,692.8
+Hybrid Search (alpha=1.0),Q-047,Exact term,Ngalam,Ngalam; Kera Ngalam; Pengrawit; Boso Walikan; Pujangga Anom,0.4,1.0,1.0,1.0,704.057
+Hybrid Search (alpha=1.0),Q-048,Exact term,Saron,Saron; Peking; Demung; Slametan; Rumah Srotong,0.6,0.75,1.0,0.9056,747.039
+Hybrid Search (alpha=1.0),Q-049,Exact term,Karawitan,Karawitan; Gendhing; Gerong; Brangkangan; Sindhen,0.8,1.0,1.0,0.9904,781.4
+Hybrid Search (alpha=1.0),Q-050,Exact term,Slendro,Slendro; Selompret; Pelog; Klono Sewandono; Slenthem,0.6,1.0,1.0,1.0,878.076
+Hybrid Search (alpha=0.60),Q-002,Conceptual,peacekeeping ritual,Slametan; Barikan; Sayut; Mayu desa; Pujan,0.6,1.0,1.0,0.776,651.568
+Hybrid Search (alpha=0.60),Q-003,Conceptual,Sacred site in the mountains,Poten; Unan-unan; Ontokusumo; Karo; Ongkek,0.4,0.6667,1.0,0.8305,683.51
+Hybrid Search (alpha=0.60),Q-004,Conceptual,tengger harvest festival,Sigiran; Reog Festival; Karo; Reog Wengker; Mandi,0.2,0.3333,0.3333,0.3631,615.428
+Hybrid Search (alpha=0.60),Q-005,Conceptual,the nation in reog lore,Reog Wengker; Bantarangin; Jathil; Reog Bantarangin; Reog Ponorogo,0.6,0.75,1.0,0.7286,621.301
+Hybrid Search (alpha=0.60),Q-006,Conceptual,magical whip,Pecut Samandiman; Eblek; Klanasewandana; Warok; Reog Wengker,0.4,0.6667,1.0,0.8473,584.318
+Hybrid Search (alpha=0.60),Q-007,Conceptual,requesting a favor,Slametan; Walagara; Nyambat; Sam; Sayut,0.2,0.3333,0.3333,0.2781,760.488
+Hybrid Search (alpha=0.60),Q-008,Conceptual,animal mask,Dadak Merak; Topeng Klanasewandana; Meduduk; Mekakat; Topeng Malangan,0.2,0.3333,1.0,0.7262,573.69
+Hybrid Search (alpha=0.60),Q-010,Conceptual,leader of wayang topeng,Wayang Topeng Malangan; Dhalang topeng; Topeng Malangan; Pujangga Anom; Topeng Klanasewandana,0.4,0.6667,1.0,0.7003,774.483
+Hybrid Search (alpha=0.60),Q-011,Conceptual,magical items,Jimat klontongan; Pecut Samandiman; Gombyok; Borèh; Cangkriman,0.4,0.6667,1.0,0.6733,604.157
+Hybrid Search (alpha=0.60),Q-013,Conceptual,wife,Ojob; Jawi; Barikan; Gender; Walagara,0.4,1.0,1.0,1.0,565.713
+Hybrid Search (alpha=0.60),Q-014,Conceptual,spiritual studies,Cantrik; Nyantrik; Borèh; Warok; Legèn,0.4,0.5,1.0,0.8402,523.508
+Hybrid Search (alpha=0.60),Q-015,Conceptual,masked general in reog,Reog Ponorogo; Reog Wengker; Reog Bantarangin; Reog Obyok; Reog Festival,0.0,0.0,0.0,0.0,823.566
+Hybrid Search (alpha=0.60),Q-016,Conceptual,flowers for rituals,Borèh; Petra; Tlotok; Nyadran; Takir,0.6,0.75,1.0,0.719,648.598
+Hybrid Search (alpha=0.60),Q-018,Conceptual,woman vocalist in karawitan,Karawitan; Sindhen; Gerong; Gendhing; Pengrawit,0.6,0.75,1.0,0.7438,681.071
+Hybrid Search (alpha=0.60),Q-019,Conceptual,village creator,Cikal bakal; Reog Obyok; Mayu desa; Unan-unan; Barikan,0.2,0.25,1.0,0.6577,659.228
+Hybrid Search (alpha=0.60),Q-020,Conceptual,master warok,Warok Sepuh; Warok; Nyantrik; Gemblak; Cantrik,0.6,1.0,1.0,0.9726,615.301
+Hybrid Search (alpha=0.60),Q-021,Conceptual,heroic dance,Jathil; Sodoran; Wiraga; Wirama; Reog Ponorogo,0.2,0.3333,1.0,0.7262,621.938
+Hybrid Search (alpha=0.60),Q-022,Conceptual,alcoholic beverage from tengger,Sajeng; Walagara; Tlotok; Prasen; Unan-unan,0.2,0.3333,1.0,0.7262,628.009
+Hybrid Search (alpha=0.60),Q-023,Conceptual,wedding ceremony,Walagara; Mandi; Meduduk; Bokor; Ancak,0.6,0.75,1.0,0.8811,561.043
+Hybrid Search (alpha=0.60),Q-025,Conceptual,javanese orchestra,Gamelan; Gamelan Jawa; Karawitan; Pladen; Gimbal,0.6,0.75,1.0,0.926,1611.398
+Hybrid Search (alpha=0.60),Q-026,Exact term,Cangkriman,Cangkriman; Sajeng; Tugur; Brangkangan; Nyadran,0.6,0.75,1.0,0.9056,638.428
+Hybrid Search (alpha=0.60),Q-027,Exact term,Kasada,Kasada; Topeng Klanasewandana; Kasa; Ongkek; Meduduk,0.4,0.6667,1.0,0.8305,756.507
+Hybrid Search (alpha=0.60),Q-028,Exact term,Entas-entas,Entas-entas; Prapèn; Ayas; Among-among; Kethuk,0.4,0.6667,1.0,0.879,950.448
+Hybrid Search (alpha=0.60),Q-029,Exact term,Karo,Karo; Sodoran; Jimat klontongan; Kertijaya; Tugur,0.6,0.75,1.0,0.9056,1163.633
+Hybrid Search (alpha=0.60),Q-030,Exact term,Meduduk,Meduduk; Siter; Lincak; Cak; Sunduk,0.2,0.5,1.0,0.8262,934.973
+Hybrid Search (alpha=0.60),Q-032,Exact term,Tampah,Tampah; Tata Krama; Sayut; Genthong; Nyadran,0.4,1.0,1.0,0.9639,1813.999
+Hybrid Search (alpha=0.60),Q-034,Exact term,Jathil,Jathil; Gemblak; Reog Bantarangin; Eblek; Edrek,0.8,1.0,1.0,0.9752,622.36
+Hybrid Search (alpha=0.60),Q-035,Exact term,Klanasewandana,Klanasewandana; Topeng Klanasewandana; Klono Sewandono; Pecut Samandiman; Bantarangin,0.8,1.0,1.0,0.9806,675.921
+Hybrid Search (alpha=0.60),Q-037,Exact term,Reog Wengker,Reog Wengker; Reog Obyok; Reog Bantarangin; Reog Ponorogo; Jathil,0.6,1.0,1.0,0.9726,665.054
+Hybrid Search (alpha=0.60),Q-038,Exact term,Slametan,Slametan; Jimat klontongan; Sambatan; Slenthem; Poten,0.2,0.5,1.0,0.8262,615.331
+Hybrid Search (alpha=0.60),Q-040,Exact term,Lumpang,Lumpang; Alu; Gambang; Tanean Lanjhang; Tumang,0.4,1.0,1.0,1.0,611.627
+Hybrid Search (alpha=0.60),Q-041,Exact term,Molo,Molo; Gender; Boso Walikan Malangan; Wuwung; Bonang,0.4,1.0,1.0,0.9448,706.414
+Hybrid Search (alpha=0.60),Q-042,Exact term,Blandar Penirat,Blandar Penirat; Gimbal; Pengrawit; Bantarangin; Nyambat,0.4,0.5,1.0,0.796,644.074
+Hybrid Search (alpha=0.60),Q-044,Exact term,Boso Walikan,Boso Walikan; Boso Walikan Malangan; Barikan; Beskalan; Warok Sepuh,0.4,1.0,1.0,1.0,773.389
+Hybrid Search (alpha=0.60),Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan; Dhalang topeng; Gamelan Malangan; Topeng Klanasewandana,0.8,1.0,1.0,1.0,535.949
+Hybrid Search (alpha=0.60),Q-046,Exact term,Cerita Panji,Cerita Panji; Panji Asmarabangun; Dewi Sekartaji; Ragil Kuning; Wayang Topeng Malangan,0.8,1.0,1.0,1.0,596.485
+Hybrid Search (alpha=0.60),Q-047,Exact term,Ngalam,Ngalam; Kera Ngalam; Pengrawit; Boso Walikan; Pujangga Anom,0.4,1.0,1.0,1.0,597.21
+Hybrid Search (alpha=0.60),Q-048,Exact term,Saron,Saron; Peking; Demung; Slametan; Rumah Srotong,0.6,0.75,1.0,0.9056,719.851
+Hybrid Search (alpha=0.60),Q-049,Exact term,Karawitan,Karawitan; Gendhing; Gerong; Brangkangan; Sindhen,0.8,1.0,1.0,0.9904,661.9
+Hybrid Search (alpha=0.60),Q-050,Exact term,Slendro,Slendro; Selompret; Pelog; Klono Sewandono; Slenthem,0.6,1.0,1.0,1.0,744.432
+BGE-M3 Sparse,Q-002,Conceptual,peacekeeping ritual,Slametan; Entas-entas; Unan-unan; Tugel kuncung; Sayut,0.2,0.3333,1.0,0.1854,465.703
+BGE-M3 Sparse,Q-003,Conceptual,Sacred site in the mountains,Poten; Unan-unan; Karo; Walagara; Sajeng,0.4,0.6667,1.0,0.8473,491.384
+BGE-M3 Sparse,Q-004,Conceptual,tengger harvest festival,Karo; Reog Festival; Sigiran; Pelog; Reog Wengker,0.2,0.3333,1.0,0.7262,464.258
+BGE-M3 Sparse,Q-005,Conceptual,the nation in reog lore,Reog Wengker; Reog Festival; Reog Ponorogo; Jathil; Reog Bantarangin,0.4,0.5,1.0,0.304,453.514
+BGE-M3 Sparse,Q-006,Conceptual,magical whip,Pecut Samandiman; Klanasewandana; Sambatan; Pujan; Unan-unan,0.4,0.6667,1.0,0.879,399.575
+BGE-M3 Sparse,Q-007,Conceptual,requesting a favor,Gendhing; Suling; Gong ageng; Gandrung; Dingkel,0.0,0.0,0.0,0.0,422.276
+BGE-M3 Sparse,Q-008,Conceptual,animal mask,Dadak Merak; Topeng Klanasewandana; Mekakat; Topeng Malangan; Meduduk,0.2,0.3333,1.0,0.7262,381.492
+BGE-M3 Sparse,Q-010,Conceptual,leader of wayang topeng,Wayang Topeng Malangan; Dhalang topeng; Topeng Malangan; Danyang; Dhanyang,0.4,0.6667,1.0,0.7003,516.654
+BGE-M3 Sparse,Q-011,Conceptual,magical items,Sambatan; Pujan; Unan-unan; Buritan; Plong,0.0,0.0,0.0,0.0,585.731
+BGE-M3 Sparse,Q-013,Conceptual,wife,,0.0,0.0,0.0,0.0,373.3
+BGE-M3 Sparse,Q-014,Conceptual,spiritual studies,Cantrik; Legèn; Warok; Cikal bakal; Nyantrik,0.4,0.5,1.0,0.7144,479.203
+BGE-M3 Sparse,Q-015,Conceptual,masked general in reog,Reog Ponorogo; Pujangga Anom; Reog Festival; Reog Wengker; Reog Bantarangin,0.2,0.3333,0.5,0.4582,465.906
+BGE-M3 Sparse,Q-016,Conceptual,flowers for rituals,Petra; Nyadran; Ongkek; Slametan; Bokor,0.4,0.5,1.0,0.7425,443.014
+BGE-M3 Sparse,Q-018,Conceptual,woman vocalist in karawitan,Karawitan; Gerong; Gendhing; Sindhen; Brangkangan,0.6,0.75,1.0,0.6408,478.158
+BGE-M3 Sparse,Q-019,Conceptual,village creator,Cikal bakal; Unan-unan; Pujan; Mayu desa; Reog Obyok,0.2,0.25,1.0,0.6577,414.593
+BGE-M3 Sparse,Q-020,Conceptual,master warok,Warok Sepuh; Nyantrik; Kolor; Cantrik; Warok,0.6,1.0,1.0,0.9241,395.425
+BGE-M3 Sparse,Q-021,Conceptual,heroic dance,Jathil; Gunungsari; Beskalan; Wirasa; Sodoran,0.2,0.3333,1.0,0.7262,453.45
+BGE-M3 Sparse,Q-022,Conceptual,alcoholic beverage from tengger,Pelog; Nagel; Dongkleh; Dodok Besi; Udheng Gadhung Mlati,0.0,0.0,0.0,0.0,609.01
+BGE-M3 Sparse,Q-023,Conceptual,wedding ceremony,Walagara; Meduduk; Ancak; Karo; Entas-entas,0.4,0.5,1.0,0.8402,468.14
+BGE-M3 Sparse,Q-025,Conceptual,javanese orchestra,Ancak; Pawon; Kasa; Tata Krama; Nagel,0.0,0.0,0.0,0.0,632.283
+BGE-M3 Sparse,Q-026,Exact term,Cangkriman,Cangkriman; Tugur; Sajeng; Kertijaya; Rambon,0.8,1.0,1.0,1.0,424.536
+BGE-M3 Sparse,Q-027,Exact term,Kasada,Kasada; Ongkek; Poten; Kasa; Klanasewandana,0.6,1.0,1.0,1.0,386.346
+BGE-M3 Sparse,Q-028,Exact term,Entas-entas,Entas-entas; Prapèn; Petra; Poten; Prasen,0.6,1.0,1.0,1.0,511.066
+BGE-M3 Sparse,Q-029,Exact term,Karo,Karo; Sodoran; Pasung; Jimat klontongan; Cangkriman,0.8,1.0,1.0,0.9752,474.631
+BGE-M3 Sparse,Q-030,Exact term,Meduduk,Meduduk; Mekakat,0.4,1.0,1.0,1.0,438.602
+BGE-M3 Sparse,Q-032,Exact term,Tampah,Tampah; Sayut; Pandalungan,0.4,1.0,1.0,1.0,406.394
+BGE-M3 Sparse,Q-034,Exact term,Jathil,Jathil; Eblek; Gemblak; Reog Bantarangin; Edrek,0.8,1.0,1.0,0.9904,403.991
+BGE-M3 Sparse,Q-035,Exact term,Klanasewandana,Klanasewandana; Topeng Klanasewandana; Pecut Samandiman; Bantarangin; Klono Sewandono,0.8,1.0,1.0,1.0,407.911
+BGE-M3 Sparse,Q-037,Exact term,Reog Wengker,Reog Wengker; Reog Obyok; Jathil; Reog Ponorogo; Reog Festival,0.6,1.0,1.0,1.0,449.034
+BGE-M3 Sparse,Q-038,Exact term,Slametan,Slametan; Among-among; Ngalam; Kera Ngalam; Boso Walikan,0.4,1.0,1.0,1.0,535.689
+BGE-M3 Sparse,Q-040,Exact term,Lumpang,Lumpang; Alu,0.4,1.0,1.0,1.0,447.493
+BGE-M3 Sparse,Q-041,Exact term,Molo,Molo; Boso Walikan; Boso Walikan Malangan; Warok; Ongkek,0.2,0.5,1.0,0.8262,405.996
+BGE-M3 Sparse,Q-042,Exact term,Blandar Penirat,Blandar Penirat; Lumpang; Buritan; Gimbal; Sunduk,0.6,0.75,1.0,0.8369,553.836
+BGE-M3 Sparse,Q-044,Exact term,Boso Walikan,Boso Walikan; Boso Walikan Malangan; Warok; Cak; Barikan,0.4,1.0,1.0,1.0,474.223
+BGE-M3 Sparse,Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan; Gamelan Malangan; Beskalan; Boso Walikan Malangan,0.6,0.75,1.0,0.926,402.418
+BGE-M3 Sparse,Q-046,Exact term,Cerita Panji,Cerita Panji; Panji Asmarabangun; Ragil Kuning; Dewi Sekartaji; Wayang Topeng Malangan,0.8,1.0,1.0,1.0,386.321
+BGE-M3 Sparse,Q-047,Exact term,Ngalam,Ngalam; Kera Ngalam; Boso Walikan; Slametan; Among-among,0.4,1.0,1.0,1.0,449.939
+BGE-M3 Sparse,Q-048,Exact term,Saron,Saron; Peking; Usuk; Nagel; Siter,0.4,0.5,1.0,0.796,484.434
+BGE-M3 Sparse,Q-049,Exact term,Karawitan,Karawitan; Gerong; Pengrawit; Gendhing; Sindhen,0.8,1.0,1.0,0.9752,632.062
+BGE-M3 Sparse,Q-050,Exact term,Slendro,Slendro; Pelog; Selompret; Gamelan Jawa; Alu,0.6,1.0,1.0,1.0,429.763
+BGE-M3 Hybrid (alpha=0.65),Q-002,Conceptual,peacekeeping ritual,Slametan; Barikan; Unan-unan; Sayut; Mayu desa,0.6,1.0,1.0,0.7516,613.848
+BGE-M3 Hybrid (alpha=0.65),Q-003,Conceptual,Sacred site in the mountains,Poten; Unan-unan; Ontokusumo; Cikal bakal; Ongkek,0.2,0.3333,1.0,0.7262,596.081
+BGE-M3 Hybrid (alpha=0.65),Q-004,Conceptual,tengger harvest festival,Karo; Sigiran; Reog Festival; Reog Wengker; Ongkek,0.2,0.3333,1.0,0.7262,591.833
+BGE-M3 Hybrid (alpha=0.65),Q-005,Conceptual,the nation in reog lore,Reog Wengker; Bantarangin; Reog Ponorogo; Reog Bantarangin; Jathil,0.6,0.75,1.0,0.7286,650.585
+BGE-M3 Hybrid (alpha=0.65),Q-006,Conceptual,magical whip,Pecut Samandiman; Klanasewandana; Eblek; Meduduk; Warok,0.4,0.6667,1.0,0.879,668.405
+BGE-M3 Hybrid (alpha=0.65),Q-007,Conceptual,requesting a favor,Walagara; Nyambat; Slametan; Sam; Cak,0.2,0.3333,0.5,0.351,732.897
+BGE-M3 Hybrid (alpha=0.65),Q-008,Conceptual,animal mask,Dadak Merak; Topeng Klanasewandana; Topeng Malangan; Meduduk; Mekakat,0.2,0.3333,1.0,0.7262,580.844
+BGE-M3 Hybrid (alpha=0.65),Q-010,Conceptual,leader of wayang topeng,Dhalang topeng; Wayang Topeng Malangan; Topeng Malangan; Pujangga Anom; Topeng Klanasewandana,0.4,0.6667,1.0,0.879,609.404
+BGE-M3 Hybrid (alpha=0.65),Q-011,Conceptual,magical items,Jimat klontongan; Pecut Samandiman; Unan-unan; Gombyok; Borèh,0.4,0.6667,1.0,0.6733,651.51
+BGE-M3 Hybrid (alpha=0.65),Q-013,Conceptual,wife,Ojob; Jawi; Barikan; Gender; Walagara,0.4,1.0,1.0,1.0,598.883
+BGE-M3 Hybrid (alpha=0.65),Q-014,Conceptual,spiritual studies,Cantrik; Nyantrik; Borèh; Legèn; Entas-entas,0.4,0.5,1.0,0.8402,566.413
+BGE-M3 Hybrid (alpha=0.65),Q-015,Conceptual,masked general in reog,Reog Ponorogo; Pujangga Anom; Reog Wengker; Reog Bantarangin; Reog Obyok,0.2,0.3333,0.5,0.4582,555.184
+BGE-M3 Hybrid (alpha=0.65),Q-016,Conceptual,flowers for rituals,Petra; Borèh; Tlotok; Ongkek; Nyadran,0.4,0.5,1.0,0.796,693.058
+BGE-M3 Hybrid (alpha=0.65),Q-018,Conceptual,woman vocalist in karawitan,Karawitan; Sindhen; Gerong; Gendhing; Pengrawit,0.6,0.75,1.0,0.7438,619.599
+BGE-M3 Hybrid (alpha=0.65),Q-019,Conceptual,village creator,Cikal bakal; Reog Obyok; Barikan; Karo; Pujan,0.2,0.25,1.0,0.6577,691.055
+BGE-M3 Hybrid (alpha=0.65),Q-020,Conceptual,master warok,Warok Sepuh; Nyantrik; Warok; Cantrik; Gemblak,0.6,1.0,1.0,0.9515,562.931
+BGE-M3 Hybrid (alpha=0.65),Q-021,Conceptual,heroic dance,Jathil; Edrek; Sodoran; Wiraga; Wirasa,0.2,0.3333,1.0,0.7262,947.892
+BGE-M3 Hybrid (alpha=0.65),Q-022,Conceptual,alcoholic beverage from tengger,Sajeng; Ancak; Walagara; Pelog; Reog Wengker,0.2,0.3333,1.0,0.7262,835.049
+BGE-M3 Hybrid (alpha=0.65),Q-023,Conceptual,wedding ceremony,Walagara; Meduduk; Mandi; Bokor; Sayut,0.6,0.75,1.0,0.926,591.388
+BGE-M3 Hybrid (alpha=0.65),Q-025,Conceptual,javanese orchestra,Gamelan; Gamelan Jawa; Karawitan; Pawon; Sunduk,0.6,0.75,1.0,0.926,686.541
+BGE-M3 Hybrid (alpha=0.65),Q-026,Exact term,Cangkriman,Cangkriman; Sajeng; Tugur; Rambon; Brangkangan,0.6,0.75,1.0,0.9056,849.412
+BGE-M3 Hybrid (alpha=0.65),Q-027,Exact term,Kasada,Kasada; Ongkek; Kasa; Poten; Topeng Klanasewandana,0.6,1.0,1.0,0.9832,627.058
+BGE-M3 Hybrid (alpha=0.65),Q-028,Exact term,Entas-entas,Entas-entas; Prapèn; Among-among; Ayas; Petra,0.6,1.0,1.0,0.9726,723.128
+BGE-M3 Hybrid (alpha=0.65),Q-029,Exact term,Karo,Karo; Sodoran; Jimat klontongan; Cangkriman; Pasung,0.8,1.0,1.0,1.0,583.239
+BGE-M3 Hybrid (alpha=0.65),Q-030,Exact term,Meduduk,Meduduk; Siter; Lincak; Cak; Sunduk,0.2,0.5,1.0,0.8262,534.428
+BGE-M3 Hybrid (alpha=0.65),Q-032,Exact term,Tampah,Tampah; Sayut; Tata Krama; Genthong; Nyadran,0.4,1.0,1.0,1.0,593.941
+BGE-M3 Hybrid (alpha=0.65),Q-034,Exact term,Jathil,Jathil; Gemblak; Eblek; Reog Bantarangin; Edrek,0.8,1.0,1.0,0.9904,636.58
+BGE-M3 Hybrid (alpha=0.65),Q-035,Exact term,Klanasewandana,Klanasewandana; Topeng Klanasewandana; Pecut Samandiman; Klono Sewandono; Bantarangin,0.8,1.0,1.0,0.9925,695.773
+BGE-M3 Hybrid (alpha=0.65),Q-037,Exact term,Reog Wengker,Reog Wengker; Reog Obyok; Reog Bantarangin; Reog Ponorogo; Jathil,0.6,1.0,1.0,0.9726,548.771
+BGE-M3 Hybrid (alpha=0.65),Q-038,Exact term,Slametan,Slametan; Among-among; Jimat klontongan; Sambatan; Slenthem,0.4,1.0,1.0,1.0,711.666
+BGE-M3 Hybrid (alpha=0.65),Q-040,Exact term,Lumpang,Lumpang; Alu; Gambang; Tanean Lanjhang; Tumang,0.4,1.0,1.0,1.0,523.99
+BGE-M3 Hybrid (alpha=0.65),Q-041,Exact term,Molo,Molo; Boso Walikan Malangan; Boso Walikan; Gender; Wuwung,0.4,1.0,1.0,0.9328,576.441
+BGE-M3 Hybrid (alpha=0.65),Q-042,Exact term,Blandar Penirat,Blandar Penirat; Pengrawit; Gimbal; Bantarangin; Nyambat,0.4,0.5,1.0,0.7673,585.707
+BGE-M3 Hybrid (alpha=0.65),Q-044,Exact term,Boso Walikan,Boso Walikan Malangan; Boso Walikan; Barikan; Warok; Beskalan,0.4,1.0,1.0,1.0,569.141
+BGE-M3 Hybrid (alpha=0.65),Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan; Gamelan Malangan; Dhalang topeng; Topeng Klanasewandana,0.8,1.0,1.0,1.0,597.636
+BGE-M3 Hybrid (alpha=0.65),Q-046,Exact term,Cerita Panji,Cerita Panji; Panji Asmarabangun; Dewi Sekartaji; Ragil Kuning; Wayang Topeng Malangan,0.8,1.0,1.0,1.0,602.842
+BGE-M3 Hybrid (alpha=0.65),Q-047,Exact term,Ngalam,Ngalam; Kera Ngalam; Boso Walikan; Pengrawit; Pujangga Anom,0.4,1.0,1.0,1.0,551.105
+BGE-M3 Hybrid (alpha=0.65),Q-048,Exact term,Saron,Saron; Peking; Demung; Slametan; Usuk,0.6,0.75,1.0,0.9056,660.945
+BGE-M3 Hybrid (alpha=0.65),Q-049,Exact term,Karawitan,Karawitan; Gendhing; Gerong; Pengrawit; Brangkangan,0.6,0.75,1.0,0.9056,639.203
+BGE-M3 Hybrid (alpha=0.65),Q-050,Exact term,Slendro,Slendro; Pelog; Selompret; Slenthem; Gamelan Jawa,0.6,1.0,1.0,1.0,696.382
+BGE-M3 Hybrid (alpha=0.60),Q-002,Conceptual,peacekeeping ritual,Slametan; Barikan; Unan-unan; Sayut; Mayu desa,0.6,1.0,1.0,0.7516,562.749
+BGE-M3 Hybrid (alpha=0.60),Q-003,Conceptual,Sacred site in the mountains,Poten; Unan-unan; Ontokusumo; Cikal bakal; Ongkek,0.2,0.3333,1.0,0.7262,568.139
+BGE-M3 Hybrid (alpha=0.60),Q-004,Conceptual,tengger harvest festival,Karo; Sigiran; Reog Festival; Reog Wengker; Ongkek,0.2,0.3333,1.0,0.7262,682.103
+BGE-M3 Hybrid (alpha=0.60),Q-005,Conceptual,the nation in reog lore,Reog Wengker; Reog Ponorogo; Bantarangin; Reog Bantarangin; Jathil,0.6,0.75,1.0,0.6425,841.59
+BGE-M3 Hybrid (alpha=0.60),Q-006,Conceptual,magical whip,Pecut Samandiman; Klanasewandana; Meduduk; Eblek; Unan-unan,0.4,0.6667,1.0,0.879,834.396
+BGE-M3 Hybrid (alpha=0.60),Q-007,Conceptual,requesting a favor,Walagara; Nyambat; Slametan; Sam; Legèn,0.2,0.3333,0.5,0.351,580.555
+BGE-M3 Hybrid (alpha=0.60),Q-008,Conceptual,animal mask,Dadak Merak; Topeng Klanasewandana; Topeng Malangan; Meduduk; Mekakat,0.2,0.3333,1.0,0.7262,1087.662
+BGE-M3 Hybrid (alpha=0.60),Q-010,Conceptual,leader of wayang topeng,Dhalang topeng; Wayang Topeng Malangan; Topeng Malangan; Pujangga Anom; Topeng Klanasewandana,0.4,0.6667,1.0,0.879,827.602
+BGE-M3 Hybrid (alpha=0.60),Q-011,Conceptual,magical items,Jimat klontongan; Pecut Samandiman; Unan-unan; Gombyok; Sambatan,0.4,0.6667,1.0,0.6733,771.785
+BGE-M3 Hybrid (alpha=0.60),Q-013,Conceptual,wife,Ojob; Jawi; Barikan; Gender; Walagara,0.4,1.0,1.0,1.0,910.818
+BGE-M3 Hybrid (alpha=0.60),Q-014,Conceptual,spiritual studies,Cantrik; Nyantrik; Borèh; Legèn; Entas-entas,0.4,0.5,1.0,0.8402,703.162
+BGE-M3 Hybrid (alpha=0.60),Q-015,Conceptual,masked general in reog,Reog Ponorogo; Pujangga Anom; Reog Wengker; Reog Bantarangin; Reog Obyok,0.2,0.3333,0.5,0.4582,679.532
+BGE-M3 Hybrid (alpha=0.60),Q-016,Conceptual,flowers for rituals,Petra; Borèh; Ongkek; Tlotok; Nyadran,0.4,0.5,1.0,0.796,635.904
+BGE-M3 Hybrid (alpha=0.60),Q-018,Conceptual,woman vocalist in karawitan,Karawitan; Sindhen; Gerong; Gendhing; Pengrawit,0.6,0.75,1.0,0.7438,671.661
+BGE-M3 Hybrid (alpha=0.60),Q-019,Conceptual,village creator,Cikal bakal; Reog Obyok; Barikan; Pujan; Karo,0.2,0.25,1.0,0.6577,569.484
+BGE-M3 Hybrid (alpha=0.60),Q-020,Conceptual,master warok,Warok Sepuh; Nyantrik; Warok; Cantrik; Gemblak,0.6,1.0,1.0,0.9515,548.903
+BGE-M3 Hybrid (alpha=0.60),Q-021,Conceptual,heroic dance,Jathil; Edrek; Sodoran; Wiraga; Wirasa,0.2,0.3333,1.0,0.7262,678.696
+BGE-M3 Hybrid (alpha=0.60),Q-022,Conceptual,alcoholic beverage from tengger,Sajeng; Pelog; Ancak; Reog Wengker; Walagara,0.2,0.3333,1.0,0.7262,696.542
+BGE-M3 Hybrid (alpha=0.60),Q-023,Conceptual,wedding ceremony,Walagara; Meduduk; Mandi; Bokor; Sayut,0.6,0.75,1.0,0.926,759.816
+BGE-M3 Hybrid (alpha=0.60),Q-025,Conceptual,javanese orchestra,Gamelan; Gamelan Jawa; Karawitan; Pawon; Ancak,0.6,0.75,1.0,0.926,636.996
+BGE-M3 Hybrid (alpha=0.60),Q-026,Exact term,Cangkriman,Cangkriman; Sajeng; Tugur; Rambon; Brangkangan,0.6,0.75,1.0,0.9056,580.361
+BGE-M3 Hybrid (alpha=0.60),Q-027,Exact term,Kasada,Kasada; Ongkek; Kasa; Poten; Topeng Klanasewandana,0.6,1.0,1.0,0.9832,567.97
+BGE-M3 Hybrid (alpha=0.60),Q-028,Exact term,Entas-entas,Entas-entas; Prapèn; Among-among; Ayas; Petra,0.6,1.0,1.0,0.9726,667.09
+BGE-M3 Hybrid (alpha=0.60),Q-029,Exact term,Karo,Karo; Sodoran; Jimat klontongan; Cangkriman; Pasung,0.8,1.0,1.0,1.0,559.145
+BGE-M3 Hybrid (alpha=0.60),Q-030,Exact term,Meduduk,Meduduk; Siter; Lincak; Cak; Sunduk,0.2,0.5,1.0,0.8262,490.552
+BGE-M3 Hybrid (alpha=0.60),Q-032,Exact term,Tampah,Tampah; Sayut; Tata Krama; Genthong; Nyadran,0.4,1.0,1.0,1.0,669.787
+BGE-M3 Hybrid (alpha=0.60),Q-034,Exact term,Jathil,Jathil; Gemblak; Eblek; Reog Bantarangin; Edrek,0.8,1.0,1.0,0.9904,597.055
+BGE-M3 Hybrid (alpha=0.60),Q-035,Exact term,Klanasewandana,Klanasewandana; Topeng Klanasewandana; Pecut Samandiman; Klono Sewandono; Bantarangin,0.8,1.0,1.0,0.9925,717.454
+BGE-M3 Hybrid (alpha=0.60),Q-037,Exact term,Reog Wengker,Reog Wengker; Reog Obyok; Reog Bantarangin; Reog Ponorogo; Jathil,0.6,1.0,1.0,0.9726,633.784
+BGE-M3 Hybrid (alpha=0.60),Q-038,Exact term,Slametan,Slametan; Among-among; Jimat klontongan; Sambatan; Ngalam,0.4,1.0,1.0,1.0,582.425
+BGE-M3 Hybrid (alpha=0.60),Q-040,Exact term,Lumpang,Lumpang; Alu; Gambang; Tanean Lanjhang; Tumang,0.4,1.0,1.0,1.0,498.659
+BGE-M3 Hybrid (alpha=0.60),Q-041,Exact term,Molo,Molo; Boso Walikan Malangan; Boso Walikan; Gender; Wuwung,0.4,1.0,1.0,0.9328,557.227
+BGE-M3 Hybrid (alpha=0.60),Q-042,Exact term,Blandar Penirat,Blandar Penirat; Pengrawit; Gimbal; Bantarangin; Nyambat,0.4,0.5,1.0,0.7673,704.83
+BGE-M3 Hybrid (alpha=0.60),Q-044,Exact term,Boso Walikan,Boso Walikan Malangan; Boso Walikan; Barikan; Warok; Beskalan,0.4,1.0,1.0,1.0,607.578
+BGE-M3 Hybrid (alpha=0.60),Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan; Gamelan Malangan; Dhalang topeng; Topeng Klanasewandana,0.8,1.0,1.0,1.0,685.045
+BGE-M3 Hybrid (alpha=0.60),Q-046,Exact term,Cerita Panji,Cerita Panji; Panji Asmarabangun; Ragil Kuning; Dewi Sekartaji; Wayang Topeng Malangan,0.8,1.0,1.0,1.0,565.569
+BGE-M3 Hybrid (alpha=0.60),Q-047,Exact term,Ngalam,Ngalam; Kera Ngalam; Boso Walikan; Pengrawit; Pujangga Anom,0.4,1.0,1.0,1.0,549.159
+BGE-M3 Hybrid (alpha=0.60),Q-048,Exact term,Saron,Saron; Peking; Demung; Usuk; Slametan,0.6,0.75,1.0,0.9056,577.211
+BGE-M3 Hybrid (alpha=0.60),Q-049,Exact term,Karawitan,Karawitan; Gendhing; Gerong; Pengrawit; Brangkangan,0.6,0.75,1.0,0.9056,555.719
+BGE-M3 Hybrid (alpha=0.60),Q-050,Exact term,Slendro,Slendro; Pelog; Selompret; Gamelan Jawa; Slenthem,0.6,1.0,1.0,1.0,516.669

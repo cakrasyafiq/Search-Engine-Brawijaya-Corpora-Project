@@ -21,10 +21,16 @@ from app.schemas.lexicon import (
     EmbeddingGenerationResponse,
     HybridLexiconCandidate,
     HybridSearchResponse,
+    BGESparseLexiconCandidate,
+    BGESparseSearchResponse,
+    BGEHybridLexiconCandidate,
+    BGEHybridSearchResponse,
 )
 from app.services.search_service import search_service
 from app.services.semantic_service import semantic_service
 from app.services.hybrid_service import hybrid_service
+from app.services.bge_sparse_service import bge_sparse_service
+from app.services.bge_hybrid_service import bge_hybrid_service
 
 logging.basicConfig(
     level=logging.INFO,
@@ -94,6 +100,9 @@ def root():
         "semantic_search_model": settings.EMBEDDING_MODEL_NAME,
         "embedding_dimension": settings.EMBEDDING_DIMENSION,
         "hybrid_search_ready": search_service.is_ready,
+        "bge_sparse_index_ready": bge_sparse_service.is_ready,
+        "bge_sparse_indexed_documents": bge_sparse_service.index.total_docs,
+        "bge_hybrid_search_ready": True,
     }
 
 
@@ -131,6 +140,15 @@ def health_check(db: Session = Depends(get_db)):
         "hybrid_search": {
             "ready": search_service.is_ready,
             "fusion_method": "min_max_normalized_weighted_score_fusion",
+        },
+        "bge_sparse_search": {
+            "ready": bge_sparse_service.is_ready,
+            "indexed_records": bge_sparse_service.index.total_docs,
+            "model": settings.EMBEDDING_MODEL_NAME,
+        },
+        "bge_hybrid_search": {
+            "ready": True,
+            "fusion_method": "bge_m3_dense_plus_native_sparse_min_max_fusion",
         },
     }
 
@@ -346,6 +364,151 @@ def search_hybrid(
     )
 
 
+@app.get(
+    "/search/sparse-bge",
+    response_model=BGESparseSearchResponse,
+    summary="Sparse Search using BAAI/bge-m3 Native Sparse Representation",
+    description="Receive a user query, compute native learned sparse lexical weights via BAAI/bge-m3 (sparse_linear.pt + ReLU), and return candidate lexicons ranked by sparse inner-product score."
+)
+def search_sparse_bge(
+    q: Optional[str] = Query(None, description="Search query string (alternative to 'query')"),
+    query: Optional[str] = Query(None, description="Search query string"),
+    top_k: int = Query(10, ge=1, le=100, description="Maximum number of candidates to return"),
+    min_score: float = Query(0.0, ge=0.0, description="Minimum BGE-M3 sparse score threshold"),
+    culture: Optional[str] = Query(None, description="Filter candidates by culture (e.g. Tengger)"),
+    semantic_domain: Optional[str] = Query(None, description="Filter candidates by semantic domain (e.g. Ritual)"),
+    word_class: Optional[str] = Query(None, description="Filter candidates by word class (e.g. Noun)"),
+    db: Session = Depends(get_db),
+):
+    search_query = (query or q or "").strip()
+    if not search_query:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Query parameter 'q' or 'query' must not be empty.",
+        )
+
+    start_time = time.perf_counter()
+
+    try:
+        results = bge_sparse_service.search(
+            query=search_query,
+            top_k=top_k,
+            min_score=min_score,
+            culture=culture,
+            semantic_domain=semantic_domain,
+            word_class=word_class,
+            db=db,
+        )
+    except Exception as e:
+        logger.error(f"BGE-M3 sparse search error: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"BGE-M3 sparse search failed: {str(e)}",
+        )
+
+    elapsed_ms = (time.perf_counter() - start_time) * 1000.0
+
+    candidates = [
+        BGESparseLexiconCandidate(
+            id=res.document.id,
+            term=res.document.term,
+            code=res.document.code,
+            culture=res.document.culture,
+            sub_culture=res.document.sub_culture,
+            word_class=res.document.word_class,
+            language=res.document.language,
+            dialect=res.document.dialect,
+            semantic_domain=res.document.semantic_domain,
+            usage_context=res.document.usage_context,
+            register=res.document.register,
+            phonetic=res.document.phonetic,
+            definition=res.document.definition,
+            variants=res.document.variants,
+            examples=res.document.examples,
+            categories=res.document.categories,
+            sparse_score=res.score,
+            matched_tokens=res.matched_terms,
+        )
+        for res in results
+    ]
+
+    return BGESparseSearchResponse(
+        query=search_query,
+        model=settings.EMBEDDING_MODEL_NAME,
+        total_candidates=len(candidates),
+        top_k=top_k,
+        execution_time_ms=round(elapsed_ms, 3),
+        results=candidates,
+    )
+
+
+@app.get(
+    "/search/hybrid-bge",
+    response_model=BGEHybridSearchResponse,
+    summary="Full BGE-M3 Hybrid Search combining BGE-M3 Native Sparse and BGE-M3 Dense",
+    description="Receive a user query, compute both BGE-M3 native sparse lexical score and BGE-M3 dense cosine similarity score via a single Transformer forward pass, apply min-max normalization, and fuse with weighted score fusion."
+)
+def search_hybrid_bge(
+    q: Optional[str] = Query(None, description="Search query string (alternative to 'query')"),
+    query: Optional[str] = Query(None, description="Search query string"),
+    top_k: int = Query(10, ge=1, le=100, description="Maximum number of candidates to return"),
+    alpha: Optional[float] = Query(
+        None,
+        ge=0.0,
+        le=1.0,
+        description="Weight factor for dense representation (0.0 = BGE-M3 Sparse only, 1.0 = BGE-M3 Dense only). If specified, overrides dense_weight and sparse_weight."
+    ),
+    dense_weight: float = Query(0.5, ge=0.0, description="Weight for dense BGE-M3 representation"),
+    sparse_weight: float = Query(0.5, ge=0.0, description="Weight for native sparse BGE-M3 representation"),
+    min_score: float = Query(0.0, ge=0.0, le=1.0, description="Minimum fused BGE-M3 hybrid score cutoff (0.0 to 1.0)"),
+    culture: Optional[str] = Query(None, description="Filter candidates by culture (e.g. Tengger)"),
+    semantic_domain: Optional[str] = Query(None, description="Filter candidates by semantic domain (e.g. Ritual)"),
+    word_class: Optional[str] = Query(None, description="Filter candidates by word class (e.g. Noun)"),
+    db: Session = Depends(get_db),
+):
+    search_query = (query or q or "").strip()
+    if not search_query:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Query parameter 'q' or 'query' must not be empty.",
+        )
+
+    start_time = time.perf_counter()
+
+    try:
+        candidates, eff_dense_w, eff_sparse_w = bge_hybrid_service.search(
+            db=db,
+            query=search_query,
+            top_k=top_k,
+            alpha=alpha,
+            dense_weight=dense_weight,
+            sparse_weight=sparse_weight,
+            min_score=min_score,
+            culture=culture,
+            semantic_domain=semantic_domain,
+            word_class=word_class,
+        )
+    except Exception as e:
+        logger.error(f"BGE-M3 hybrid search error: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"BGE-M3 hybrid search failed: {str(e)}",
+        )
+
+    elapsed_ms = (time.perf_counter() - start_time) * 1000.0
+
+    return BGEHybridSearchResponse(
+        query=search_query,
+        model=settings.EMBEDDING_MODEL_NAME,
+        dense_weight=eff_dense_w,
+        sparse_weight=eff_sparse_w,
+        total_candidates=len(candidates),
+        top_k=top_k,
+        execution_time_ms=round(elapsed_ms, 3),
+        results=candidates,
+    )
+
+
 @app.post(
     "/admin/generate-embeddings",
     response_model=EmbeddingGenerationResponse,
@@ -415,6 +578,20 @@ def get_lexicon_by_id(lexicon_id: int, db: Session = Depends(get_db)):
 )
 def trigger_reindex(db: Session = Depends(get_db)):
     indexed_count, elapsed_ms = search_service.reindex(db)
+    return ReindexResponse(
+        status="success",
+        indexed_count=indexed_count,
+        execution_time_ms=round(elapsed_ms, 2),
+    )
+
+
+@app.post(
+    "/admin/reindex-bge-sparse",
+    response_model=ReindexResponse,
+    summary="Rebuild BGE-M3 Native Sparse Inverted Index from PostgreSQL",
+)
+def trigger_reindex_bge_sparse(db: Session = Depends(get_db)):
+    indexed_count, elapsed_ms = bge_sparse_service.reindex(db)
     return ReindexResponse(
         status="success",
         indexed_count=indexed_count,

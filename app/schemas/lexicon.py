@@ -157,3 +157,74 @@ class HybridSearchResponse(BaseModel):
     execution_time_ms: float
     results: List[HybridLexiconCandidate]
 
+
+class BGESparseLexiconCandidate(BaseModel):
+    id: int
+    term: str
+    code: Optional[str] = None
+    culture: Optional[str] = None
+    sub_culture: Optional[str] = None
+    word_class: Optional[str] = None
+    language: Optional[str] = None
+    dialect: Optional[str] = None
+    semantic_domain: Optional[str] = None
+    usage_context: Optional[str] = None
+    register: Optional[str] = None
+    phonetic: Optional[str] = None
+    definition: Optional[str] = None
+    variants: Optional[str] = None
+    examples: Optional[str] = None
+    categories: Optional[str] = None
+    sparse_score: float = Field(..., description="BGE-M3 native sparse lexical matching score")
+    matched_tokens: List[str] = Field(default_factory=list, description="Subword tokens matched in BGE-M3 sparse representation")
+
+    model_config = ConfigDict(from_attributes=True, protected_namespaces=())
+
+
+class BGESparseSearchResponse(BaseModel):
+    query: str
+    model: str = "BAAI/bge-m3"
+    total_candidates: int
+    top_k: int
+    execution_time_ms: float
+    results: List[BGESparseLexiconCandidate]
+
+
+class BGEHybridLexiconCandidate(BaseModel):
+    id: int
+    term: str
+    code: Optional[str] = None
+    culture: Optional[str] = None
+    sub_culture: Optional[str] = None
+    word_class: Optional[str] = None
+    language: Optional[str] = None
+    dialect: Optional[str] = None
+    semantic_domain: Optional[str] = None
+    usage_context: Optional[str] = None
+    register: Optional[str] = None
+    phonetic: Optional[str] = None
+    definition: Optional[str] = None
+    variants: Optional[str] = None
+    examples: Optional[str] = None
+    categories: Optional[str] = None
+    hybrid_score: float = Field(..., description="Weighted fused BGE-M3 hybrid score (0.0 to 1.0)")
+    sparse_score: float = Field(0.0, description="Raw BGE-M3 native sparse lexical score")
+    normalized_sparse_score: float = Field(0.0, description="Min-max normalized BGE-M3 sparse score (0.0 to 1.0)")
+    similarity_score: float = Field(0.0, description="Raw BGE-M3 dense cosine similarity score (-1.0 to 1.0)")
+    normalized_similarity_score: float = Field(0.0, description="Min-max normalized BGE-M3 dense similarity score (0.0 to 1.0)")
+    matched_tokens: List[str] = Field(default_factory=list, description="Subword tokens matched by BGE-M3 sparse head")
+
+    model_config = ConfigDict(from_attributes=True, protected_namespaces=())
+
+
+class BGEHybridSearchResponse(BaseModel):
+    query: str
+    model: str = "BAAI/bge-m3"
+    dense_weight: float = Field(..., description="Weight applied to dense BGE-M3 normalized score")
+    sparse_weight: float = Field(..., description="Weight applied to native sparse BGE-M3 normalized score")
+    total_candidates: int
+    top_k: int
+    execution_time_ms: float
+    results: List[BGEHybridLexiconCandidate]
+
+

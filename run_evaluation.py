@@ -11,6 +11,7 @@ if str(ROOT_DIR) not in sys.path:
 from app.db.session import SessionLocal
 from app.services.search_service import search_service
 from app.services.semantic_service import semantic_service
+from app.services.bge_sparse_service import bge_sparse_service
 from evaluation.dataset import load_and_split_dataset
 from evaluation.alpha_optimizer import AlphaOptimizer
 from evaluation.evaluator import SearchEvaluator
@@ -98,6 +99,8 @@ def main():
         logger.info("Initializing search services...")
         search_service.initialize(db)
         _ = semantic_service.get_model()
+        _ = semantic_service.get_sparse_linear()
+        bge_sparse_service.initialize(db)
 
         # Step 2: Split Dataset into Validation (20%) and Test (80%)
         logger.info(
@@ -124,23 +127,40 @@ def main():
         # Step 3: Alpha Optimization on Validation Set
         if args.fixed_alpha is not None:
             optimal_alpha = float(args.fixed_alpha)
+            optimal_bge_alpha = float(args.fixed_alpha)
             val_records = []
+            bge_val_records = []
             logger.info(f"Using user-specified fixed alpha: {optimal_alpha}")
         else:
-            logger.info("Starting grid search for optimal alpha on validation set...")
+            logger.info("Starting grid search for optimal alpha (BM25 + BGE-M3) on validation set...")
             optimizer = AlphaOptimizer(
                 db=db,
                 val_dataset=val_dataset,
                 k=args.k,
                 alpha_step=args.alpha_step,
+                sparse_mode="bm25",
             )
             optimal_alpha, val_records = optimizer.optimize(
                 output_dir=out_dir,
+                filename_prefix="bm25_alpha_tuning_results",
+            )
+
+            logger.info("Starting grid search for optimal alpha (BGE-M3 Sparse + BGE-M3 Dense) on validation set...")
+            bge_optimizer = AlphaOptimizer(
+                db=db,
+                val_dataset=val_dataset,
+                k=args.k,
+                alpha_step=args.alpha_step,
+                sparse_mode="bge_sparse",
+            )
+            optimal_bge_alpha, bge_val_records = bge_optimizer.optimize(
+                output_dir=out_dir,
+                filename_prefix="alpha_tuning_results",
             )
 
         # Step 4: Comprehensive Benchmark on Test Set
         logger.info(
-            f"Evaluating search methods on Test Set (optimal alpha={optimal_alpha})..."
+            f"Evaluating search methods on Test Set (BM25 hybrid alpha={optimal_alpha}, BGE hybrid alpha={optimal_bge_alpha})..."
         )
         evaluator = SearchEvaluator(db=db, k=args.k)
         reports = evaluator.evaluate_all(
@@ -159,15 +179,43 @@ def main():
                 alpha=0.60,
             )
 
+        # Evaluate BGE-M3 Native Sparse Search
+        logger.info("Evaluating BGE-M3 Sparse Search on Test Set...")
+        reports["BGE-M3 Sparse"] = evaluator.evaluate_method(
+            method_name="BGE-M3 Sparse",
+            dataset=test_dataset,
+            dataset_name="Test Set",
+        )
+
+        # Evaluate Full BGE-M3 Hybrid Search (optimal alpha)
+        bge_hybrid_name = f"BGE-M3 Hybrid (alpha={optimal_bge_alpha})"
+        logger.info(f"Evaluating {bge_hybrid_name} on Test Set...")
+        reports[bge_hybrid_name] = evaluator.evaluate_method(
+            method_name="BGE-M3 Hybrid",
+            dataset=test_dataset,
+            dataset_name="Test Set",
+            alpha=optimal_bge_alpha,
+        )
+
+        # Also evaluate balanced BGE-M3 Hybrid (alpha=0.60) if optimal_bge_alpha differs
+        if abs(optimal_bge_alpha - 0.6) > 0.01:
+            logger.info("Evaluating Balanced BGE-M3 Hybrid (alpha=0.60) for comparison...")
+            reports["BGE-M3 Hybrid (alpha=0.60)"] = evaluator.evaluate_method(
+                method_name="BGE-M3 Hybrid",
+                dataset=test_dataset,
+                dataset_name="Test Set",
+                alpha=0.60,
+            )
+
         # Step 5: Export Metrics and Reports
-        ReportGenerator.print_terminal_summary(reports, optimal_alpha)
+        ReportGenerator.print_terminal_summary(reports, optimal_bge_alpha)
         ReportGenerator.export_csv_and_json(reports, out_dir)
 
         report_md_path = out_dir / "evaluation_report.md"
         ReportGenerator.generate_markdown_report(
             reports=reports,
-            optimal_alpha=optimal_alpha,
-            val_records=val_records,
+            optimal_alpha=optimal_bge_alpha,
+            val_records=bge_val_records,
             val_query_count=len(val_dataset),
             test_query_count=len(test_dataset),
             output_file=report_md_path,

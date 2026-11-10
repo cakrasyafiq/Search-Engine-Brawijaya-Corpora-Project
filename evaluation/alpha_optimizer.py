@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 
 from app.services.search_service import search_service
 from app.services.semantic_service import semantic_service
+from app.services.bge_sparse_service import bge_sparse_service
 from app.services.hybrid_service import min_max_normalize
 from evaluation.dataset import EvaluationDataset, EvaluationQuery
 from evaluation.metrics import (
@@ -58,11 +59,13 @@ class AlphaOptimizer:
         val_dataset: EvaluationDataset,
         k: int = 5,
         alpha_step: float = 0.05,
+        sparse_mode: str = "bm25",
     ):
         self.db = db
         self.val_dataset = val_dataset
         self.k = k
         self.alpha_step = alpha_step
+        self.sparse_mode = sparse_mode
 
         # Candidate pool for fusion
         self.candidate_pool = max(k * 3, 50)
@@ -71,13 +74,14 @@ class AlphaOptimizer:
         self,
         primary_metric: str = "ndcg",
         output_dir: Optional[str | Path] = None,
+        filename_prefix: str = "alpha_tuning_results",
     ) -> Tuple[float, List[AlphaMetricRecord]]:
         """
         Run grid search for alpha from 0.0 to 1.0 (step alpha_step).
         Returns (optimal_alpha, records).
         """
         logger.info(
-            f"Starting Alpha Optimization on {len(self.val_dataset)} validation queries..."
+            f"Starting Alpha Optimization ({self.sparse_mode}) on {len(self.val_dataset)} validation queries..."
         )
 
         # 1. Pre-retrieve sparse and dense candidates for each validation query
@@ -85,16 +89,25 @@ class AlphaOptimizer:
 
         # Warm up semantic service
         _ = semantic_service.get_model()
+        if self.sparse_mode == "bge_sparse" and not bge_sparse_service.is_ready:
+            bge_sparse_service.initialize(self.db)
 
         for q in self.val_dataset.queries:
-            # BM25 candidates
-            bm25_res = search_service.search(
-                query=q.query_text,
-                top_k=self.candidate_pool,
-                min_score=0.0,
-            )
-            bm25_scores = {r.document.id: float(r.score) for r in bm25_res}
-            id_to_term = {r.document.id: r.document.term for r in bm25_res}
+            if self.sparse_mode == "bge_sparse":
+                sparse_res = bge_sparse_service.search(
+                    query=q.query_text,
+                    top_k=self.candidate_pool,
+                    min_score=0.0,
+                    db=self.db,
+                )
+            else:
+                sparse_res = search_service.search(
+                    query=q.query_text,
+                    top_k=self.candidate_pool,
+                    min_score=0.0,
+                )
+            bm25_scores = {r.document.id: float(r.score) for r in sparse_res}
+            id_to_term = {r.document.id: r.document.term for r in sparse_res}
 
             # BGE-M3 candidates
             dense_scores: Dict[int, float] = {}
@@ -232,22 +245,25 @@ class AlphaOptimizer:
         if output_dir:
             out_p = Path(output_dir)
             out_p.mkdir(parents=True, exist_ok=True)
-            self._save_results(records, optimal_alpha, out_p)
+            self._save_results(records, optimal_alpha, out_p, filename_prefix)
 
         return optimal_alpha, records
 
     @staticmethod
     def _save_results(
-        records: List[AlphaMetricRecord], optimal_alpha: float, out_dir: Path
+        records: List[AlphaMetricRecord],
+        optimal_alpha: float,
+        out_dir: Path,
+        filename_prefix: str = "alpha_tuning_results",
     ) -> None:
-        csv_path = out_dir / "alpha_tuning_results.csv"
+        csv_path = out_dir / f"{filename_prefix}.csv"
         with open(csv_path, "w", encoding="utf-8", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=list(asdict(records[0]).keys()))
             writer.writeheader()
             for r in records:
                 writer.writerow(asdict(r))
 
-        json_path = out_dir / "alpha_tuning_results.json"
+        json_path = out_dir / f"{filename_prefix}.json"
         data = {
             "optimal_alpha": optimal_alpha,
             "grid_results": [asdict(r) for r in records],

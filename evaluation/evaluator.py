@@ -7,6 +7,8 @@ from sqlalchemy.orm import Session
 from app.services.search_service import search_service
 from app.services.semantic_service import semantic_service
 from app.services.hybrid_service import hybrid_service
+from app.services.bge_sparse_service import bge_sparse_service
+from app.services.bge_hybrid_service import bge_hybrid_service
 from evaluation.dataset import EvaluationDataset, EvaluationQuery
 from evaluation.metrics import (
     compute_query_metrics,
@@ -71,6 +73,26 @@ class SearchEvaluator:
         terms = [r.term for r in results[: self.k]]
         return terms, latency_ms
 
+    def _execute_bge_sparse_query(self, query_text: str) -> Tuple[List[str], float]:
+        t0 = time.perf_counter()
+        results = bge_sparse_service.search(
+            query=query_text, top_k=self.k, db=self.db
+        )
+        latency_ms = (time.perf_counter() - t0) * 1000.0
+        terms = [r.document.term for r in results[: self.k]]
+        return terms, latency_ms
+
+    def _execute_bge_hybrid_query(
+        self, query_text: str, alpha: float
+    ) -> Tuple[List[str], float]:
+        t0 = time.perf_counter()
+        results, _, _ = bge_hybrid_service.search(
+            db=self.db, query=query_text, top_k=self.k, alpha=alpha
+        )
+        latency_ms = (time.perf_counter() - t0) * 1000.0
+        terms = [r.term for r in results[: self.k]]
+        return terms, latency_ms
+
     def evaluate_method(
         self,
         method_name: str,
@@ -85,18 +107,28 @@ class SearchEvaluator:
         """
         logger.info(f"Evaluating {method_name} on {dataset_name} ({len(dataset)} queries)...")
 
+        m_low = method_name.lower()
+
         # Ensure index & models are loaded
         if not search_service.is_ready:
             search_service.initialize(self.db)
-        if "bge" in method_name.lower() or "hybrid" in method_name.lower():
+        if "bge" in m_low or "hybrid" in m_low or "semantic" in m_low:
             _ = semantic_service.get_model()
+        if ("sparse" in m_low and "bge" in m_low) or ("hybrid" in m_low and "bge" in m_low):
+            if not bge_sparse_service.is_ready:
+                bge_sparse_service.initialize(self.db)
+            _ = semantic_service.get_sparse_linear()
 
         # Optional warmup to eliminate cold-start cache anomalies
         if warmup:
             warmup_q = "warmup query"
             if method_name == "BM25":
                 _ = self._execute_bm25_query(warmup_q)
-            elif "bge" in method_name.lower() or "semantic" in method_name.lower():
+            elif "sparse" in m_low and "bge" in m_low:
+                _ = self._execute_bge_sparse_query(warmup_q)
+            elif "hybrid" in m_low and "bge" in m_low:
+                _ = self._execute_bge_hybrid_query(warmup_q, alpha=alpha if alpha is not None else 0.5)
+            elif "bge" in m_low or "semantic" in m_low:
                 _ = self._execute_bge_m3_query(warmup_q)
             else:
                 _ = self._execute_hybrid_query(warmup_q, alpha=alpha if alpha is not None else 0.5)
@@ -113,9 +145,14 @@ class SearchEvaluator:
         for q in dataset.queries:
             if method_name == "BM25":
                 terms, lat_ms = self._execute_bm25_query(q.query_text)
-            elif "bge" in method_name.lower() or "semantic" in method_name.lower():
+            elif "sparse" in m_low and "bge" in m_low:
+                terms, lat_ms = self._execute_bge_sparse_query(q.query_text)
+            elif "hybrid" in m_low and "bge" in m_low:
+                eff_alpha = alpha if alpha is not None else 0.5
+                terms, lat_ms = self._execute_bge_hybrid_query(q.query_text, alpha=eff_alpha)
+            elif "bge" in m_low or "semantic" in m_low:
                 terms, lat_ms = self._execute_bge_m3_query(q.query_text)
-            elif "hybrid" in method_name.lower():
+            elif "hybrid" in m_low:
                 eff_alpha = alpha if alpha is not None else 0.5
                 terms, lat_ms = self._execute_hybrid_query(q.query_text, alpha=eff_alpha)
             else:

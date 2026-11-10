@@ -27,6 +27,8 @@ def prepare_lexicon_text(lex: Lexicon) -> str:
 class SemanticService:
     def __init__(self):
         self._model = None
+        self._sparse_linear = None
+        self._unused_token_ids = None
 
     def get_model(self):
         """Lazy load SentenceTransformer model on first usage."""
@@ -38,16 +40,179 @@ class SemanticService:
 
                 device = "cuda" if torch.cuda.is_available() else "cpu"
                 logger.info(f"Using device: {device} for {settings.EMBEDDING_MODEL_NAME}")
-                self._model = SentenceTransformer(settings.EMBEDDING_MODEL_NAME, device=device)
-                logger.info(f"Model {settings.EMBEDDING_MODEL_NAME} loaded successfully.")
-            except ImportError as e:
-                logger.error(
-                    "sentence-transformers is not installed. Please install it via: pip install sentence-transformers"
+                self._model = SentenceTransformer(
+                    settings.EMBEDDING_MODEL_NAME,
+                    device=device,
+                    local_files_only=True,
                 )
-                raise RuntimeError(
-                    "sentence-transformers is required for semantic search. Install via: pip install sentence-transformers"
-                ) from e
+                logger.info(f"Model {settings.EMBEDDING_MODEL_NAME} loaded successfully.")
+            except Exception:
+                try:
+                    from sentence_transformers import SentenceTransformer
+                    import torch
+
+                    device = "cuda" if torch.cuda.is_available() else "cpu"
+                    self._model = SentenceTransformer(settings.EMBEDDING_MODEL_NAME, device=device)
+                    logger.info(f"Model {settings.EMBEDDING_MODEL_NAME} loaded successfully.")
+                except ImportError as e:
+                    logger.error(
+                        "sentence-transformers is not installed. Please install it via: pip install sentence-transformers"
+                    )
+                    raise RuntimeError(
+                        "sentence-transformers is required for semantic search. Install via: pip install sentence-transformers"
+                    ) from e
         return self._model
+
+    def get_sparse_linear(self):
+        """Lazy load BAAI/bge-m3 native sparse_linear.pt projection head."""
+        if self._sparse_linear is None:
+            import torch
+            from huggingface_hub import hf_hub_download
+
+            model = self.get_model()
+            device = next(model[0].auto_model.parameters()).device
+
+            try:
+                sparse_path = hf_hub_download(
+                    repo_id=settings.EMBEDDING_MODEL_NAME,
+                    filename="sparse_linear.pt",
+                    local_files_only=True,
+                )
+            except Exception:
+                sparse_path = hf_hub_download(
+                    repo_id=settings.EMBEDDING_MODEL_NAME,
+                    filename="sparse_linear.pt",
+                )
+
+            linear = torch.nn.Linear(in_features=settings.EMBEDDING_DIMENSION, out_features=1)
+            state_dict = torch.load(sparse_path, map_location=device)
+            linear.load_state_dict(state_dict)
+            linear.to(device)
+            linear.eval()
+            self._sparse_linear = linear
+
+            tokenizer = model.tokenizer
+            self._unused_token_ids = {
+                tid
+                for tid in [
+                    tokenizer.cls_token_id,
+                    tokenizer.eos_token_id,
+                    tokenizer.pad_token_id,
+                    tokenizer.unk_token_id,
+                ]
+                if tid is not None
+            }
+            logger.info("Loaded BAAI/bge-m3 sparse_linear.pt head successfully.")
+        return self._sparse_linear
+
+    def _extract_sparse_weights(
+        self, input_ids_tensor, token_weights_tensor, tokenizer
+    ) -> List[dict[str, float]]:
+        """Convert token IDs and ReLU sparse weights into {token_str: max_weight} dicts."""
+        unused = self._unused_token_ids or set()
+        input_ids_list = input_ids_tensor.detach().cpu().tolist()
+        weights_list = token_weights_tensor.detach().cpu().tolist()
+
+        batch_sparse: List[dict[str, float]] = []
+        for seq_ids, seq_weights in zip(input_ids_list, weights_list):
+            token_id_weights: dict[int, float] = {}
+            for tid, w in zip(seq_ids, seq_weights):
+                if tid in unused or w <= 0.0:
+                    continue
+                if w > token_id_weights.get(tid, 0.0):
+                    token_id_weights[tid] = float(w)
+
+            # Convert token IDs to readable subword tokens
+            lexical_dict: dict[str, float] = {}
+            for tid, w in token_id_weights.items():
+                tok_str = tokenizer.convert_ids_to_tokens(tid)
+                clean_tok = tok_str.lstrip("▁").strip() or tok_str
+                # Use exact token string key to preserve 1-to-1 vocabulary fidelity,
+                # or store clean token when unambiguous
+                key = tok_str
+                if w > lexical_dict.get(key, 0.0):
+                    lexical_dict[key] = round(w, 6)
+            batch_sparse.append(lexical_dict)
+        return batch_sparse
+
+    def encode_sparse_batch(self, texts: List[str], batch_size: int = 16) -> List[dict[str, float]]:
+        """Encode a list of texts into BAAI/bge-m3 native sparse lexical weight dictionaries."""
+        import torch
+
+        if not texts:
+            return []
+
+        model = self.get_model()
+        sparse_linear = self.get_sparse_linear()
+        auto_model = model[0].auto_model
+        tokenizer = model.tokenizer
+        device = next(auto_model.parameters()).device
+        max_len = getattr(model, "max_seq_length", 512) or 512
+
+        all_sparse: List[dict[str, float]] = []
+        with torch.no_grad():
+            for i in range(0, len(texts), batch_size):
+                batch_texts = texts[i : i + batch_size]
+                encoded = tokenizer(
+                    batch_texts,
+                    padding=True,
+                    truncation=True,
+                    max_length=max_len,
+                    return_tensors="pt",
+                ).to(device)
+                outputs = auto_model(**encoded, return_dict=True)
+                last_hidden = outputs.last_hidden_state
+                token_weights = torch.relu(sparse_linear(last_hidden)).squeeze(-1)
+                batch_dicts = self._extract_sparse_weights(
+                    encoded["input_ids"], token_weights, tokenizer
+                )
+                all_sparse.extend(batch_dicts)
+
+        return all_sparse
+
+    def encode_sparse_query(self, query: str) -> dict[str, float]:
+        """Encode a single query string into BAAI/bge-m3 native sparse lexical weights."""
+        res = self.encode_sparse_batch([query], batch_size=1)
+        return res[0] if res else {}
+
+    def encode_query_both(self, query: str) -> Tuple[List[float], dict[str, float]]:
+        """
+        Single-pass joint encoding of a user query into both:
+        1) 1024-d L2-normalized dense vector (CLS pooling)
+        2) Native sparse lexical weights dictionary {token_str: weight}
+        """
+        import torch
+        import torch.nn.functional as F
+
+        model = self.get_model()
+        sparse_linear = self.get_sparse_linear()
+        auto_model = model[0].auto_model
+        tokenizer = model.tokenizer
+        device = next(auto_model.parameters()).device
+        max_len = getattr(model, "max_seq_length", 512) or 512
+
+        with torch.no_grad():
+            encoded = tokenizer(
+                [query],
+                padding=True,
+                truncation=True,
+                max_length=max_len,
+                return_tensors="pt",
+            ).to(device)
+            outputs = auto_model(**encoded, return_dict=True)
+            last_hidden = outputs.last_hidden_state
+
+            # 1. Dense CLS vector + L2 normalization
+            cls_vec = F.normalize(last_hidden[:, 0], p=2, dim=-1)[0]
+            dense_vec = cls_vec.detach().cpu().tolist()
+
+            # 2. Sparse lexical weights
+            token_weights = torch.relu(sparse_linear(last_hidden)).squeeze(-1)
+            sparse_weights = self._extract_sparse_weights(
+                encoded["input_ids"], token_weights, tokenizer
+            )[0]
+
+        return dense_vec, sparse_weights
 
     def encode_query(self, query: str) -> List[float]:
         """Encode a user query text into a 1024-d normalized vector."""
@@ -127,7 +292,30 @@ class SemanticService:
         Returns list of (Lexicon, cosine_similarity_score).
         """
         query_vector = self.encode_query(query)
+        return self.search_by_vector(
+            db=db,
+            query_vector=query_vector,
+            top_k=top_k,
+            min_similarity=min_similarity,
+            culture=culture,
+            semantic_domain=semantic_domain,
+            word_class=word_class,
+        )
 
+    def search_by_vector(
+        self,
+        db: Session,
+        query_vector: List[float],
+        top_k: int = 10,
+        min_similarity: float = 0.0,
+        culture: Optional[str] = None,
+        semantic_domain: Optional[str] = None,
+        word_class: Optional[str] = None,
+    ) -> List[Tuple[Lexicon, float]]:
+        """
+        Execute semantic vector similarity search using a pre-computed 1024-d query vector.
+        Returns list of (Lexicon, cosine_similarity_score).
+        """
         is_postgres = db.bind is not None and db.bind.dialect.name == "postgresql"
         # 1. Native PostgreSQL pgvector search
         if is_postgres:

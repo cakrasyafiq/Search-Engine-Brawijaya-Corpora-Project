@@ -15,6 +15,9 @@ class Settings(BaseSettings):
     # Path to persist the compiled BM25 inverted index
     INDEX_CACHE_PATH: str = "bm25_index.pkl"
 
+    # Path to persist the compiled BGE-M3 native sparse inverted index
+    BGE_SPARSE_INDEX_CACHE_PATH: str = "bge_sparse_index.pkl"
+
     # Semantic Vector Search Settings (BAAI/bge-m3)
     EMBEDDING_MODEL_NAME: str = "BAAI/bge-m3"
     EMBEDDING_DIMENSION: int = 1024

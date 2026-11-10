@@ -282,27 +282,46 @@ class StorageAuditor:
         Produce a comprehensive storage breakdown for a given search method.
         """
         bm25_bytes = cls.get_file_size_bytes(settings.INDEX_CACHE_PATH)
+        bge_sparse_bytes = cls.get_file_size_bytes(settings.BGE_SPARSE_INDEX_CACHE_PATH)
         hf_model_bytes = cls.get_hf_model_size_bytes(settings.EMBEDDING_MODEL_NAME)
         emb_bytes, table_bytes = cls.get_db_vector_storage_bytes(db) if db else (0, 0)
 
         method = method_name.lower()
-        if "bm25" in method:
+        if "bm25" in method and "hybrid" not in method:
             return {
                 "method": "BM25",
                 "bm25_index_file_bytes": bm25_bytes,
                 "bm25_index_file_kb": round(bm25_bytes / 1024.0, 2),
+                "bge_sparse_index_file_bytes": 0,
+                "bge_sparse_index_file_kb": 0.0,
                 "model_weights_bytes": 0,
                 "model_weights_mb": 0.0,
                 "db_vector_column_bytes": 0,
                 "db_vector_column_kb": 0.0,
                 "total_footprint_mb": round(bm25_bytes / (1024.0 * 1024.0), 4),
             }
-        elif "bge" in method or "semantic" in method:
-            total_mb = (hf_model_bytes + emb_bytes) / (1024.0 * 1024.0)
+        elif "sparse" in method and "bge" in method:
+            total_mb = (bge_sparse_bytes + hf_model_bytes) / (1024.0 * 1024.0)
             return {
-                "method": "BGE-M3",
-                "bm25_index_file_bytes": 0,
-                "bm25_index_file_kb": 0.0,
+                "method": "BGE-M3 Sparse",
+                "bm25_index_file_bytes": bge_sparse_bytes,
+                "bm25_index_file_kb": round(bge_sparse_bytes / 1024.0, 2),
+                "bge_sparse_index_file_bytes": bge_sparse_bytes,
+                "bge_sparse_index_file_kb": round(bge_sparse_bytes / 1024.0, 2),
+                "model_weights_bytes": hf_model_bytes,
+                "model_weights_mb": round(hf_model_bytes / (1024.0 * 1024.0), 2),
+                "db_vector_column_bytes": 0,
+                "db_vector_column_kb": 0.0,
+                "total_footprint_mb": round(total_mb, 2),
+            }
+        elif "hybrid" in method and "bge" in method:
+            total_mb = (bge_sparse_bytes + hf_model_bytes + emb_bytes) / (1024.0 * 1024.0)
+            return {
+                "method": "BGE-M3 Hybrid",
+                "bm25_index_file_bytes": bge_sparse_bytes,
+                "bm25_index_file_kb": round(bge_sparse_bytes / 1024.0, 2),
+                "bge_sparse_index_file_bytes": bge_sparse_bytes,
+                "bge_sparse_index_file_kb": round(bge_sparse_bytes / 1024.0, 2),
                 "model_weights_bytes": hf_model_bytes,
                 "model_weights_mb": round(hf_model_bytes / (1024.0 * 1024.0), 2),
                 "db_vector_column_bytes": emb_bytes,
@@ -311,12 +330,30 @@ class StorageAuditor:
                 "db_table_total_mb": round(table_bytes / (1024.0 * 1024.0), 2),
                 "total_footprint_mb": round(total_mb, 2),
             }
-        else:  # Hybrid
+        elif ("bge" in method or "semantic" in method) and "hybrid" not in method:
+            total_mb = (hf_model_bytes + emb_bytes) / (1024.0 * 1024.0)
+            return {
+                "method": "BGE-M3",
+                "bm25_index_file_bytes": 0,
+                "bm25_index_file_kb": 0.0,
+                "bge_sparse_index_file_bytes": 0,
+                "bge_sparse_index_file_kb": 0.0,
+                "model_weights_bytes": hf_model_bytes,
+                "model_weights_mb": round(hf_model_bytes / (1024.0 * 1024.0), 2),
+                "db_vector_column_bytes": emb_bytes,
+                "db_vector_column_kb": round(emb_bytes / 1024.0, 2),
+                "db_table_total_bytes": table_bytes,
+                "db_table_total_mb": round(table_bytes / (1024.0 * 1024.0), 2),
+                "total_footprint_mb": round(total_mb, 2),
+            }
+        else:  # BM25 + BGE-M3 Hybrid
             total_mb = (bm25_bytes + hf_model_bytes + emb_bytes) / (1024.0 * 1024.0)
             return {
                 "method": "Hybrid Search",
                 "bm25_index_file_bytes": bm25_bytes,
                 "bm25_index_file_kb": round(bm25_bytes / 1024.0, 2),
+                "bge_sparse_index_file_bytes": 0,
+                "bge_sparse_index_file_kb": 0.0,
                 "model_weights_bytes": hf_model_bytes,
                 "model_weights_mb": round(hf_model_bytes / (1024.0 * 1024.0), 2),
                 "db_vector_column_bytes": emb_bytes,

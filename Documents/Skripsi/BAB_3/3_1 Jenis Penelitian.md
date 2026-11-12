@@ -1,0 +1,5 @@
+## 3.1 Jenis Penelitian
+
+Penelitian ini merupakan penelitian kuantitatif dengan pendekatan eksperimen komparatif (*comparative experimental research*). Pendekatan ini diterapkan untuk mengevaluasi dan membandingkan performa tiga metode temu balik informasi (*information retrieval*), yaitu *Keyword-based retrieval* menggunakan algoritma BM25, *Dense semantic retrieval* menggunakan model BAAI/bge-m3, dan *Hybrid retrieval* yang menggabungkan kedua metode sebelumnya.
+
+Pendekatan eksperimen komparatif digunakan karena penelitian ini menguji ketiga metode secara langsung pada korpus data leksikon yang sama dengan menggunakan kumpulan kueri uji (*test queries*) dan tolok ukur acuan relevansi (*ground truth*) yang identik. Perbandingan performa diukur dan dianalisis secara kuantitatif berdasarkan dua aspek utama. Pertama, kemampuan masing-masing metode dalam menemukan dan menempatkan dokumen leksikon budaya yang relevan pada peringkat teratas hasil pencarian. Kedua, kebutuhan sumber daya komputasi yang dihabiskan oleh masing-masing metode dalam pengoperasiannya.

@@ -1,0 +1,6 @@
+# BAB V — PEMBAHASAN
+
+Bab V ini menyajikan interpretasi makna hasil penelitian, analisis kritis komparatif, evaluasi mendalam, serta hubungan temuan empiris dengan literatur dan landasan teori yang telah dipaparkan pada Bab II. Pembahasan diawali dengan analisis kritis terhadap kualitas *information retrieval*, yang mencakup perilaku metode terhadap fenomena *vocabulary mismatch*, efektivitas fusi skor pada *hybrid retrieval*, serta pembedahan kasus kegagalan penelusuran (*error analysis*). Selanjutnya dipaparkan analisis kritis mengenai efisiensi dan beban komputasi yang menelaah *trade-off* latensi dan kebutuhan sumber daya infrastruktur. Bab ini diakhiri dengan sintesis evaluasi yang merumuskan rekomendasi definitif mengenai pendekatan *information retrieval* terbaik untuk diimplementasikan pada sistem Brawijaya Corpora guna menjawab seluruh rumusan masalah penelitian.
+
+> **Catatan Prinsip Bab V (Sesuai Panduan Skripsi FILKOM UB Subbab 3.4.4.2):**  
+> Bab ini berfungsi untuk menerjemahkan makna hasil penelitian, melakukan evaluasi kritis, menghubungkan temuan empiris dengan teori/literatur terkait di Bab II, melakukan analisis kesalahan (*error analysis*), serta menjawab seluruh rumusan masalah penelitian secara tuntas[cite: 8, 11, 33, 34].

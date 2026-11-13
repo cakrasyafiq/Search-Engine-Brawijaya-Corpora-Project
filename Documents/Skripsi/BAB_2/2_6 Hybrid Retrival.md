@@ -41,13 +41,13 @@ Setelah skor dari BM25 dan BGE-M3 dinormalisasikan, kedua skor tersebut diintegr
 
 Formulasi perhitungan skor gabungan bagi dokumen $d$ terhadap kueri $q$ dirumuskan sebagai berikut:
 
-$$S_{\text{hybrid}}(d, q) = \alpha \cdot S'_{\text{sparse}}(d, q) + (1 - \alpha) \cdot S'_{\text{dense}}(d, q)$$
+$$S_{\text{hybrid}}(d, q) = \alpha \cdot S'_{\text{dense}}(d, q) + (1 - \alpha) \cdot S'_{\text{sparse}}(d, q)$$
 
 di mana:
 - $S_{\text{hybrid}}(d, q)$ menyatakan skor gabungan bagi dokumen $d$ terhadap kueri $q$.
-- $S'_{\text{BM25}}(d, q)$ menyatakan skor penelusuran leksikal BM25 yang telah dinormalisasi menggunakan Min-Max.
 - $S'_{\text{dense}}(d, q)$ menyatakan skor penelusuran semantik padat BGE-M3 yang telah dinormalisasi menggunakan Min-Max.
-- $\alpha$ merupakan parameter koefisien pembobotan untuk penelusuran leksikal BM25 ($0 \le \alpha \le 1$).
-- $(1 - \alpha)$ merupakan parameter koefisien pembobotan komplementer untuk penelusuran semantik BGE-M3.
+- $S'_{\text{sparse}}(d, q)$ menyatakan skor penelusuran leksikal BM25 yang telah dinormalisasi menggunakan Min-Max.
+- $\alpha$ merupakan parameter koefisien pembobotan untuk penelusuran semantik BGE-M3 ($0 \le \alpha \le 1$).
+- $(1 - \alpha)$ merupakan parameter koefisien pembobotan komplementer untuk penelusuran leksikal BM25.
 
-Nilai $\alpha$ merupakan bobot yang akan menentukan bias sistem. Semakin tinggi $\alpha$, maka sistem akan semakin bias terhadap penelusuran leksikal BM25. Sebaliknya, semakin rendah $\alpha$, maka sistem akan semakin bias terhadap penelusuran semantik BGE-M3. Nilai ini merupakan paramater yang akan dioptimalkan pada penelitian ini untuk menentukan bobot terbaik melalui eksperimen dengan (*validation set*).
+Nilai $\alpha$ merupakan bobot yang akan menentukan bias sistem. Semakin tinggi $\alpha$, maka sistem akan semakin bias terhadap penelusuran semantik BGE-M3. Sebaliknya, semakin rendah $\alpha$, maka sistem akan semakin bias terhadap penelusuran leksikal BM25. Nilai ini merupakan parameter yang akan dioptimalkan pada penelitian ini untuk menentukan bobot terbaik melalui eksperimen pada *validation set*.

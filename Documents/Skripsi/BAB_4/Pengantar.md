@@ -1,6 +1,3 @@
 # BAB IV — HASIL
 
 Bab IV ini menyajikan laporan hasil pengujian dan pengukuran empiris dari implementasi ketiga pendekatan *information retrieval* (BM25, BGE-M3, dan *hybrid retrieval*) pada sistem Brawijaya Corpora secara faktual, terurut, dan objektif. Penyajian data diawali dengan hasil eksperimen penentuan bobot parameter fusi $\alpha$ optimal menggunakan *validation set*. Selanjutnya dipaparkan hasil evaluasi kualitas *information retrieval* pada *test set*, baik secara keseluruhan antarmetode maupun terperinci berdasarkan kategori karakteristik kueri uji. Bab ini diakhiri dengan pemaparan data pengukuran beban komputasi (*computational cost*) yang mencakup latensi pemrosesan kueri (*query latency*), durasi pembangunan struktur indeks (*indexing time*), serta konsumsi sumber daya memori dan ruang penyimpanan (*memory & storage footprint*).
-
-> **Catatan Prinsip Bab IV (Sesuai Panduan Skripsi FILKOM UB Subbab 3.4.4.1):**  
-> Bab ini berfungsi murni untuk melaporkan hasil pelaksanaan metode/pengujian dan menyajikan data faktual secara terurut dan logis[cite: 33]. Seluruh tabel dan gambar harus diberi nomor, judul, serta diacu secara eksplisit di dalam teks paragraf[cite: 33]. Hindari interpretasi teoritis mendalam atau spekulasi penyebab di bab ini[cite: 33].

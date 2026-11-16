@@ -4,7 +4,7 @@ Evaluasi kualitas temu balik informasi dilaksanakan pada *test set* independen y
 
 ### 4.2.1 Data Perbandingan Metrik Efektivitas Antarmetode
 
-Rekapitulasi skor efektivitas penelusuran keseluruhan (*overall*) pada *test set* ($k = 5$) disajikan pada Tabel 4.2.
+Rekapitulasi skor efektivitas penelusuran keseluruhan (*overall*) pada *test set* ($k = 5$) disajikan pada Tabel 4.2. Skor *BCP Lexical Search* pada tabel tersebut dihitung dengan normalisasi kapitalisasi dan diakritik standar (`Prapen`/`Prapèn` serta `Jimat Klontongan`/`Jimat klontongan`); tanpa normalisasi karakter tersebut, *baseline* memperoleh Precision@5 sebesar 0,2400, Recall@5 sebesar 0,4000, MRR sebesar 0,4875, dan NDCG@5 sebesar 0,3987.
 
 Tabel 4.2 Hasil Pengujian Efektivitas *Information Retrieval* pada *Test Set* ($k = 5$)
 
@@ -16,17 +16,11 @@ Tabel 4.2 Hasil Pengujian Efektivitas *Information Retrieval* pada *Test Set* ($
 | *Hybrid Retrieval* ($\alpha = 1{,}00$) | **0,4600** | **0,7229** | **0,9688** | **0,8452** |
 | *Hybrid Retrieval* ($\alpha = 0{,}60$) | **0,4600** | **0,7229** | 0,9417 | 0,8205 |
 
-> **Catatan *Baseline*:** Skor *BCP Lexical Search* pada Tabel 4.2 menggunakan normalisasi kapitalisasi dan diakritik (`Prapen`/`Prapèn` dan `Jimat Klontongan`/`Jimat klontongan`). Tanpa normalisasi tersebut, skor *baseline* tercatat Precision@5 = 0,2400; Recall@5 = 0,4000; MRR = 0,4875; dan NDCG@5 = 0,3987.
-
-Berdasarkan Tabel 4.2, urutan performa antarmetode dari tertinggi ke terendah adalah sebagai berikut:
-
-1. **NDCG@5:** **BGE-M3** dan ***Hybrid Retrieval* ($\alpha = 1{,}00$)** mencatat skor tertinggi sebesar **0,8452** (+108,6% dari *baseline*), diikuti *Hybrid Retrieval* ($\alpha = 0{,}60$) sebesar **0,8205** (+102,5%), BM25 sebesar **0,6718** (+65,8%), dan *BCP Lexical Search* sebesar **0,4052**.
-2. **MRR:** **BGE-M3** dan ***Hybrid Retrieval* ($\alpha = 1{,}00$)** meraih skor tertinggi sebesar **0,9688** (+98,7%), diikuti *Hybrid Retrieval* ($\alpha = 0{,}60$) sebesar **0,9417** (+93,2%), BM25 sebesar **0,7258** (+48,9%), dan *BCP Lexical Search* sebesar **0,4875**.
-3. **Precision@5 dan Recall@5:** **BGE-M3**, ***Hybrid Retrieval* ($\alpha = 1{,}00$)**, dan ***Hybrid Retrieval* ($\alpha = 0{,}60$)** memperoleh nilai tertinggi yang setara (Precision@5 = **0,4600**; Recall@5 = **0,7229**), diikuti BM25 (0,4250; 0,6667) dan *BCP Lexical Search* (0,2500; 0,4146).
+Berdasarkan data pada Tabel 4.2, **BGE-M3** dan ***Hybrid Retrieval* ($\alpha = 1{,}00$)** menempati peringkat tertinggi secara bersama pada metrik NDCG@5 dengan skor **0,8452** (+108,6% dari *baseline*) dan MRR sebesar **0,9688** (+98,7%). Posisi berikutnya diikuti oleh ***Hybrid Retrieval* ($\alpha = 0{,}60$)** dengan NDCG@5 sebesar **0,8205** (+102,5%) dan MRR sebesar **0,9417** (+93,2%), **BM25** dengan NDCG@5 sebesar **0,6718** (+65,8%) dan MRR sebesar **0,7258** (+48,9%), serta ***BCP Lexical Search*** pada urutan terendah dengan NDCG@5 sebesar **0,4052** dan MRR sebesar **0,4875**. Sementara itu, pada metrik Precision@5 dan Recall@5, **BGE-M3**, ***Hybrid Retrieval* ($\alpha = 1{,}00$)**, dan ***Hybrid Retrieval* ($\alpha = 0{,}60$)** memperoleh nilai tertinggi yang setara sebesar **0,4600** dan **0,7229**, disusul oleh **BM25** sebesar **0,4250** dan **0,6667**, serta ***BCP Lexical Search*** sebesar **0,2500** dan **0,4146**.
 
 ### 4.2.2 Hasil Evaluasi Berdasarkan Kategori Karakteristik Kueri
 
-Hasil pengujian berdasarkan dua kategori kueri pada *test set*, yaitu **kueri *exact term*** (20 kueri istilah leksikon langsung) dan **kueri *conceptual*** (20 kueri deskriptif berbahasa Inggris), disajikan pada Tabel 4.3.
+Hasil pengujian berdasarkan dua kategori kueri pada *test set*, yaitu **kueri *exact term*** (20 kueri istilah leksikon langsung) dan **kueri *conceptual*** (20 kueri deskriptif berbahasa Inggris), disajikan pada Tabel 4.3. Pada pencocokan karakter ketat tanpa normalisasi kapitalisasi dan diakritik, skor NDCG@5 *BCP Lexical Search* pada segmen *exact term* tercatat sebesar 0,7974, sedangkan seluruh metrik segmen *conceptual* tetap bernilai 0,0000.
 
 Tabel 4.3 Perbandingan Performa Metode Berdasarkan Kategori Kueri Uji ($k = 5$)
 
@@ -43,9 +37,6 @@ Tabel 4.3 Perbandingan Performa Metode Berdasarkan Kategori Kueri Uji ($k = 5$)
 | | *Hybrid Retrieval* ($\alpha = 1{,}00$) | **0,4000** | **0,6083** | **0,9750** | **0,7873** |
 | | *Hybrid Retrieval* ($\alpha = 0{,}60$) | 0,3900 | 0,5917 | 0,8833 | 0,7058 |
 
-> **Catatan *Exact Term Baseline*:** Tanpa normalisasi karakter, NDCG@5 *BCP Lexical Search* pada segmen *exact term* adalah **0,7974**, sedangkan segmen *conceptual* tetap **0,0000**.
+Berdasarkan data pada Tabel 4.3, pada kelompok **kueri *exact term***, **BM25** mencatat performa tertinggi (NDCG@5 = **0,9845**; MRR = **1,0000**; Precision@5 = **0,6000**; Recall@5 = **0,9750**) dengan menempatkan istilah target pada peringkat ke-1 di seluruh 20 kueri serta mencapai NDCG@5 = 1,0000 pada 17 kueri. Posisi berikutnya ditempati oleh ***Hybrid Retrieval* ($\alpha = 0{,}60$)** dengan NDCG@5 = **0,9351** dan MRR = **1,0000**, diikuti oleh **BGE-M3** dan ***Hybrid Retrieval* ($\alpha = 1{,}00$)** yang masing-masing memperoleh NDCG@5 = **0,9031** dan MRR = **0,9625** (19 dari 20 kueri menempati peringkat ke-1), serta ***BCP Lexical Search*** dengan NDCG@5 = **0,8103** dan MRR = **0,9750** (19 kueri menempati peringkat ke-1).
 
-Berdasarkan Tabel 4.3, ringkasan pembacaan data untuk masing-masing kelompok kueri adalah sebagai berikut:
-
-1. **Kueri *Exact Term* (20 kueri):** **BM25** mencatat performa tertinggi (NDCG@5 = **0,9845**; MRR = **1,0000**; Recall@5 = **0,9750**) dengan menempatkan istilah target pada peringkat ke-1 di seluruh 20 kueri dan mencapai NDCG@5 = 1,0000 pada 17 kueri. ***Hybrid Retrieval* ($\alpha = 0{,}60$)** menyusul dengan NDCG@5 = **0,9351** dan MRR = **1,0000**, diikuti oleh **BGE-M3** dan ***Hybrid Retrieval* ($\alpha = 1{,}00$)** (NDCG@5 = **0,9031**; MRR = **0,9625**, dengan 19 dari 20 kueri menempati peringkat ke-1). ***BCP Lexical Search*** memperoleh NDCG@5 = **0,8103** dan MRR = **0,9750** (19 kueri menempati peringkat ke-1).
-2. **Kueri *Conceptual* (20 kueri):** **BGE-M3** dan ***Hybrid Retrieval* ($\alpha = 1{,}00$)** meraih skor tertinggi (NDCG@5 = **0,7873**; MRR = **0,9750**) dengan keberhasilan mengembalikan dokumen relevan pada seluruh 20 kueri (19 kueri di peringkat ke-1). ***Hybrid Retrieval* ($\alpha = 0{,}60$)** mencatat NDCG@5 = **0,7058** dan MRR = **0,8833** (17 kueri di peringkat ke-1, 1 kueri gagal mengembalikan dokumen relevan). **BM25** memperoleh NDCG@5 = **0,3591** dan MRR = **0,4517** dengan 7 kueri gagal mengembalikan dokumen relevan, sedangkan ***BCP Lexical Search*** memperoleh **0,0000** pada seluruh metrik (19 kueri menghasilkan respons kosong dan 1 kueri mengembalikan hasil tidak relevan).
+Sebaliknya, pada kelompok **kueri *conceptual***, **BGE-M3** dan ***Hybrid Retrieval* ($\alpha = 1{,}00$)** meraih skor tertinggi secara bersama (NDCG@5 = **0,7873**; MRR = **0,9750**; Precision@5 = **0,4000**; Recall@5 = **0,6083**) dengan keberhasilan mengembalikan dokumen relevan pada seluruh 20 kueri dan menempatkan 19 kueri pada peringkat ke-1. ***Hybrid Retrieval* ($\alpha = 0{,}60$)** menyusul dengan NDCG@5 = **0,7058** dan MRR = **0,8833** (17 kueri di peringkat ke-1 dan 1 kueri gagal mengembalikan dokumen relevan), diikuti oleh **BM25** dengan NDCG@5 = **0,3591** dan MRR = **0,4517** (7 kueri gagal mengembalikan dokumen relevan), sedangkan ***BCP Lexical Search*** memperoleh **0,0000** pada seluruh metrik karena 19 kueri menghasilkan respons kosong dan 1 kueri mengembalikan hasil tidak relevan.

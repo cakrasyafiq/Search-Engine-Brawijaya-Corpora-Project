@@ -34,16 +34,21 @@ Berdasarkan Tabel 4.4 dan Gambar 4.2, **BM25** mencatat waktu eksekusi tercepat 
 
 ### 4.3.2 Durasi Pembangunan Indeks (*Indexing Time*)
 
-Perbandingan durasi pembangunan struktur indeks dokumen leksikon (169 entri) direncanakan pada Tabel 4.5.
+Perbandingan durasi pembangunan struktur indeks dokumen leksikon (169 entri) disajikan pada Tabel 4.5.
 
 Tabel 4.5 Perbandingan Waktu Pembangunan Struktur Indeks Dokumen Leksikon
 
 | Metode Penelusuran | Komponen Indeks | Waktu Pembangunan Indeks |
 | :--- | :--- | :---: |
-| BM25 (*Sparse Retrieval*) | Konstruksi *in-memory inverted index* & simpan `bm25_index.pkl` | *Belum tercatat pada log `exp_1`* |
-| BGE-M3 (*Dense Retrieval*) | Inferensi vektor 1024-dimensi & pembuatan indeks HNSW `pgvector` | *Belum tercatat pada log `exp_1`* |
+| BM25 (*Sparse Retrieval*) | Konstruksi *in-memory inverted index* & simpan `bm25_index.pkl` | **167,22 ms** (*cold*: 249,70 ms) |
+| BGE-M3 (*Dense Retrieval*) | Inferensi vektor 1024-dimensi & pembuatan indeks HNSW `pgvector` | **301.148,17 ms** / 301,15 detik (*cold* + muat model: 368.847,57 ms / 368,85 detik) |
 
-> **Catatan Ketersediaan Data:** Pada rangkaian eksekusi `exp_1` (`run_evaluation.py`), skrip evaluasi memuat indeks yang telah dibangun sebelumnya sehingga durasi pembangunan indeks (`reindex` BM25 maupun `generate_embeddings` BGE-M3) tidak tersimpan ke dalam berkas laporan `exp_1`. Pengukuran khusus tahap pembangunan indeks diperlukan apabila data waktu pengindeksan awal hendak dilaporkan secara kuantitatif.
+Berdasarkan rincian pengukuran pada 169 entri leksikon tersebut, tahapan pembangunan masing-masing struktur indeks memiliki karakteristik waktu sebagai berikut:
+
+1. **BM25 (`search_service.reindex`):** Pada eksekusi awal (*cold DB fetch*), total waktu pembangunan indeks tercatat **249,70 ms**, yang terdiri atas pengambilan dan konversi 169 entri dari PostgreSQL (**182,72 ms**), konstruksi *inverted index* dengan 2.461 token kosakata unik (**55,81 ms**), serta serialisasi dan penulisan berkas `bm25_index.pkl` berukuran 347.031 *byte* / 338,90 KB (**11,17 ms**). Pada 5 kali pengulangan *warm*, rata-rata waktu eksekusi tercatat **167,22 ms** (rentang **159,27–177,16 ms**).
+2. **BGE-M3 (`semantic_service.generate_embeddings`):** Pengukuran dilakukan dengan menghapus indeks HNSW dan mengosongkan kolom vektor terlebih dahulu (`batch_size = 16`, 11 *batch*). Pada kondisi model sudah dimuat di memori (*warm*), proses pengindeksan memerlukan total **301.148,17 ms** (**301,15 detik**), yang terbagi atas penyiapan teks terstruktur (**28,10 ms**), inferensi *batch encoding* `BAAI/bge-m3` (**288.950,26 ms** atau **288,95 detik**, rata-rata **1.709,76 ms/dokumen**), penyimpanan vektor ke kolom `pgvector` PostgreSQL (**11.714,18 ms** atau **11,71 detik**), dan pembuatan indeks HNSW `vector_cosine_ops` (**455,29 ms**, ukuran indeks 1.392.640 *byte* / 1,33 MB). Jika menyertakan waktu pemuatan awal bobot model `BAAI/bge-m3` dari *cache* lokal (**67.699,40 ms** atau **67,70 detik**), total durasi *end-to-end* (*cold start*) mencapai **368.847,57 ms** (**368,85 detik**). Adapun pendekatan ***Hybrid Retrieval*** memanfaatkan kedua struktur indeks BM25 dan BGE-M3 tersebut secara bersamaan.
+
+> **Catatan Lingkungan Pengukuran:** Berbeda dengan rangkaian pengujian `exp_1` (Tabel 4.4 dan Tabel 4.6) yang dijalankan pada perangkat uji berakselerasi GPU NVIDIA GeForce GTX 1650 Super (Tabel 3.2), pengukuran khusus pembangunan indeks pada Tabel 4.5 ini dijalankan secara terpisah pada lingkungan eksekusi CPU murni (`Intel Core i5-5200U @ 2.20GHz`, RAM 12 GB, `torch 2.14.1+cpu`, tanpa GPU CUDA). Dengan demikian, durasi inferensi BGE-M3 pada Tabel 4.5 merepresentasikan skenario pemrosesan berbasis CPU.
 
 ### 4.3.3 Kebutuhan Memori dan Ruang Penyimpanan (*Memory & Storage Footprint*)
 

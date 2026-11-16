@@ -49,25 +49,33 @@ config:
   look: classic
 ---
 flowchart TD
-    A["Dataset Mentah Lexicon.csv (169 Entri)"] --> B["Database Seeding: Pembersihan Spasi, Konversi Tipe, dan Deduplikasi Term"]
-    B --> C[("Tabel lexicons di PostgreSQL")]
+    A["START"] --> B["Raw lexicon dataset"]
+    B --> C[("Seeding Tabel PostgreSQL")]
 
-    C --> D1["Jalur BM25: Seleksi 8 Atribut Teks & Pembobotan Multi-Field (Tanpa Etymology)"]
-    D1 --> D2["Normalisasi Teks: Lowercase & Hapus Diakritik Unicode NFKD"]
-    D2 --> D3["Tokenisasi & Ekspansi Kata Majemuk Berpenghubung"]
-    D3 --> D4["Konstruksi In-Memory Inverted Index Okapi BM25 (k1=1.5, b=0.75)"]
-    D4 --> D5[("Simpan Cache Indeks: bm25_index.pkl")]
+    C --> D1["Atribute Selection"]
+    D1 --> D2["Text Normalization & Tokenization"]
+    D2 --> D3["Pembuatan Inverted Index Okapi BM25"]
+    D3 --> D4[("Simpan Cache Indeks")]
+    D4 --> F["END"]
 
-    C --> E1["Jalur BGE-M3: Format Dokumen Teks Terstruktur (prepare_lexicon_text)"]
-    E1 --> E2["Batch Encoding Model BAAI/bge-m3 (batch_size=16)"]
-    E2 --> E3["Hasilkan Vektor Padat 1024 Dimensi Ternormalisasi L2"]
-    E3 --> E4[("Simpan ke Kolom pgvector & Bangun Indeks HNSW (vector_cosine_ops)")]
-
-    D5 --> F["Korpus Terindeks Siap Digunakan pada Tahap Pengujian"]
-    E4 --> F
+    C --> E1["Batch Encoding Model BAAI/bge-m3"]
+    E1 --> E2[("Simpan ke Kolom pgvector")]
+    E2 --> E3[("Bangun Indeks HNSW")]
+    E3 --> F
 ```
 
-Berdasarkan diagram alir di atas, proses diawali dengan *database seeding* untuk memuat 169 entri dari `Lexicon.csv` ke tabel `lexicons` di PostgreSQL disertai pembersihan spasi, konversi tipe data, dan deduplikasi `Term`. Dari basis data tersebut, korpus diproses melalui dua jalur paralel. Pada jalur *sparse retrieval* (BM25), delapan atribut teks berbobot *multi-field* (tanpa `etymology` untuk menghindari derau lintas bahasa) dinormalisasi menjadi huruf kecil tanpa diakritik (Unicode NFKD), ditokenisasi dengan ekspansi kata majemuk berpenghubung, lalu disusun menjadi *in-memory inverted index* Okapi BM25 ($k_1 = 1{,}5$, $b = 0{,}75$) dan disimpan ke `bm25_index.pkl`. Sementara itu, pada jalur *dense retrieval* (BGE-M3), atribut relevan tiap leksikon diformat menjadi dokumen teks terstruktur dan di-*encode* secara *batch* (`batch_size = 16`) menggunakan `BAAI/bge-m3` menjadi vektor padat 1024 dimensi ternormalisasi L2 yang disimpan pada kolom `pgvector` beserta indeks HNSW (`vector_cosine_ops`).
+Berdasarkan diagram alir di atas, proses dimulai dari *raw lexicon dataset* (`Lexicon.csv`, sebanyak 169 entri) yang kemudian dimuat ke dalam basis data melalui tahap *Seeding Tabel PostgreSQL* ke tabel `lexicons` disertai pembersihan spasi, konversi tipe data, dan deduplikasi `Term`. Setelah data tersimpan pada PostgreSQL, korpus diproses melalui dua jalur paralel hingga mencapai tahap akhir (*END*):
+
+1. **Jalur *Sparse Retrieval* (Okapi BM25)**:
+   - ***Attribute Selection***: Memilih delapan atribut teks yang relevan untuk pembobotan *multi-field* tanpa menyertakan atribut `etymology` guna menghindari derau (*noise*) lintas bahasa.
+   - ***Text Normalization & Tokenization***: Melakukan normalisasi teks menjadi huruf kecil (*lowercase*) dan penghapusan diakritik (Unicode NFKD), kemudian melakukan tokenisasi yang disertai ekspansi kata majemuk berpenghubung.
+   - **Pembuatan *Inverted Index* Okapi BM25**: Mengonstruksi *in-memory inverted index* berbasis algoritma Okapi BM25 ($k_1 = 1{,}5$, $b = 0{,}75$).
+   - **Simpan *Cache* Indeks**: Menyimpan hasil konstruksi indeks ke dalam berkas *cache* (`bm25_index.pkl`) agar dapat dimuat langsung pada tahap pengujian.
+
+2. **Jalur *Dense Retrieval* (BGE-M3)**:
+   - ***Batch Encoding* Model `BAAI/bge-m3`**: Memformat atribut relevan tiap leksikon menjadi dokumen teks terstruktur dan melakukan *batch encoding* (`batch_size = 16`) menggunakan model `BAAI/bge-m3` untuk menghasilkan vektor padat (*dense vector*) berdimensi 1024 yang ternormalisasi L2.
+   - **Simpan ke Kolom `pgvector`**: Menyimpan seluruh vektor *embedding* hasil *encoding* ke dalam kolom bertipe `pgvector` pada PostgreSQL.
+   - **Bangun Indeks HNSW**: Membangun indeks *Hierarchical Navigable Small World* (HNSW) menggunakan metrik kemiripan kosinus (`vector_cosine_ops`) guna mendukung pencarian vektor yang efisien.
 
 ### 3.4.4 Pembuatan Dataset Evaluasi (*Evaluation Dataset*)
 

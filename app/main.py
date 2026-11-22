@@ -21,6 +21,7 @@ from app.schemas.lexicon import (
     EmbeddingGenerationResponse,
     HybridLexiconCandidate,
     HybridSearchResponse,
+    AdaptiveHybridSearchResponse,
     BGESparseLexiconCandidate,
     BGESparseSearchResponse,
     BGEHybridLexiconCandidate,
@@ -29,6 +30,7 @@ from app.schemas.lexicon import (
 from app.services.search_service import search_service
 from app.services.semantic_service import semantic_service
 from app.services.hybrid_service import hybrid_service
+from app.services.adaptive_hybrid_service import adaptive_hybrid_service
 from app.services.bge_sparse_service import bge_sparse_service
 from app.services.bge_hybrid_service import bge_hybrid_service
 
@@ -100,6 +102,7 @@ def root():
         "semantic_search_model": settings.EMBEDDING_MODEL_NAME,
         "embedding_dimension": settings.EMBEDDING_DIMENSION,
         "hybrid_search_ready": search_service.is_ready,
+        "adaptive_hybrid_search_ready": search_service.is_ready,
         "bge_sparse_index_ready": bge_sparse_service.is_ready,
         "bge_sparse_indexed_documents": bge_sparse_service.index.total_docs,
         "bge_hybrid_search_ready": True,
@@ -140,6 +143,14 @@ def health_check(db: Session = Depends(get_db)):
         "hybrid_search": {
             "ready": search_service.is_ready,
             "fusion_method": "min_max_normalized_weighted_score_fusion",
+        },
+        "adaptive_hybrid_search": {
+            "ready": search_service.is_ready,
+            "fusion_method": "sigmoid_lexical_confidence_gate_min_max_fusion",
+            "tau": settings.ADAPTIVE_GATE_TAU,
+            "scale": settings.ADAPTIVE_GATE_SCALE,
+            "alpha_min": settings.ADAPTIVE_GATE_ALPHA_MIN,
+            "alpha_max": settings.ADAPTIVE_GATE_ALPHA_MAX,
         },
         "bge_sparse_search": {
             "ready": bge_sparse_service.is_ready,
@@ -357,6 +368,100 @@ def search_hybrid(
         query=search_query,
         dense_weight=eff_dense_w,
         sparse_weight=eff_sparse_w,
+        total_candidates=len(candidates),
+        top_k=top_k,
+        execution_time_ms=round(elapsed_ms, 3),
+        results=candidates,
+    )
+
+
+@app.get(
+    "/search/adaptive-hybrid",
+    response_model=AdaptiveHybridSearchResponse,
+    name="adaptive hybrid search",
+    summary="Adaptive Hybrid Search",
+    description="Receive a user query, estimate BM25 lexical confidence via a smooth sigmoid gate over raw max_bm25, compute adaptive alpha(q), apply min-max normalization, and fuse BM25 and BGE-M3 scores.",
+)
+def search_adaptive_hybrid(
+    q: Optional[str] = Query(None, description="Search query string (alternative to 'query')"),
+    query: Optional[str] = Query(None, description="Search query string"),
+    top_k: int = Query(10, ge=1, le=100, description="Maximum number of candidates to return"),
+    tau: Optional[float] = Query(
+        None,
+        ge=0.0,
+        description="Optional override for sigmoid midpoint threshold tau over raw max BM25 score",
+    ),
+    scale: Optional[float] = Query(
+        None,
+        gt=0.0,
+        description="Optional override for sigmoid transition scale s (must be > 0)",
+    ),
+    alpha_min: Optional[float] = Query(
+        None,
+        ge=0.0,
+        le=1.0,
+        description="Optional override for minimum dense weight alpha_min when BM25 confidence is high",
+    ),
+    alpha_max: Optional[float] = Query(
+        None,
+        ge=0.0,
+        le=1.0,
+        description="Optional override for maximum dense weight alpha_max when BM25 confidence is low",
+    ),
+    min_score: float = Query(0.0, ge=0.0, le=1.0, description="Minimum fused hybrid score cutoff (0.0 to 1.0)"),
+    culture: Optional[str] = Query(None, description="Filter candidates by culture (e.g. Tengger)"),
+    semantic_domain: Optional[str] = Query(None, description="Filter candidates by semantic domain (e.g. Ritual)"),
+    word_class: Optional[str] = Query(None, description="Filter candidates by word class (e.g. Noun)"),
+    db: Session = Depends(get_db),
+):
+    search_query = (query or q or "").strip()
+    if not search_query:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Query parameter 'q' or 'query' must not be empty.",
+        )
+
+    eff_tau = settings.ADAPTIVE_GATE_TAU if tau is None else tau
+    eff_scale = settings.ADAPTIVE_GATE_SCALE if scale is None else scale
+    eff_alpha_min = settings.ADAPTIVE_GATE_ALPHA_MIN if alpha_min is None else alpha_min
+    eff_alpha_max = settings.ADAPTIVE_GATE_ALPHA_MAX if alpha_max is None else alpha_max
+
+    start_time = time.perf_counter()
+
+    try:
+        candidates, eff_dense_w, eff_sparse_w, max_bm25, confidence = adaptive_hybrid_service.search(
+            db=db,
+            query=search_query,
+            top_k=top_k,
+            tau=eff_tau,
+            scale=eff_scale,
+            alpha_min=eff_alpha_min,
+            alpha_max=eff_alpha_max,
+            min_score=min_score,
+            culture=culture,
+            semantic_domain=semantic_domain,
+            word_class=word_class,
+        )
+    except Exception as e:
+        logger.error(f"Adaptive hybrid search error: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Adaptive hybrid search failed: {str(e)}",
+        )
+
+    elapsed_ms = (time.perf_counter() - start_time) * 1000.0
+
+    return AdaptiveHybridSearchResponse(
+        query=search_query,
+        adaptive_alpha=eff_dense_w,
+        dense_weight=eff_dense_w,
+        sparse_weight=eff_sparse_w,
+        max_bm25_score=max_bm25,
+        lexical_confidence=confidence,
+        gate_tau=eff_tau,
+        gate_scale=eff_scale,
+        gate_alpha_min=eff_alpha_min,
+        gate_alpha_max=eff_alpha_max,
         total_candidates=len(candidates),
         top_k=top_k,
         execution_time_ms=round(elapsed_ms, 3),

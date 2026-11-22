@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 # Add project root to path
-ROOT_DIR = Path(__file__).resolve().parent
+ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
@@ -69,7 +69,7 @@ def main():
         "--test-ratio",
         type=float,
         default=0.80,
-        help="Proportion of queries for test set (default: 0.80, i.e. 80% test, 20% val).",
+        help="Proportion of queries for test set (default: 0.80, i.e. 80%% test, 20%% val).",
     )
     parser.add_argument(
         "--seed",

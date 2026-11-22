@@ -1,0 +1,361 @@
+method,query_id,query_type,query_text,retrieved_terms,precision@5,recall@5,reciprocal_rank,ndcg@5,latency_ms
+BCP Lexical Search (Baseline),Q-002,Conceptual,peacekeeping ritual,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-003,Conceptual,Sacred site in the mountains,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-005,Conceptual,the nation in reog lore,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-006,Conceptual,magical whip,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-007,Conceptual,requesting a favor,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-010,Conceptual,leader of wayang topeng,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-011,Conceptual,magical items,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-012,Conceptual,javanese composter,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-013,Conceptual,wife,Sayut,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-014,Conceptual,spiritual studies,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-015,Conceptual,masked general in reog,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-016,Conceptual,flowers for rituals,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-017,Conceptual,ritual for giving birth,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-018,Conceptual,woman vocalist in karawitan,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-019,Conceptual,village creator,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-020,Conceptual,master warok,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-022,Conceptual,alcoholic beverage from tengger,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-023,Conceptual,wedding ceremony,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-024,Conceptual,powerfull person in reog,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-025,Conceptual,javanese orchestra,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-027,Exact term,Kasada,Kasada; Ongkek; Poten,0.6,1.0,1.0,1.0,
+BCP Lexical Search (Baseline),Q-028,Exact term,Entas-entas,Entas-entas; Petra; Prapen,0.6,1.0,1.0,1.0,
+BCP Lexical Search (Baseline),Q-029,Exact term,Karo,Cangkriman; Jimat Klontongan; Karo; Kertijaya; Sodoran,0.8,1.0,1.0,0.7712,
+BCP Lexical Search (Baseline),Q-030,Exact term,Meduduk,Meduduk; Mekakat,0.4,1.0,1.0,1.0,
+BCP Lexical Search (Baseline),Q-032,Exact term,Tampah,Sayut; Tampah,0.4,1.0,1.0,0.7967,
+BCP Lexical Search (Baseline),Q-033,Exact term,Bantarangin,Bantarangin; Jathil; Klanasewandana; Pujangga Anom; Reog Bantarangin,0.8,1.0,1.0,0.8743,
+BCP Lexical Search (Baseline),Q-035,Exact term,Klanasewandana,Bantarangin; Klanasewandana; Pecut Samandiman; Topeng Klanasewandana,0.8,1.0,1.0,0.8045,
+BCP Lexical Search (Baseline),Q-036,Exact term,Warok,Cantrik; Gemblak; Kolor; Nyantrik; Reog Bantarangin,0.4,0.5,1.0,0.2576,
+BCP Lexical Search (Baseline),Q-037,Exact term,Reog Wengker,Reog Wengker,0.2,0.3333,1.0,0.7262,
+BCP Lexical Search (Baseline),Q-038,Exact term,Slametan,Among-among; Slametan,0.4,1.0,1.0,0.7967,
+BCP Lexical Search (Baseline),Q-040,Exact term,Lumpang,Alu; Lumpang,0.4,1.0,1.0,0.7967,
+BCP Lexical Search (Baseline),Q-041,Exact term,Molo,Karo; Molo; Ongkek; Unan-unan; Wong Tengger,0.2,0.5,0.5,0.5213,
+BCP Lexical Search (Baseline),Q-042,Exact term,Blandar Penirat,Blandar Penirat,0.2,0.25,1.0,0.6577,
+BCP Lexical Search (Baseline),Q-043,Exact term,Sunduk,Rumah Srotong; Sunduk,0.4,1.0,1.0,0.7967,
+BCP Lexical Search (Baseline),Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan,0.4,0.5,1.0,0.8402,
+BCP Lexical Search (Baseline),Q-046,Exact term,Cerita Panji,Cerita Panji,0.2,0.25,1.0,0.6577,
+BCP Lexical Search (Baseline),Q-047,Exact term,Ngalam,Kera Ngalam; Ngalam,0.4,1.0,1.0,1.0,
+BCP Lexical Search (Baseline),Q-048,Exact term,Saron,Demung; Gamelan; Peking; Saron; Slenthem,0.8,1.0,1.0,0.6969,
+BCP Lexical Search (Baseline),Q-049,Exact term,Karawitan,Gendhing; Gerong; Karawitan; Sindhen,0.8,1.0,1.0,0.7808,
+BCP Lexical Search (Baseline),Q-050,Exact term,Slendro,Pelog; Selompret; Slendro,0.6,1.0,1.0,0.7579,
+BCP Lexical Search (Baseline),Q-051,Hybrid,mortar and pestle,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-052,Hybrid,greet dance,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-053,Hybrid,tiger crawl stance,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-054,Hybrid,riddle in karo ritual,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-055,Hybrid,largest instrument with bars and mallet,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-056,Hybrid,wooden beam in javanese house ceiling,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-057,Hybrid,bamboo carrier for kasada offerings,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-058,Hybrid,small banana leaf box for offerings,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-059,Hybrid,sacred smoke burner in tengger ritual,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-061,Hybrid,bamboo horse toy in reog,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-063,Hybrid,reog woodwind horn instrument,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-064,Hybrid,music rhythm evaluation in reog dance,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-065,Hybrid,water vessel by house doorway,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-066,Hybrid,cooking area in javanese house,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-067,Hybrid,woven bamboo room divider,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-069,Hybrid,red mask villain king in panji story,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-072,Hybrid,hand drum leading gamelan tempo,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-073,Hybrid,large hanging gong ending gamelan cycle,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-074,Hybrid,bowed string instrument in karawitan,,0.0,0.0,0.0,0.0,
+BCP Lexical Search (Baseline),Q-075,Hybrid,bamboo wind flute in gamelan,,0.0,0.0,0.0,0.0,
+BM25,Q-002,Conceptual,peacekeeping ritual,Pujan; Kasada; Legèn; Tugur; Kasa,0.0,0.0,0.0,0.0,0.182
+BM25,Q-003,Conceptual,Sacred site in the mountains,Karo; Poten; Unan-unan; Padepokan; Ontokusumo,0.4,0.6667,1.0,0.7003,0.606
+BM25,Q-005,Conceptual,the nation in reog lore,Jathil; Reog Wengker; Reog Festival; Reog Obyok; Reog Bantarangin,0.4,0.5,0.5,0.2231,0.559
+BM25,Q-006,Conceptual,magical whip,Pecut Samandiman; Klanasewandana,0.4,0.6667,1.0,0.879,0.02
+BM25,Q-007,Conceptual,requesting a favor,Dingkel; Padasan; Nglabur; Umpak; Gimbal,0.0,0.0,0.0,0.0,0.613
+BM25,Q-010,Conceptual,leader of wayang topeng,Wayang Topeng Malangan; Topeng Malangan; Dhalang topeng; Topeng Klanasewandana; Gamelan,0.4,0.6667,1.0,0.6052,0.582
+BM25,Q-011,Conceptual,magical items,,0.0,0.0,0.0,0.0,0.013
+BM25,Q-012,Conceptual,javanese composter,Pandalungan; Pladen; Gedhek; Setut; Emper,0.0,0.0,0.0,0.0,0.195
+BM25,Q-013,Conceptual,wife,,0.0,0.0,0.0,0.0,0.009
+BM25,Q-014,Conceptual,spiritual studies,Cantrik; Nyantrik; Warok; Borèh; Gemblak,0.4,0.5,1.0,0.8402,0.105
+BM25,Q-015,Conceptual,masked general in reog,Dhalang topeng; Reog Wengker; Reog Festival; Cerita Panji; Wayang Topeng Malangan,0.0,0.0,0.0,0.0,0.525
+BM25,Q-016,Conceptual,flowers for rituals,Takir; Petra; Tlotok; Nyadran; Borèh,0.6,0.75,1.0,0.719,0.213
+BM25,Q-017,Conceptual,ritual for giving birth,Tlotok; Walagara; Pujan; Slametan; Sayut,0.2,0.3333,0.2,0.2809,0.233
+BM25,Q-018,Conceptual,woman vocalist in karawitan,Karawitan; Gerong; Sindhen; Gendhing; Panji Asmarabangun,0.6,0.75,1.0,0.6864,0.514
+BM25,Q-019,Conceptual,village creator,Mayu desa; Unan-unan; Reog Obyok; Cikal bakal; Pujan,0.2,0.25,0.25,0.2832,0.069
+BM25,Q-020,Conceptual,master warok,Warok; Warok Sepuh; Gemblak; Kolor; Nyantrik,0.4,0.6667,1.0,0.7003,0.051
+BM25,Q-022,Conceptual,alcoholic beverage from tengger,Walagara; Tlotok; Unan-unan; Sajeng; Bau reksa,0.2,0.3333,0.25,0.3128,0.333
+BM25,Q-023,Conceptual,wedding ceremony,Ancak; Mandi; Meduduk; Walagara; Bokor,0.6,0.75,0.5,0.5878,0.177
+BM25,Q-024,Conceptual,powerfull person in reog,Umak; Reog Wengker; Reog Festival; Reog Obyok; Kera Ngalam,0.0,0.0,0.0,0.0,0.529
+BM25,Q-025,Conceptual,javanese orchestra,Pandalungan; Pladen; Gedhek; Setut; Emper,0.0,0.0,0.0,0.0,0.196
+BM25,Q-027,Exact term,Kasada,Kasada; Poten; Ongkek,0.6,1.0,1.0,1.0,0.029
+BM25,Q-028,Exact term,Entas-entas,Entas-entas; Prapèn; Petra,0.6,1.0,1.0,1.0,0.039
+BM25,Q-029,Exact term,Karo,Karo; Tugur; Sodoran; Kertijaya; Takir,0.4,0.5,1.0,0.7673,0.045
+BM25,Q-030,Exact term,Meduduk,Meduduk; Mekakat,0.4,1.0,1.0,1.0,0.02
+BM25,Q-032,Exact term,Tampah,Tampah; Sayut,0.4,1.0,1.0,1.0,0.021
+BM25,Q-033,Exact term,Bantarangin,Bantarangin; Reog Bantarangin; Klanasewandana; Pujangga Anom; Jathil,0.8,1.0,1.0,1.0,0.046
+BM25,Q-035,Exact term,Klanasewandana,Klanasewandana; Topeng Klanasewandana; Bantarangin; Pecut Samandiman,0.8,1.0,1.0,1.0,0.036
+BM25,Q-036,Exact term,Warok,Warok; Warok Sepuh; Gemblak; Kolor; Nyantrik,0.6,0.75,1.0,0.9141,0.037
+BM25,Q-037,Exact term,Reog Wengker,Reog Wengker; Reog Obyok; Jathil; Reog Festival; Reog Bantarangin,0.6,1.0,1.0,1.0,0.08
+BM25,Q-038,Exact term,Slametan,Slametan; Among-among,0.4,1.0,1.0,1.0,0.015
+BM25,Q-040,Exact term,Lumpang,Lumpang; Alu,0.4,1.0,1.0,1.0,0.014
+BM25,Q-041,Exact term,Molo,Molo; Wuwung,0.4,1.0,1.0,1.0,0.013
+BM25,Q-042,Exact term,Blandar Penirat,Blandar Penirat; Gimbal; Rumah Srotong; Sunduk,0.8,1.0,1.0,1.0,0.025
+BM25,Q-043,Exact term,Sunduk,Sunduk; Rumah Srotong,0.4,1.0,1.0,1.0,0.014
+BM25,Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan; Dhalang topeng; Gamelan Malangan; Boso Walikan Malangan,0.8,1.0,1.0,1.0,0.038
+BM25,Q-046,Exact term,Cerita Panji,Cerita Panji; Panji Asmarabangun; Dewi Sekartaji; Ragil Kuning; Wayang Topeng Malangan,0.8,1.0,1.0,1.0,0.028
+BM25,Q-047,Exact term,Ngalam,Ngalam; Kera Ngalam; Boso Walikan,0.4,1.0,1.0,1.0,0.018
+BM25,Q-048,Exact term,Saron,Saron; Peking; Gamelan; Demung; Slenthem,0.8,1.0,1.0,0.9752,0.022
+BM25,Q-049,Exact term,Karawitan,Karawitan; Sindhen; Gerong; Gendhing,0.8,1.0,1.0,1.0,0.02
+BM25,Q-050,Exact term,Slendro,Slendro; Selompret; Pelog; Gamelan Jawa,0.6,1.0,1.0,1.0,0.02
+BM25,Q-051,Hybrid,mortar and pestle,Alu; Lumpang; Borèh; Tata Krama; Nglabur,0.4,1.0,1.0,1.0,0.805
+BM25,Q-052,Hybrid,greet dance,Beskalan; Sodoran; Kertijaya; Jathil; Wirama,0.2,0.5,1.0,0.8262,0.068
+BM25,Q-053,Hybrid,tiger crawl stance,Brangkangan; Dadak Merak; Bapang,0.4,0.6667,1.0,0.879,0.022
+BM25,Q-054,Hybrid,riddle in karo ritual,Tugur; Karo; Cangkriman; Sajeng; Kertijaya,0.8,1.0,1.0,0.7273,0.382
+BM25,Q-055,Hybrid,largest instrument with bars and mallet,Demung; Saron; Rancak; Selompret; Gambang,0.4,0.5,1.0,0.796,0.487
+BM25,Q-056,Hybrid,wooden beam in javanese house ceiling,Gimbal; Pengeret; Blandar Penirat; Dodok Besi; Molo,0.8,1.0,0.5,0.6542,0.419
+BM25,Q-057,Hybrid,bamboo carrier for kasada offerings,Kasada; Tampah; Ongkek; Ancak; Poten,0.8,1.0,1.0,0.7273,0.215
+BM25,Q-058,Hybrid,small banana leaf box for offerings,Takir; Pasung; Siter; Tlotok; Walagara,0.4,0.5,1.0,0.796,0.213
+BM25,Q-059,Hybrid,sacred smoke burner in tengger ritual,Prapèn; Tugur; Mekakat; Ontokusumo; Walagara,0.2,0.25,1.0,0.6577,0.385
+BM25,Q-061,Hybrid,bamboo horse toy in reog,Eblek; Reog Bantarangin; Gemblak; Reog Wengker; Reog Festival,0.4,0.5,1.0,0.7673,0.379
+BM25,Q-063,Hybrid,reog woodwind horn instrument,Selompret; Rancak; Reog Wengker; Gamelan Jawa; Reog Festival,0.2,0.25,1.0,0.6577,0.088
+BM25,Q-064,Hybrid,music rhythm evaluation in reog dance,Wirama; Wiraga; Wirasa; Reog Ponorogo; Karawitan,0.8,1.0,1.0,1.0,0.374
+BM25,Q-065,Hybrid,water vessel by house doorway,Padasan; Lanting; Genthong; Poten; Laweh,0.6,1.0,1.0,1.0,0.229
+BM25,Q-066,Hybrid,cooking area in javanese house,Pawon; Buritan; Dingkel; Laweh; Tumang,0.8,1.0,1.0,0.9465,0.411
+BM25,Q-067,Hybrid,woven bamboo room divider,Gedhek; Tampah; Eblek; Ancak; Mandi,0.2,0.3333,1.0,0.7262,0.056
+BM25,Q-069,Hybrid,red mask villain king in panji story,Topeng Klanasewandana; Klono Sewandono; Panji Asmarabangun; Dewi Sekartaji; Cerita Panji,0.6,0.75,1.0,0.719,0.364
+BM25,Q-072,Hybrid,hand drum leading gamelan tempo,Gamelan Malangan; Gamelan Jawa; Kendhang; Wirama; Gamelan,0.6,0.75,1.0,0.6864,0.084
+BM25,Q-073,Hybrid,large hanging gong ending gamelan cycle,Gong ageng; Kempul; Kenong; Kethuk; Gamelan Jawa,0.8,1.0,1.0,1.0,0.134
+BM25,Q-074,Hybrid,bowed string instrument in karawitan,Gamelan Jawa; Karawitan; Selompret; Gerong; Rebab,0.6,0.75,1.0,0.612,0.354
+BM25,Q-075,Hybrid,bamboo wind flute in gamelan,Gamelan Jawa; Suling; Selompret; Gamelan Malangan; Gamelan,0.6,1.0,1.0,0.8213,0.386
+BGE-M3,Q-002,Conceptual,peacekeeping ritual,Slametan; Barikan; Mayu desa; Sayut; Prasen,0.6,1.0,1.0,0.8146,307.066
+BGE-M3,Q-003,Conceptual,Sacred site in the mountains,Poten; Unan-unan; Ontokusumo; Bau reksa; Barikan,0.2,0.3333,1.0,0.7262,351.314
+BGE-M3,Q-005,Conceptual,the nation in reog lore,Bantarangin; Reog Wengker; Reog Bantarangin; Reog Ponorogo; Jathil,0.6,0.75,1.0,0.9056,315.442
+BGE-M3,Q-006,Conceptual,magical whip,Pecut Samandiman; Eblek; Klanasewandana; Warok; Reog Wengker,0.4,0.6667,1.0,0.8473,234.717
+BGE-M3,Q-007,Conceptual,requesting a favor,Nyambat; Slametan; Sam; Walagara; Cak,0.2,0.3333,1.0,0.5563,183.724
+BGE-M3,Q-010,Conceptual,leader of wayang topeng,Dhalang topeng; Pujangga Anom; Wayang Topeng Malangan; Topeng Malangan; Dadak Merak,0.4,0.6667,1.0,0.8473,233.486
+BGE-M3,Q-011,Conceptual,magical items,Jimat klontongan; Pecut Samandiman; Gombyok; Borèh; Cangkriman,0.4,0.6667,1.0,0.6733,218.998
+BGE-M3,Q-012,Conceptual,javanese composter,Kowen; Sambatan; Gamelan Jawa; Dodok Besi; Pawon,0.2,1.0,1.0,1.0,203.83
+BGE-M3,Q-013,Conceptual,wife,Ojob; Jawi; Barikan; Gender; Walagara,0.4,1.0,1.0,1.0,148.507
+BGE-M3,Q-014,Conceptual,spiritual studies,Nyantrik; Cantrik; Borèh; Entas-entas; Slametan,0.4,0.5,1.0,0.8402,174.53
+BGE-M3,Q-015,Conceptual,masked general in reog,Reog Ponorogo; Pujangga Anom; Reog Wengker; Reog Bantarangin; Reog Obyok,0.2,0.3333,0.5,0.4582,212.177
+BGE-M3,Q-016,Conceptual,flowers for rituals,Borèh; Petra; Tlotok; Walagara; Ongkek,0.4,0.5,1.0,0.6342,185.133
+BGE-M3,Q-017,Conceptual,ritual for giving birth,Sayut; Tugel kuncung; Walagara; Unan-unan; Among-among,0.4,0.6667,1.0,0.8199,186.753
+BGE-M3,Q-018,Conceptual,woman vocalist in karawitan,Sindhen; Karawitan; Gerong; Pengrawit; Gendhing,0.6,0.75,1.0,0.9056,213.05
+BGE-M3,Q-019,Conceptual,village creator,Cikal bakal; Reog Obyok; Sambatan; Karo; Barikan,0.2,0.25,1.0,0.6577,185.652
+BGE-M3,Q-020,Conceptual,master warok,Warok Sepuh; Nyantrik; Warok; Cantrik; Gemblak,0.6,1.0,1.0,0.9515,187.347
+BGE-M3,Q-022,Conceptual,alcoholic beverage from tengger,Sajeng; Walagara; Ancak; Meduduk; Reog Wengker,0.2,0.3333,1.0,0.7262,214.36
+BGE-M3,Q-023,Conceptual,wedding ceremony,Walagara; Meduduk; Mandi; Bokor; Borèh,0.8,1.0,1.0,0.9925,190.535
+BGE-M3,Q-024,Conceptual,powerfull person in reog,Warok; Reog Wengker; Pujangga Anom; Klanasewandana; Reog Bantarangin,0.4,0.5,1.0,0.737,160.706
+BGE-M3,Q-025,Conceptual,javanese orchestra,Gamelan; Gamelan Jawa; Karawitan; Sambatan; Gambang,0.6,0.75,1.0,0.926,183.831
+BGE-M3,Q-027,Exact term,Kasada,Kasada; Topeng Klanasewandana; Kasa; Ongkek; Meduduk,0.4,0.6667,1.0,0.8305,163.392
+BGE-M3,Q-028,Exact term,Entas-entas,Entas-entas; Ayas; Among-among; Prapèn; Kethuk,0.4,0.6667,1.0,0.8305,195.26
+BGE-M3,Q-029,Exact term,Karo,Karo; Sodoran; Jimat klontongan; Klono Sewandono; Kertijaya,0.6,0.75,1.0,0.9056,141.504
+BGE-M3,Q-030,Exact term,Meduduk,Siter; Lincak; Cak; Meduduk; Sunduk,0.2,0.5,0.25,0.3558,166.955
+BGE-M3,Q-032,Exact term,Tampah,Tampah; Tata Krama; Sayut; Genthong; Nyadran,0.4,1.0,1.0,0.9639,172.134
+BGE-M3,Q-033,Exact term,Bantarangin,Bantarangin; Reog Bantarangin; Pujangga Anom; Brangkangan; Jathil,0.6,0.75,1.0,0.926,192.495
+BGE-M3,Q-035,Exact term,Klanasewandana,Klanasewandana; Topeng Klanasewandana; Klono Sewandono; Pecut Samandiman; Bantarangin,0.8,1.0,1.0,0.9806,146.294
+BGE-M3,Q-036,Exact term,Warok,Warok; Warok Sepuh; Nyantrik; Kolor; Cantrik,0.8,1.0,1.0,0.9806,161.474
+BGE-M3,Q-037,Exact term,Reog Wengker,Reog Wengker; Reog Obyok; Reog Bantarangin; Reog Ponorogo; Selompret,0.4,0.6667,1.0,0.879,195.051
+BGE-M3,Q-038,Exact term,Slametan,Slametan; Jimat klontongan; Sambatan; Slenthem; Poten,0.2,0.5,1.0,0.8262,197.329
+BGE-M3,Q-040,Exact term,Lumpang,Lumpang; Alu; Gambang; Tanean Lanjhang; Tumang,0.4,1.0,1.0,1.0,163.191
+BGE-M3,Q-041,Exact term,Molo,Molo; Gender; Boso Walikan Malangan; Wuwung; Bonang,0.4,1.0,1.0,0.9448,162.686
+BGE-M3,Q-042,Exact term,Blandar Penirat,Blandar Penirat; Pengrawit; Gimbal; Bantarangin; Nyambat,0.4,0.5,1.0,0.7673,229.611
+BGE-M3,Q-043,Exact term,Sunduk,Sunduk; Dudur; Ongkek; Rumah Srotong; Dadak Merak,0.4,1.0,1.0,0.9448,159.577
+BGE-M3,Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan; Dhalang topeng; Gamelan Malangan; Dadak Merak,0.8,1.0,1.0,1.0,200.845
+BGE-M3,Q-046,Exact term,Cerita Panji,Cerita Panji; Dewi Sekartaji; Panji Asmarabangun; Ragil Kuning; Wayang Topeng Malangan,0.8,1.0,1.0,1.0,212.309
+BGE-M3,Q-047,Exact term,Ngalam,Ngalam; Kera Ngalam; Pengrawit; Boso Walikan; Pujangga Anom,0.4,1.0,1.0,1.0,191.425
+BGE-M3,Q-048,Exact term,Saron,Saron; Peking; Demung; Slametan; Rumah Srotong,0.6,0.75,1.0,0.9056,183.597
+BGE-M3,Q-049,Exact term,Karawitan,Karawitan; Gendhing; Gerong; Brangkangan; Sindhen,0.8,1.0,1.0,0.9904,203.857
+BGE-M3,Q-050,Exact term,Slendro,Slendro; Selompret; Pelog; Klono Sewandono; Slenthem,0.6,1.0,1.0,1.0,198.176
+BGE-M3,Q-051,Hybrid,mortar and pestle,Alu; Lumpang; Kowen; Siter; Nagel,0.4,1.0,1.0,1.0,193.073
+BGE-M3,Q-052,Hybrid,greet dance,Beskalan; Edrek; Gandrung; Brangkangan; Gemblak,0.2,0.5,1.0,0.8262,197.251
+BGE-M3,Q-053,Hybrid,tiger crawl stance,Brangkangan; Edrek; Jathil; Tuwuh; Dadak Merak,0.4,0.6667,1.0,0.8199,206.945
+BGE-M3,Q-054,Hybrid,riddle in karo ritual,Karo; Cangkriman; Kertijaya; Jimat klontongan; Tugur,0.6,0.75,0.5,0.6094,199.861
+BGE-M3,Q-055,Hybrid,largest instrument with bars and mallet,Demung; Selompret; Gambang; Saron; Gamelan Jawa,0.4,0.5,1.0,0.7521,195.405
+BGE-M3,Q-056,Hybrid,wooden beam in javanese house ceiling,Dodok Besi; Blandar Penirat; Pengeret; Molo; Sunduk,0.8,1.0,1.0,1.0,219.977
+BGE-M3,Q-057,Hybrid,bamboo carrier for kasada offerings,Ongkek; Ancak; Pasung; Takir; Mandi,0.4,0.5,1.0,0.796,210.981
+BGE-M3,Q-058,Hybrid,small banana leaf box for offerings,Pasung; Takir; Ancak; Lincak; Lanting,0.6,0.75,1.0,0.7438,201.603
+BGE-M3,Q-059,Hybrid,sacred smoke burner in tengger ritual,Poten; Prapèn; Unan-unan; Tugur; Petra,0.4,0.5,1.0,0.6342,230.144
+BGE-M3,Q-061,Hybrid,bamboo horse toy in reog,Reog Bantarangin; Reog Wengker; Reog Ponorogo; Reog Obyok; Eblek,0.4,0.5,0.3333,0.364,221.194
+BGE-M3,Q-063,Hybrid,reog woodwind horn instrument,Selompret; Reog Wengker; Reog Obyok; Reog Ponorogo; Reog Festival,0.4,0.5,1.0,0.7521,238.988
+BGE-M3,Q-064,Hybrid,music rhythm evaluation in reog dance,Wirama; Wiraga; Wirasa; Reog Ponorogo; Reog Obyok,0.8,1.0,1.0,1.0,200.982
+BGE-M3,Q-065,Hybrid,water vessel by house doorway,Padasan; Genthong; Lanting; Pengeret; Bokor,0.6,1.0,1.0,1.0,202.228
+BGE-M3,Q-066,Hybrid,cooking area in javanese house,Pawon; Srawing; Buritan; Kowen; Lincak,0.2,0.25,1.0,0.6577,204.76
+BGE-M3,Q-067,Hybrid,woven bamboo room divider,Gedhek; Srawing; Dodok Besi; Usuk; Tampah,0.4,0.6667,1.0,0.879,200.264
+BGE-M3,Q-069,Hybrid,red mask villain king in panji story,Pujangga Anom; Topeng Klanasewandana; Cerita Panji; Panji Asmarabangun; Dadak Merak,0.4,0.5,0.5,0.2479,219.331
+BGE-M3,Q-072,Hybrid,hand drum leading gamelan tempo,Kendhang; Gamelan Jawa; Gamelan; Gamelan Malangan; Gender,0.6,0.75,1.0,0.8904,227.629
+BGE-M3,Q-073,Hybrid,large hanging gong ending gamelan cycle,Gong ageng; Kenong; Gamelan; Kempul; Gamelan Jawa,0.6,0.75,1.0,0.8904,152.472
+BGE-M3,Q-074,Hybrid,bowed string instrument in karawitan,Karawitan; Rebab; Bonang; Gamelan Jawa; Gendhing,0.6,0.75,1.0,0.7286,197.188
+BGE-M3,Q-075,Hybrid,bamboo wind flute in gamelan,Gamelan Jawa; Suling; Gamelan; Gambang; Selompret,0.6,1.0,1.0,0.7939,198.112
+Hybrid Search (Static alpha=1.0),Q-002,Conceptual,peacekeeping ritual,Slametan; Barikan; Mayu desa; Sayut; Prasen,0.6,1.0,1.0,0.8146,217.35
+Hybrid Search (Static alpha=1.0),Q-003,Conceptual,Sacred site in the mountains,Poten; Unan-unan; Ontokusumo; Bau reksa; Barikan,0.2,0.3333,1.0,0.7262,218.548
+Hybrid Search (Static alpha=1.0),Q-005,Conceptual,the nation in reog lore,Bantarangin; Reog Wengker; Reog Bantarangin; Reog Ponorogo; Jathil,0.6,0.75,1.0,0.9056,232.313
+Hybrid Search (Static alpha=1.0),Q-006,Conceptual,magical whip,Pecut Samandiman; Eblek; Klanasewandana; Warok; Reog Wengker,0.4,0.6667,1.0,0.8473,206.785
+Hybrid Search (Static alpha=1.0),Q-007,Conceptual,requesting a favor,Nyambat; Slametan; Sam; Walagara; Cak,0.2,0.3333,1.0,0.5563,209.293
+Hybrid Search (Static alpha=1.0),Q-010,Conceptual,leader of wayang topeng,Dhalang topeng; Pujangga Anom; Wayang Topeng Malangan; Topeng Malangan; Dadak Merak,0.4,0.6667,1.0,0.8473,243.078
+Hybrid Search (Static alpha=1.0),Q-011,Conceptual,magical items,Jimat klontongan; Pecut Samandiman; Gombyok; Borèh; Cangkriman,0.4,0.6667,1.0,0.6733,213.518
+Hybrid Search (Static alpha=1.0),Q-012,Conceptual,javanese composter,Kowen; Sambatan; Gamelan Jawa; Dodok Besi; Pawon,0.2,1.0,1.0,1.0,222.72
+Hybrid Search (Static alpha=1.0),Q-013,Conceptual,wife,Ojob; Jawi; Barikan; Gender; Walagara,0.4,1.0,1.0,1.0,176.028
+Hybrid Search (Static alpha=1.0),Q-014,Conceptual,spiritual studies,Nyantrik; Cantrik; Borèh; Entas-entas; Slametan,0.4,0.5,1.0,0.8402,185.507
+Hybrid Search (Static alpha=1.0),Q-015,Conceptual,masked general in reog,Reog Ponorogo; Pujangga Anom; Reog Wengker; Reog Bantarangin; Reog Obyok,0.2,0.3333,0.5,0.4582,245.604
+Hybrid Search (Static alpha=1.0),Q-016,Conceptual,flowers for rituals,Borèh; Petra; Tlotok; Walagara; Ongkek,0.4,0.5,1.0,0.6342,209.379
+Hybrid Search (Static alpha=1.0),Q-017,Conceptual,ritual for giving birth,Sayut; Tugel kuncung; Walagara; Unan-unan; Among-among,0.4,0.6667,1.0,0.8199,197.157
+Hybrid Search (Static alpha=1.0),Q-018,Conceptual,woman vocalist in karawitan,Sindhen; Karawitan; Gerong; Pengrawit; Gendhing,0.6,0.75,1.0,0.9056,181.858
+Hybrid Search (Static alpha=1.0),Q-019,Conceptual,village creator,Cikal bakal; Reog Obyok; Sambatan; Karo; Barikan,0.2,0.25,1.0,0.6577,208.136
+Hybrid Search (Static alpha=1.0),Q-020,Conceptual,master warok,Warok Sepuh; Nyantrik; Warok; Cantrik; Gemblak,0.6,1.0,1.0,0.9515,308.365
+Hybrid Search (Static alpha=1.0),Q-022,Conceptual,alcoholic beverage from tengger,Sajeng; Walagara; Ancak; Meduduk; Reog Wengker,0.2,0.3333,1.0,0.7262,261.12
+Hybrid Search (Static alpha=1.0),Q-023,Conceptual,wedding ceremony,Walagara; Meduduk; Mandi; Bokor; Borèh,0.8,1.0,1.0,0.9925,161.961
+Hybrid Search (Static alpha=1.0),Q-024,Conceptual,powerfull person in reog,Warok; Reog Wengker; Pujangga Anom; Klanasewandana; Reog Bantarangin,0.4,0.5,1.0,0.737,210.489
+Hybrid Search (Static alpha=1.0),Q-025,Conceptual,javanese orchestra,Gamelan; Gamelan Jawa; Karawitan; Sambatan; Gambang,0.6,0.75,1.0,0.926,223.322
+Hybrid Search (Static alpha=1.0),Q-027,Exact term,Kasada,Kasada; Topeng Klanasewandana; Kasa; Ongkek; Meduduk,0.4,0.6667,1.0,0.8305,203.169
+Hybrid Search (Static alpha=1.0),Q-028,Exact term,Entas-entas,Entas-entas; Ayas; Among-among; Prapèn; Kethuk,0.4,0.6667,1.0,0.8305,216.601
+Hybrid Search (Static alpha=1.0),Q-029,Exact term,Karo,Karo; Sodoran; Jimat klontongan; Klono Sewandono; Kertijaya,0.6,0.75,1.0,0.9056,163.179
+Hybrid Search (Static alpha=1.0),Q-030,Exact term,Meduduk,Siter; Lincak; Cak; Meduduk; Sunduk,0.2,0.5,0.25,0.3558,191.392
+Hybrid Search (Static alpha=1.0),Q-032,Exact term,Tampah,Tampah; Tata Krama; Sayut; Genthong; Nyadran,0.4,1.0,1.0,0.9639,182.75
+Hybrid Search (Static alpha=1.0),Q-033,Exact term,Bantarangin,Bantarangin; Reog Bantarangin; Pujangga Anom; Brangkangan; Jathil,0.6,0.75,1.0,0.926,203.945
+Hybrid Search (Static alpha=1.0),Q-035,Exact term,Klanasewandana,Klanasewandana; Topeng Klanasewandana; Klono Sewandono; Pecut Samandiman; Bantarangin,0.8,1.0,1.0,0.9806,196.785
+Hybrid Search (Static alpha=1.0),Q-036,Exact term,Warok,Warok; Warok Sepuh; Nyantrik; Kolor; Cantrik,0.8,1.0,1.0,0.9806,191.723
+Hybrid Search (Static alpha=1.0),Q-037,Exact term,Reog Wengker,Reog Wengker; Reog Obyok; Reog Bantarangin; Reog Ponorogo; Selompret,0.4,0.6667,1.0,0.879,178.689
+Hybrid Search (Static alpha=1.0),Q-038,Exact term,Slametan,Slametan; Jimat klontongan; Sambatan; Slenthem; Poten,0.2,0.5,1.0,0.8262,248.27
+Hybrid Search (Static alpha=1.0),Q-040,Exact term,Lumpang,Lumpang; Alu; Gambang; Tanean Lanjhang; Tumang,0.4,1.0,1.0,1.0,169.775
+Hybrid Search (Static alpha=1.0),Q-041,Exact term,Molo,Molo; Gender; Boso Walikan Malangan; Wuwung; Bonang,0.4,1.0,1.0,0.9448,230.793
+Hybrid Search (Static alpha=1.0),Q-042,Exact term,Blandar Penirat,Blandar Penirat; Pengrawit; Gimbal; Bantarangin; Nyambat,0.4,0.5,1.0,0.7673,208.723
+Hybrid Search (Static alpha=1.0),Q-043,Exact term,Sunduk,Sunduk; Dudur; Ongkek; Rumah Srotong; Dadak Merak,0.4,1.0,1.0,0.9448,178.835
+Hybrid Search (Static alpha=1.0),Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan; Dhalang topeng; Gamelan Malangan; Dadak Merak,0.8,1.0,1.0,1.0,196.321
+Hybrid Search (Static alpha=1.0),Q-046,Exact term,Cerita Panji,Cerita Panji; Dewi Sekartaji; Panji Asmarabangun; Ragil Kuning; Wayang Topeng Malangan,0.8,1.0,1.0,1.0,165.42
+Hybrid Search (Static alpha=1.0),Q-047,Exact term,Ngalam,Ngalam; Kera Ngalam; Pengrawit; Boso Walikan; Pujangga Anom,0.4,1.0,1.0,1.0,261.13
+Hybrid Search (Static alpha=1.0),Q-048,Exact term,Saron,Saron; Peking; Demung; Slametan; Rumah Srotong,0.6,0.75,1.0,0.9056,176.272
+Hybrid Search (Static alpha=1.0),Q-049,Exact term,Karawitan,Karawitan; Gendhing; Gerong; Brangkangan; Sindhen,0.8,1.0,1.0,0.9904,221.848
+Hybrid Search (Static alpha=1.0),Q-050,Exact term,Slendro,Slendro; Selompret; Pelog; Klono Sewandono; Slenthem,0.6,1.0,1.0,1.0,222.821
+Hybrid Search (Static alpha=1.0),Q-051,Hybrid,mortar and pestle,Alu; Lumpang; Kowen; Siter; Nagel,0.4,1.0,1.0,1.0,337.692
+Hybrid Search (Static alpha=1.0),Q-052,Hybrid,greet dance,Beskalan; Edrek; Gandrung; Brangkangan; Gemblak,0.2,0.5,1.0,0.8262,236.762
+Hybrid Search (Static alpha=1.0),Q-053,Hybrid,tiger crawl stance,Brangkangan; Edrek; Jathil; Tuwuh; Dadak Merak,0.4,0.6667,1.0,0.8199,236.361
+Hybrid Search (Static alpha=1.0),Q-054,Hybrid,riddle in karo ritual,Karo; Cangkriman; Kertijaya; Jimat klontongan; Tugur,0.6,0.75,0.5,0.6094,228.877
+Hybrid Search (Static alpha=1.0),Q-055,Hybrid,largest instrument with bars and mallet,Demung; Selompret; Gambang; Saron; Gamelan Jawa,0.4,0.5,1.0,0.7521,233.294
+Hybrid Search (Static alpha=1.0),Q-056,Hybrid,wooden beam in javanese house ceiling,Dodok Besi; Blandar Penirat; Pengeret; Molo; Sunduk,0.8,1.0,1.0,1.0,556.867
+Hybrid Search (Static alpha=1.0),Q-057,Hybrid,bamboo carrier for kasada offerings,Ongkek; Ancak; Pasung; Takir; Mandi,0.4,0.5,1.0,0.796,227.395
+Hybrid Search (Static alpha=1.0),Q-058,Hybrid,small banana leaf box for offerings,Pasung; Takir; Ancak; Lincak; Lanting,0.6,0.75,1.0,0.7438,217.455
+Hybrid Search (Static alpha=1.0),Q-059,Hybrid,sacred smoke burner in tengger ritual,Poten; Prapèn; Unan-unan; Tugur; Petra,0.4,0.5,1.0,0.6342,245.821
+Hybrid Search (Static alpha=1.0),Q-061,Hybrid,bamboo horse toy in reog,Reog Bantarangin; Reog Wengker; Reog Ponorogo; Reog Obyok; Eblek,0.4,0.5,0.3333,0.364,224.601
+Hybrid Search (Static alpha=1.0),Q-063,Hybrid,reog woodwind horn instrument,Selompret; Reog Wengker; Reog Obyok; Reog Ponorogo; Reog Festival,0.4,0.5,1.0,0.7521,238.257
+Hybrid Search (Static alpha=1.0),Q-064,Hybrid,music rhythm evaluation in reog dance,Wirama; Wiraga; Wirasa; Reog Ponorogo; Reog Obyok,0.8,1.0,1.0,1.0,257.518
+Hybrid Search (Static alpha=1.0),Q-065,Hybrid,water vessel by house doorway,Padasan; Genthong; Lanting; Pengeret; Bokor,0.6,1.0,1.0,1.0,220.453
+Hybrid Search (Static alpha=1.0),Q-066,Hybrid,cooking area in javanese house,Pawon; Srawing; Buritan; Kowen; Lincak,0.2,0.25,1.0,0.6577,231.637
+Hybrid Search (Static alpha=1.0),Q-067,Hybrid,woven bamboo room divider,Gedhek; Srawing; Dodok Besi; Usuk; Tampah,0.4,0.6667,1.0,0.879,184.317
+Hybrid Search (Static alpha=1.0),Q-069,Hybrid,red mask villain king in panji story,Pujangga Anom; Topeng Klanasewandana; Cerita Panji; Panji Asmarabangun; Dadak Merak,0.4,0.5,0.5,0.2479,232.47
+Hybrid Search (Static alpha=1.0),Q-072,Hybrid,hand drum leading gamelan tempo,Kendhang; Gamelan Jawa; Gamelan; Gamelan Malangan; Gender,0.6,0.75,1.0,0.8904,235.707
+Hybrid Search (Static alpha=1.0),Q-073,Hybrid,large hanging gong ending gamelan cycle,Gong ageng; Kenong; Gamelan; Kempul; Gamelan Jawa,0.6,0.75,1.0,0.8904,168.594
+Hybrid Search (Static alpha=1.0),Q-074,Hybrid,bowed string instrument in karawitan,Karawitan; Rebab; Bonang; Gamelan Jawa; Gendhing,0.6,0.75,1.0,0.7286,223.01
+Hybrid Search (Static alpha=1.0),Q-075,Hybrid,bamboo wind flute in gamelan,Gamelan Jawa; Suling; Gamelan; Gambang; Selompret,0.6,1.0,1.0,0.7939,215.651
+Hybrid Search (Static alpha=0.60),Q-002,Conceptual,peacekeeping ritual,Slametan; Barikan; Sayut; Mayu desa; Pujan,0.6,1.0,1.0,0.776,212.402
+Hybrid Search (Static alpha=0.60),Q-003,Conceptual,Sacred site in the mountains,Poten; Unan-unan; Ontokusumo; Karo; Ongkek,0.4,0.6667,1.0,0.8305,230.265
+Hybrid Search (Static alpha=0.60),Q-005,Conceptual,the nation in reog lore,Reog Wengker; Bantarangin; Jathil; Reog Bantarangin; Reog Ponorogo,0.6,0.75,1.0,0.7286,250.504
+Hybrid Search (Static alpha=0.60),Q-006,Conceptual,magical whip,Pecut Samandiman; Eblek; Klanasewandana; Warok; Reog Wengker,0.4,0.6667,1.0,0.8473,214.953
+Hybrid Search (Static alpha=0.60),Q-007,Conceptual,requesting a favor,Slametan; Walagara; Nyambat; Sam; Sayut,0.2,0.3333,0.3333,0.2781,216.495
+Hybrid Search (Static alpha=0.60),Q-010,Conceptual,leader of wayang topeng,Wayang Topeng Malangan; Dhalang topeng; Topeng Malangan; Pujangga Anom; Topeng Klanasewandana,0.4,0.6667,1.0,0.7003,228.805
+Hybrid Search (Static alpha=0.60),Q-011,Conceptual,magical items,Jimat klontongan; Pecut Samandiman; Gombyok; Borèh; Cangkriman,0.4,0.6667,1.0,0.6733,166.087
+Hybrid Search (Static alpha=0.60),Q-012,Conceptual,javanese composter,Kowen; Gimbal; Pladen; Gedhek; Pandalungan,0.2,1.0,1.0,1.0,212.923
+Hybrid Search (Static alpha=0.60),Q-013,Conceptual,wife,Ojob; Jawi; Barikan; Gender; Walagara,0.4,1.0,1.0,1.0,149.712
+Hybrid Search (Static alpha=0.60),Q-014,Conceptual,spiritual studies,Cantrik; Nyantrik; Borèh; Warok; Legèn,0.4,0.5,1.0,0.8402,185.755
+Hybrid Search (Static alpha=0.60),Q-015,Conceptual,masked general in reog,Reog Ponorogo; Reog Wengker; Reog Bantarangin; Reog Obyok; Reog Festival,0.0,0.0,0.0,0.0,236.184
+Hybrid Search (Static alpha=0.60),Q-016,Conceptual,flowers for rituals,Borèh; Petra; Tlotok; Nyadran; Takir,0.6,0.75,1.0,0.719,210.492
+Hybrid Search (Static alpha=0.60),Q-017,Conceptual,ritual for giving birth,Sayut; Tlotok; Walagara; Tugel kuncung; Slametan,0.2,0.3333,1.0,0.7262,221.457
+Hybrid Search (Static alpha=0.60),Q-018,Conceptual,woman vocalist in karawitan,Karawitan; Sindhen; Gerong; Gendhing; Pengrawit,0.6,0.75,1.0,0.7438,199.336
+Hybrid Search (Static alpha=0.60),Q-019,Conceptual,village creator,Cikal bakal; Reog Obyok; Mayu desa; Unan-unan; Barikan,0.2,0.25,1.0,0.6577,186.089
+Hybrid Search (Static alpha=0.60),Q-020,Conceptual,master warok,Warok Sepuh; Warok; Nyantrik; Gemblak; Cantrik,0.6,1.0,1.0,0.9726,163.944
+Hybrid Search (Static alpha=0.60),Q-022,Conceptual,alcoholic beverage from tengger,Sajeng; Walagara; Tlotok; Prasen; Unan-unan,0.2,0.3333,1.0,0.7262,181.204
+Hybrid Search (Static alpha=0.60),Q-023,Conceptual,wedding ceremony,Walagara; Mandi; Meduduk; Bokor; Ancak,0.6,0.75,1.0,0.8811,220.532
+Hybrid Search (Static alpha=0.60),Q-024,Conceptual,powerfull person in reog,Reog Wengker; Reog Bantarangin; Warok; Bantarangin; Reog Ponorogo,0.2,0.25,0.3333,0.2576,283.01
+Hybrid Search (Static alpha=0.60),Q-025,Conceptual,javanese orchestra,Gamelan; Gamelan Jawa; Karawitan; Pladen; Gimbal,0.6,0.75,1.0,0.926,220.744
+Hybrid Search (Static alpha=0.60),Q-027,Exact term,Kasada,Kasada; Topeng Klanasewandana; Kasa; Ongkek; Meduduk,0.4,0.6667,1.0,0.8305,197.87
+Hybrid Search (Static alpha=0.60),Q-028,Exact term,Entas-entas,Entas-entas; Prapèn; Ayas; Among-among; Kethuk,0.4,0.6667,1.0,0.879,249.007
+Hybrid Search (Static alpha=0.60),Q-029,Exact term,Karo,Karo; Sodoran; Jimat klontongan; Kertijaya; Tugur,0.6,0.75,1.0,0.9056,152.93
+Hybrid Search (Static alpha=0.60),Q-030,Exact term,Meduduk,Meduduk; Siter; Lincak; Cak; Sunduk,0.2,0.5,1.0,0.8262,181.786
+Hybrid Search (Static alpha=0.60),Q-032,Exact term,Tampah,Tampah; Tata Krama; Sayut; Genthong; Nyadran,0.4,1.0,1.0,0.9639,202.634
+Hybrid Search (Static alpha=0.60),Q-033,Exact term,Bantarangin,Bantarangin; Reog Bantarangin; Pujangga Anom; Klanasewandana; Brangkangan,0.8,1.0,1.0,1.0,222.065
+Hybrid Search (Static alpha=0.60),Q-035,Exact term,Klanasewandana,Klanasewandana; Topeng Klanasewandana; Klono Sewandono; Pecut Samandiman; Bantarangin,0.8,1.0,1.0,0.9806,213.938
+Hybrid Search (Static alpha=0.60),Q-036,Exact term,Warok,Warok; Warok Sepuh; Nyantrik; Kolor; Gemblak,0.6,0.75,1.0,0.9141,209.321
+Hybrid Search (Static alpha=0.60),Q-037,Exact term,Reog Wengker,Reog Wengker; Reog Obyok; Reog Bantarangin; Reog Ponorogo; Jathil,0.6,1.0,1.0,0.9726,219.79
+Hybrid Search (Static alpha=0.60),Q-038,Exact term,Slametan,Slametan; Jimat klontongan; Sambatan; Slenthem; Poten,0.2,0.5,1.0,0.8262,210.573
+Hybrid Search (Static alpha=0.60),Q-040,Exact term,Lumpang,Lumpang; Alu; Gambang; Tanean Lanjhang; Tumang,0.4,1.0,1.0,1.0,190.991
+Hybrid Search (Static alpha=0.60),Q-041,Exact term,Molo,Molo; Gender; Boso Walikan Malangan; Wuwung; Bonang,0.4,1.0,1.0,0.9448,185.36
+Hybrid Search (Static alpha=0.60),Q-042,Exact term,Blandar Penirat,Blandar Penirat; Gimbal; Pengrawit; Bantarangin; Nyambat,0.4,0.5,1.0,0.796,166.81
+Hybrid Search (Static alpha=0.60),Q-043,Exact term,Sunduk,Sunduk; Dudur; Ongkek; Rumah Srotong; Dadak Merak,0.4,1.0,1.0,0.9448,204.897
+Hybrid Search (Static alpha=0.60),Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan; Dhalang topeng; Gamelan Malangan; Topeng Klanasewandana,0.8,1.0,1.0,1.0,233.373
+Hybrid Search (Static alpha=0.60),Q-046,Exact term,Cerita Panji,Cerita Panji; Panji Asmarabangun; Dewi Sekartaji; Ragil Kuning; Wayang Topeng Malangan,0.8,1.0,1.0,1.0,227.234
+Hybrid Search (Static alpha=0.60),Q-047,Exact term,Ngalam,Ngalam; Kera Ngalam; Pengrawit; Boso Walikan; Pujangga Anom,0.4,1.0,1.0,1.0,182.114
+Hybrid Search (Static alpha=0.60),Q-048,Exact term,Saron,Saron; Peking; Demung; Slametan; Rumah Srotong,0.6,0.75,1.0,0.9056,141.476
+Hybrid Search (Static alpha=0.60),Q-049,Exact term,Karawitan,Karawitan; Gendhing; Gerong; Brangkangan; Sindhen,0.8,1.0,1.0,0.9904,216.249
+Hybrid Search (Static alpha=0.60),Q-050,Exact term,Slendro,Slendro; Selompret; Pelog; Klono Sewandono; Slenthem,0.6,1.0,1.0,1.0,221.986
+Hybrid Search (Static alpha=0.60),Q-051,Hybrid,mortar and pestle,Alu; Lumpang; Kowen; Siter; Nagel,0.4,1.0,1.0,1.0,218.915
+Hybrid Search (Static alpha=0.60),Q-052,Hybrid,greet dance,Beskalan; Edrek; Gandrung; Brangkangan; Sodoran,0.2,0.5,1.0,0.8262,221.162
+Hybrid Search (Static alpha=0.60),Q-053,Hybrid,tiger crawl stance,Brangkangan; Dadak Merak; Edrek; Jathil; Tuwuh,0.4,0.6667,1.0,0.879,214.99
+Hybrid Search (Static alpha=0.60),Q-054,Hybrid,riddle in karo ritual,Karo; Tugur; Cangkriman; Kertijaya; Sodoran,0.6,0.75,0.5,0.5616,215.353
+Hybrid Search (Static alpha=0.60),Q-055,Hybrid,largest instrument with bars and mallet,Demung; Saron; Selompret; Gambang; Gamelan Jawa,0.4,0.5,1.0,0.796,213.242
+Hybrid Search (Static alpha=0.60),Q-056,Hybrid,wooden beam in javanese house ceiling,Pengeret; Dodok Besi; Blandar Penirat; Gimbal; Molo,0.8,1.0,1.0,0.8208,261.571
+Hybrid Search (Static alpha=0.60),Q-057,Hybrid,bamboo carrier for kasada offerings,Ongkek; Kasada; Ancak; Tampah; Mandi,0.6,0.75,1.0,0.9056,214.65
+Hybrid Search (Static alpha=0.60),Q-058,Hybrid,small banana leaf box for offerings,Takir; Pasung; Ancak; Bonang; Lincak,0.6,0.75,1.0,0.9056,228.064
+Hybrid Search (Static alpha=0.60),Q-059,Hybrid,sacred smoke burner in tengger ritual,Prapèn; Poten; Tugur; Unan-unan; Ontokusumo,0.4,0.5,1.0,0.796,249.726
+Hybrid Search (Static alpha=0.60),Q-061,Hybrid,bamboo horse toy in reog,Reog Bantarangin; Eblek; Reog Wengker; Reog Obyok; Reog Ponorogo,0.4,0.5,0.5,0.4997,228.654
+Hybrid Search (Static alpha=0.60),Q-063,Hybrid,reog woodwind horn instrument,Selompret; Reog Wengker; Reog Obyok; Reog Ponorogo; Reog Festival,0.4,0.5,1.0,0.7521,264.585
+Hybrid Search (Static alpha=0.60),Q-064,Hybrid,music rhythm evaluation in reog dance,Wirama; Wiraga; Wirasa; Reog Ponorogo; Reog Obyok,0.8,1.0,1.0,1.0,284.907
+Hybrid Search (Static alpha=0.60),Q-065,Hybrid,water vessel by house doorway,Padasan; Genthong; Lanting; Laweh; Prasen,0.6,1.0,1.0,1.0,216.978
+Hybrid Search (Static alpha=0.60),Q-066,Hybrid,cooking area in javanese house,Pawon; Buritan; Kowen; Srawing; Gedhek,0.2,0.25,1.0,0.6577,225.713
+Hybrid Search (Static alpha=0.60),Q-067,Hybrid,woven bamboo room divider,Gedhek; Tampah; Eblek; Mandi; Ancak,0.2,0.3333,1.0,0.7262,232.494
+Hybrid Search (Static alpha=0.60),Q-069,Hybrid,red mask villain king in panji story,Topeng Klanasewandana; Panji Asmarabangun; Pujangga Anom; Cerita Panji; Klono Sewandono,0.6,0.75,1.0,0.5681,234.955
+Hybrid Search (Static alpha=0.60),Q-072,Hybrid,hand drum leading gamelan tempo,Kendhang; Gamelan Jawa; Gamelan Malangan; Gamelan; Wirama,0.6,0.75,1.0,0.9056,237.437
+Hybrid Search (Static alpha=0.60),Q-073,Hybrid,large hanging gong ending gamelan cycle,Gong ageng; Kenong; Kempul; Gamelan; Gamelan Jawa,0.6,0.75,1.0,0.9056,209.899
+Hybrid Search (Static alpha=0.60),Q-074,Hybrid,bowed string instrument in karawitan,Karawitan; Gamelan Jawa; Rebab; Gendhing; Gerong,0.6,0.75,1.0,0.6864,210.194
+Hybrid Search (Static alpha=0.60),Q-075,Hybrid,bamboo wind flute in gamelan,Gamelan Jawa; Suling; Selompret; Gamelan; Gamelan Malangan,0.6,1.0,1.0,0.8213,221.129
+Adaptive Hybrid Search (Sigmoid Gate),Q-002,Conceptual,peacekeeping ritual,Slametan; Barikan; Mayu desa; Sayut; Unan-unan,0.6,1.0,1.0,0.8146,220.256
+Adaptive Hybrid Search (Sigmoid Gate),Q-003,Conceptual,Sacred site in the mountains,Poten; Unan-unan; Ontokusumo; Ongkek; Jimat klontongan,0.2,0.3333,1.0,0.7262,225.449
+Adaptive Hybrid Search (Sigmoid Gate),Q-005,Conceptual,the nation in reog lore,Reog Wengker; Bantarangin; Reog Bantarangin; Reog Ponorogo; Jathil,0.6,0.75,1.0,0.7438,180.174
+Adaptive Hybrid Search (Sigmoid Gate),Q-006,Conceptual,magical whip,Pecut Samandiman; Eblek; Klanasewandana; Warok; Reog Wengker,0.4,0.6667,1.0,0.8473,281.754
+Adaptive Hybrid Search (Sigmoid Gate),Q-007,Conceptual,requesting a favor,Nyambat; Slametan; Sam; Walagara; Cak,0.2,0.3333,1.0,0.5563,205.927
+Adaptive Hybrid Search (Sigmoid Gate),Q-010,Conceptual,leader of wayang topeng,Wayang Topeng Malangan; Dhalang topeng; Topeng Malangan; Topeng Klanasewandana; Pujangga Anom,0.4,0.6667,1.0,0.7003,244.09
+Adaptive Hybrid Search (Sigmoid Gate),Q-011,Conceptual,magical items,Jimat klontongan; Pecut Samandiman; Gombyok; Borèh; Cangkriman,0.4,0.6667,1.0,0.6733,218.844
+Adaptive Hybrid Search (Sigmoid Gate),Q-012,Conceptual,javanese composter,Kowen; Sambatan; Gamelan Jawa; Dodok Besi; Pawon,0.2,1.0,1.0,1.0,206.607
+Adaptive Hybrid Search (Sigmoid Gate),Q-013,Conceptual,wife,Ojob; Jawi; Barikan; Gender; Walagara,0.4,1.0,1.0,1.0,170.048
+Adaptive Hybrid Search (Sigmoid Gate),Q-014,Conceptual,spiritual studies,Nyantrik; Cantrik; Borèh; Entas-entas; Slametan,0.4,0.5,1.0,0.8402,199.052
+Adaptive Hybrid Search (Sigmoid Gate),Q-015,Conceptual,masked general in reog,Reog Ponorogo; Reog Wengker; Pujangga Anom; Reog Bantarangin; Reog Obyok,0.2,0.3333,0.3333,0.3631,260.917
+Adaptive Hybrid Search (Sigmoid Gate),Q-016,Conceptual,flowers for rituals,Borèh; Petra; Tlotok; Walagara; Ongkek,0.4,0.5,1.0,0.6342,216.519
+Adaptive Hybrid Search (Sigmoid Gate),Q-017,Conceptual,ritual for giving birth,Sayut; Tugel kuncung; Walagara; Slametan; Among-among,0.4,0.6667,1.0,0.8199,228.297
+Adaptive Hybrid Search (Sigmoid Gate),Q-018,Conceptual,woman vocalist in karawitan,Karawitan; Sindhen; Gerong; Gendhing; Pengrawit,0.6,0.75,1.0,0.7438,237.785
+Adaptive Hybrid Search (Sigmoid Gate),Q-019,Conceptual,village creator,Cikal bakal; Reog Obyok; Sambatan; Karo; Barikan,0.2,0.25,1.0,0.6577,202.953
+Adaptive Hybrid Search (Sigmoid Gate),Q-020,Conceptual,master warok,Warok Sepuh; Warok; Nyantrik; Cantrik; Gemblak,0.6,1.0,1.0,0.9832,216.009
+Adaptive Hybrid Search (Sigmoid Gate),Q-022,Conceptual,alcoholic beverage from tengger,Sajeng; Walagara; Ancak; Meduduk; Reog Wengker,0.2,0.3333,1.0,0.7262,225.963
+Adaptive Hybrid Search (Sigmoid Gate),Q-023,Conceptual,wedding ceremony,Walagara; Meduduk; Mandi; Bokor; Borèh,0.8,1.0,1.0,0.9925,245.401
+Adaptive Hybrid Search (Sigmoid Gate),Q-024,Conceptual,powerfull person in reog,Reog Wengker; Warok; Pujangga Anom; Reog Bantarangin; Klanasewandana,0.4,0.5,0.5,0.5243,246.566
+Adaptive Hybrid Search (Sigmoid Gate),Q-025,Conceptual,javanese orchestra,Gamelan; Gamelan Jawa; Karawitan; Sambatan; Sunduk,0.6,0.75,1.0,0.926,232.898
+Adaptive Hybrid Search (Sigmoid Gate),Q-027,Exact term,Kasada,Kasada; Topeng Klanasewandana; Kasa; Ongkek; Meduduk,0.4,0.6667,1.0,0.8305,191.669
+Adaptive Hybrid Search (Sigmoid Gate),Q-028,Exact term,Entas-entas,Entas-entas; Prapèn; Ayas; Among-among; Kethuk,0.4,0.6667,1.0,0.879,189.145
+Adaptive Hybrid Search (Sigmoid Gate),Q-029,Exact term,Karo,Karo; Sodoran; Jimat klontongan; Kertijaya; Klono Sewandono,0.6,0.75,1.0,0.9056,157.631
+Adaptive Hybrid Search (Sigmoid Gate),Q-030,Exact term,Meduduk,Meduduk; Siter; Lincak; Cak; Sunduk,0.2,0.5,1.0,0.8262,192.389
+Adaptive Hybrid Search (Sigmoid Gate),Q-032,Exact term,Tampah,Tampah; Tata Krama; Sayut; Genthong; Nyadran,0.4,1.0,1.0,0.9639,178.724
+Adaptive Hybrid Search (Sigmoid Gate),Q-033,Exact term,Bantarangin,Bantarangin; Reog Bantarangin; Pujangga Anom; Klanasewandana; Brangkangan,0.8,1.0,1.0,1.0,213.591
+Adaptive Hybrid Search (Sigmoid Gate),Q-035,Exact term,Klanasewandana,Klanasewandana; Topeng Klanasewandana; Klono Sewandono; Pecut Samandiman; Bantarangin,0.8,1.0,1.0,0.9806,216.195
+Adaptive Hybrid Search (Sigmoid Gate),Q-036,Exact term,Warok,Warok; Warok Sepuh; Nyantrik; Kolor; Cantrik,0.8,1.0,1.0,0.9806,187.152
+Adaptive Hybrid Search (Sigmoid Gate),Q-037,Exact term,Reog Wengker,Reog Wengker; Reog Obyok; Reog Bantarangin; Jathil; Reog Ponorogo,0.6,1.0,1.0,0.9832,187.617
+Adaptive Hybrid Search (Sigmoid Gate),Q-038,Exact term,Slametan,Slametan; Jimat klontongan; Sambatan; Slenthem; Poten,0.2,0.5,1.0,0.8262,216.78
+Adaptive Hybrid Search (Sigmoid Gate),Q-040,Exact term,Lumpang,Lumpang; Alu; Gambang; Tanean Lanjhang; Tumang,0.4,1.0,1.0,1.0,199.209
+Adaptive Hybrid Search (Sigmoid Gate),Q-041,Exact term,Molo,Molo; Gender; Boso Walikan Malangan; Wuwung; Bonang,0.4,1.0,1.0,0.9448,188.032
+Adaptive Hybrid Search (Sigmoid Gate),Q-042,Exact term,Blandar Penirat,Blandar Penirat; Gimbal; Pengrawit; Bantarangin; Nyambat,0.4,0.5,1.0,0.796,211.279
+Adaptive Hybrid Search (Sigmoid Gate),Q-043,Exact term,Sunduk,Sunduk; Dudur; Ongkek; Rumah Srotong; Dadak Merak,0.4,1.0,1.0,0.9448,198.985
+Adaptive Hybrid Search (Sigmoid Gate),Q-045,Exact term,Topeng Malangan,Topeng Malangan; Wayang Topeng Malangan; Dhalang topeng; Gamelan Malangan; Topeng Klanasewandana,0.8,1.0,1.0,1.0,207.575
+Adaptive Hybrid Search (Sigmoid Gate),Q-046,Exact term,Cerita Panji,Cerita Panji; Panji Asmarabangun; Dewi Sekartaji; Ragil Kuning; Wayang Topeng Malangan,0.8,1.0,1.0,1.0,227.402
+Adaptive Hybrid Search (Sigmoid Gate),Q-047,Exact term,Ngalam,Ngalam; Kera Ngalam; Pengrawit; Boso Walikan; Pujangga Anom,0.4,1.0,1.0,1.0,195.803
+Adaptive Hybrid Search (Sigmoid Gate),Q-048,Exact term,Saron,Saron; Peking; Demung; Slametan; Rumah Srotong,0.6,0.75,1.0,0.9056,190.996
+Adaptive Hybrid Search (Sigmoid Gate),Q-049,Exact term,Karawitan,Karawitan; Gendhing; Gerong; Brangkangan; Sindhen,0.8,1.0,1.0,0.9904,219.636
+Adaptive Hybrid Search (Sigmoid Gate),Q-050,Exact term,Slendro,Slendro; Selompret; Pelog; Klono Sewandono; Slenthem,0.6,1.0,1.0,1.0,170.569
+Adaptive Hybrid Search (Sigmoid Gate),Q-051,Hybrid,mortar and pestle,Alu; Lumpang; Kowen; Siter; Nagel,0.4,1.0,1.0,1.0,226.972
+Adaptive Hybrid Search (Sigmoid Gate),Q-052,Hybrid,greet dance,Beskalan; Edrek; Gandrung; Brangkangan; Sodoran,0.2,0.5,1.0,0.8262,205.957
+Adaptive Hybrid Search (Sigmoid Gate),Q-053,Hybrid,tiger crawl stance,Brangkangan; Dadak Merak; Edrek; Jathil; Tuwuh,0.4,0.6667,1.0,0.879,167.424
+Adaptive Hybrid Search (Sigmoid Gate),Q-054,Hybrid,riddle in karo ritual,Tugur; Karo; Cangkriman; Kertijaya; Sodoran,0.6,0.75,1.0,0.6425,231.693
+Adaptive Hybrid Search (Sigmoid Gate),Q-055,Hybrid,largest instrument with bars and mallet,Demung; Saron; Selompret; Gambang; Rancak,0.4,0.5,1.0,0.796,218.084
+Adaptive Hybrid Search (Sigmoid Gate),Q-056,Hybrid,wooden beam in javanese house ceiling,Pengeret; Dodok Besi; Blandar Penirat; Gimbal; Molo,0.8,1.0,1.0,0.8208,209.803
+Adaptive Hybrid Search (Sigmoid Gate),Q-057,Hybrid,bamboo carrier for kasada offerings,Ongkek; Kasada; Ancak; Tampah; Mandi,0.6,0.75,1.0,0.9056,179.161
+Adaptive Hybrid Search (Sigmoid Gate),Q-058,Hybrid,small banana leaf box for offerings,Takir; Pasung; Ancak; Bonang; Lanting,0.6,0.75,1.0,0.9056,249.562
+Adaptive Hybrid Search (Sigmoid Gate),Q-059,Hybrid,sacred smoke burner in tengger ritual,Prapèn; Poten; Tugur; Ontokusumo; Mekakat,0.4,0.5,1.0,0.796,257.452
+Adaptive Hybrid Search (Sigmoid Gate),Q-061,Hybrid,bamboo horse toy in reog,Reog Bantarangin; Eblek; Reog Wengker; Reog Obyok; Reog Ponorogo,0.4,0.5,0.5,0.4997,229.399
+Adaptive Hybrid Search (Sigmoid Gate),Q-063,Hybrid,reog woodwind horn instrument,Selompret; Reog Wengker; Reog Obyok; Reog Ponorogo; Reog Festival,0.4,0.5,1.0,0.7521,271.792
+Adaptive Hybrid Search (Sigmoid Gate),Q-064,Hybrid,music rhythm evaluation in reog dance,Wirama; Wiraga; Wirasa; Reog Ponorogo; Reog Bantarangin,0.8,1.0,1.0,1.0,217.014
+Adaptive Hybrid Search (Sigmoid Gate),Q-065,Hybrid,water vessel by house doorway,Padasan; Genthong; Lanting; Laweh; Prasen,0.6,1.0,1.0,1.0,232.045
+Adaptive Hybrid Search (Sigmoid Gate),Q-066,Hybrid,cooking area in javanese house,Pawon; Buritan; Kowen; Gedhek; Srawing,0.2,0.25,1.0,0.6577,240.312
+Adaptive Hybrid Search (Sigmoid Gate),Q-067,Hybrid,woven bamboo room divider,Gedhek; Tampah; Eblek; Srawing; Dodok Besi,0.4,0.6667,1.0,0.8305,245.021
+Adaptive Hybrid Search (Sigmoid Gate),Q-069,Hybrid,red mask villain king in panji story,Topeng Klanasewandana; Panji Asmarabangun; Klono Sewandono; Cerita Panji; Pujangga Anom,0.6,0.75,1.0,0.6425,180.89
+Adaptive Hybrid Search (Sigmoid Gate),Q-072,Hybrid,hand drum leading gamelan tempo,Kendhang; Gamelan Jawa; Gamelan Malangan; Gamelan; Wirama,0.6,0.75,1.0,0.9056,229.032
+Adaptive Hybrid Search (Sigmoid Gate),Q-073,Hybrid,large hanging gong ending gamelan cycle,Gong ageng; Kenong; Kempul; Gamelan; Kethuk,0.8,1.0,1.0,0.9904,216.002
+Adaptive Hybrid Search (Sigmoid Gate),Q-074,Hybrid,bowed string instrument in karawitan,Karawitan; Gamelan Jawa; Rebab; Gendhing; Gerong,0.6,0.75,1.0,0.6864,209.636
+Adaptive Hybrid Search (Sigmoid Gate),Q-075,Hybrid,bamboo wind flute in gamelan,Gamelan Jawa; Suling; Selompret; Gamelan; Gamelan Malangan,0.6,1.0,1.0,0.8213,175.538

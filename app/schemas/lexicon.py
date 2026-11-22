@@ -158,6 +158,23 @@ class HybridSearchResponse(BaseModel):
     results: List[HybridLexiconCandidate]
 
 
+class AdaptiveHybridSearchResponse(BaseModel):
+    query: str
+    adaptive_alpha: float = Field(..., description="Query-adaptive dense weight alpha(q) computed by the sigmoid confidence gate")
+    dense_weight: float = Field(..., description="Effective weight applied to dense BGE-M3 normalized score")
+    sparse_weight: float = Field(..., description="Effective weight applied to sparse BM25 normalized score")
+    max_bm25_score: float = Field(..., description="Raw top-1 BM25 score used as lexical confidence signal")
+    lexical_confidence: float = Field(..., description="Sigmoid lexical confidence c(q) in [0.0, 1.0]")
+    gate_tau: float = Field(..., description="Sigmoid midpoint threshold parameter tau")
+    gate_scale: float = Field(..., description="Sigmoid transition scale parameter s")
+    gate_alpha_min: float = Field(..., description="Minimum dense weight when BM25 confidence approaches 1.0")
+    gate_alpha_max: float = Field(..., description="Maximum dense weight when BM25 confidence approaches 0.0")
+    total_candidates: int
+    top_k: int
+    execution_time_ms: float
+    results: List[HybridLexiconCandidate]
+
+
 class BGESparseLexiconCandidate(BaseModel):
     id: int
     term: str

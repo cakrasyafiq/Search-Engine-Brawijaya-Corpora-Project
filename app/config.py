@@ -22,6 +22,12 @@ class Settings(BaseSettings):
     EMBEDDING_MODEL_NAME: str = "BAAI/bge-m3"
     EMBEDDING_DIMENSION: int = 1024
     EMBEDDING_BATCH_SIZE: int = 16
+
+    # Adaptive Hybrid Search (Smooth Sigmoid Lexical Confidence Gate) defaults
+    ADAPTIVE_GATE_TAU: float = 8.0
+    ADAPTIVE_GATE_SCALE: float = 1.5
+    ADAPTIVE_GATE_ALPHA_MIN: float = 0.45
+    ADAPTIVE_GATE_ALPHA_MAX: float = 1.0
     
     # Default CSV path for database seeding
     LEXICON_CSV_PATH: str = str(

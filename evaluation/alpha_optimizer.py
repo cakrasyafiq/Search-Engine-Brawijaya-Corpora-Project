@@ -44,6 +44,11 @@ class AlphaMetricRecord:
     exact_mrr: float
     exact_precision: float
     exact_recall: float
+    # Hybrid queries metrics
+    hybrid_ndcg: float = 0.0
+    hybrid_mrr: float = 0.0
+    hybrid_precision: float = 0.0
+    hybrid_recall: float = 0.0
     k: int = 5
 
 
@@ -154,6 +159,7 @@ class AlphaOptimizer:
             overall_results: List[QueryEvaluationResult] = []
             conceptual_results: List[QueryEvaluationResult] = []
             exact_results: List[QueryEvaluationResult] = []
+            hybrid_results: List[QueryEvaluationResult] = []
 
             for qid, data in query_candidates.items():
                 q: EvaluationQuery = data["query"]
@@ -197,8 +203,11 @@ class AlphaOptimizer:
                 )
 
                 overall_results.append(q_res)
-                if q.query_type.lower() == "conceptual":
+                qt_low = q.query_type.lower()
+                if qt_low == "conceptual":
                     conceptual_results.append(q_res)
+                elif qt_low == "hybrid":
+                    hybrid_results.append(q_res)
                 else:
                     exact_results.append(q_res)
 
@@ -206,6 +215,7 @@ class AlphaOptimizer:
             agg_all = aggregate_metrics(overall_results)
             agg_conc = aggregate_metrics(conceptual_results)
             agg_exact = aggregate_metrics(exact_results)
+            agg_hybrid = aggregate_metrics(hybrid_results)
 
             rec = AlphaMetricRecord(
                 alpha=alpha,
@@ -223,6 +233,10 @@ class AlphaOptimizer:
                 exact_mrr=agg_exact.mrr,
                 exact_precision=agg_exact.precision_at_k,
                 exact_recall=agg_exact.recall_at_k,
+                hybrid_ndcg=agg_hybrid.ndcg_at_k,
+                hybrid_mrr=agg_hybrid.mrr,
+                hybrid_precision=agg_hybrid.precision_at_k,
+                hybrid_recall=agg_hybrid.recall_at_k,
                 k=self.k,
             )
             records.append(rec)

@@ -1,10 +1,10 @@
 import csv
 import logging
+import random
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from collections import defaultdict
-from sklearn.model_selection import train_test_split
 
 logger = logging.getLogger(__name__)
 
@@ -62,6 +62,14 @@ class EvaluationDataset:
     @property
     def exact_term_queries(self) -> List[EvaluationQuery]:
         return [q for q in self.queries if q.query_type.lower() == "exact term"]
+
+    @property
+    def hybrid_queries(self) -> List[EvaluationQuery]:
+        return [q for q in self.queries if q.query_type.lower() == "hybrid"]
+
+    def queries_by_type(self, query_type: str) -> List[EvaluationQuery]:
+        qt_low = query_type.lower()
+        return [q for q in self.queries if q.query_type.lower() == qt_low]
 
     @classmethod
     def from_csv(cls, csv_path: str | Path) -> "EvaluationDataset":
@@ -169,17 +177,23 @@ def load_and_split_dataset(
         test_dataset = EvaluationDataset.from_csv(test_output_csv)
         return val_dataset, test_dataset
 
-    # Perform stratified train/test split on queries
+    # Perform deterministic stratified split on queries grouped by Query_type
     full_dataset = EvaluationDataset.from_csv(source_path)
-    queries = full_dataset.queries
-    query_types = [q.query_type for q in queries]
+    by_type: Dict[str, List[EvaluationQuery]] = defaultdict(list)
+    for q in full_dataset.queries:
+        by_type[q.query_type].append(q)
 
-    val_queries, test_queries = train_test_split(
-        queries,
-        test_size=test_ratio,
-        random_state=random_state,
-        stratify=query_types,
-    )
+    rng = random.Random(random_state)
+    val_queries: List[EvaluationQuery] = []
+    test_queries: List[EvaluationQuery] = []
+
+    for qtype in sorted(by_type.keys()):
+        group = list(by_type[qtype])
+        rng.shuffle(group)
+        n_test = round(len(group) * test_ratio)
+        n_test = max(1, min(len(group) - 1, n_test)) if len(group) > 1 else len(group)
+        test_queries.extend(group[:n_test])
+        val_queries.extend(group[n_test:])
 
     # Sort queries by Query_id for neatness
     val_queries.sort(key=lambda q: q.query_id)

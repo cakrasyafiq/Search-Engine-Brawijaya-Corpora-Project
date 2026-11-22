@@ -197,7 +197,8 @@ def aggregate_metrics(results: Sequence[QueryEvaluationResult]) -> AggregatedMet
     avg_r = sum(r.recall_at_k for r in results) / n
     avg_mrr = sum(r.reciprocal_rank for r in results) / n
     avg_ndcg = sum(r.ndcg_at_k for r in results) / n
-    avg_latency = sum(r.latency_ms for r in results) / n
+    valid_latencies = [r.latency_ms for r in results if r.latency_ms is not None]
+    avg_latency = (sum(valid_latencies) / len(valid_latencies)) if valid_latencies else 0.0
 
     return AggregatedMetrics(
         total_queries=n,
